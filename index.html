@@ -312,14 +312,18 @@
     font-style: italic;
 }
 
-/* REGRA SUPER ESPECÍFICA PARA CENTRALIZAR */
-section.team .container .team-members .team-member .member-description p.special-text {
+/* 1. Remove a justificação APENAS para textos especiais */
+.member-description p.special-text {
     text-align: center !important;
-    margin-top: 15px !important;
-    color: #d32f2f !important; /* Cor vermelha direta */
-    font-weight: bold !important;
-    font-style: italic !important;
-    display: block !important;
+    text-justify: unset !important;
+}
+
+/* 2. Aplica estilo vermelho */
+.special-text {
+    margin-top: 15px;
+    color: var(--accent-red);
+    font-weight: bold;
+    font-style: italic;
 }
         
 /* Responsividade para tablets */
