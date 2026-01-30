@@ -304,6 +304,30 @@
             line-height: 1.6;
         }
         
+        .special-text {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--accent-red);
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 1024px) {
+    .team-members {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
+    }
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+    .team-members {
+        grid-template-columns: 1fr; /* 1 coluna em mobile */
+        max-width: 500px;
+        margin: 30px auto 0;
+    }
+}
+        
         /* Serviços */
         .services {
             background-color: var(--light-gray);
@@ -861,6 +885,38 @@
         .footer-links li {
             text-align: left;
         }
+        
+        /* Texto especial para membros da equipe */
+.special-text {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--accent-red);
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Se quiser estilos diferentes */
+.special-mention {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--accent-red);
+    font-weight: bold;
+}
+
+.special-note {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--accent-red);
+    font-style: italic;
+}
+
+.cosplay-text {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--accent-red);
+    font-style: italic;
+}
+        
     </style>
 </head>
 <body>
