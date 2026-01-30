@@ -39,7 +39,8 @@
         
         /* Configuração de texto justificado */
         p, li, .about-text, .drainage-text, .service-features, .service-benefits, 
-        .service-normas, .card p, .benefit-item p, .footer-contact p {
+        .service-normas, .card p, .benefit-item p, .footer-contact p,
+        .member-description p {
             text-align: justify;
             text-justify: inter-word;
         }
@@ -47,7 +48,8 @@
         /* Configuração de títulos centralizados */
         h1, h2, h3, h4, .section-title h2, .service-card h3, .service-detail-header h3,
         .service-features h4, .service-benefits h4, .card h3, .benefit-item h4,
-        .footer-links h4, .footer-contact h4, .footer-logo h3 {
+        .footer-links h4, .footer-contact h4, .footer-logo h3,
+        .member-name, .member-position {
             text-align: center;
         }
         
@@ -265,7 +267,6 @@
             background-color: var(--white);
             border-radius: 10px;
             padding: 30px;
-            text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -282,6 +283,7 @@
             object-fit: cover;
             margin: 0 auto 20px;
             border: 5px solid var(--light-blue);
+            display: block;
         }
         
         .member-name {
@@ -298,7 +300,6 @@
         }
         
         .member-description {
-            text-align: justify;
             line-height: 1.6;
         }
         
@@ -794,7 +795,8 @@
             
             /* Ajustes de texto para mobile */
             p, li, .about-text, .drainage-text, .service-features, .service-benefits, 
-            .service-normas, .card p, .benefit-item p, .footer-contact p {
+            .service-normas, .card p, .benefit-item p, .footer-contact p,
+            .member-description p {
                 text-align: left;
                 hyphens: auto;
             }
@@ -809,6 +811,10 @@
             .member-photo {
                 width: 150px;
                 height: 150px;
+            }
+            
+            .member-name, .member-position {
+                text-align: center;
             }
         }
         
@@ -866,7 +872,8 @@
         }
         
         /* Melhorias na justificação */
-        .about-text p, .drainage-text p, .card p, .service-normas p {
+        .about-text p, .drainage-text p, .card p, .service-normas p,
+        .member-description p {
             line-height: 1.8;
             text-align-last: left;
         }
@@ -983,7 +990,7 @@
                 <div class="team-member">
                     <img src="img/foto_amanda.jpg" alt="Amanda Campos" class="member-photo">
                     <h3 class="member-name">Amanda Campos</h3>
-                    <p class="member-position">Pobre Estagiária</p>
+                    <p class="member-position">Estagiária</p>
                     <div class="member-description">
                         <p>Graduanda em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2021 - 2026).</p>
                     </div>
@@ -993,7 +1000,7 @@
                 <div class="team-member">
                     <img src="img/foto_leticia.jpg" alt="Leticia Torres" class="member-photo">
                     <h3 class="member-name">Leticia Torres</h3>
-                    <p class="member-position">Pobre Estagiária</p>
+                    <p class="member-position">Estagiária</p>
                     <div class="member-description">
                         <p>Graduanda em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2021 - 2026).</p>
                     </div>
@@ -1003,7 +1010,7 @@
                 <div class="team-member">
                     <img src="img/foto_joao.jpg" alt="João Melo" class="member-photo">
                     <h3 class="member-name">João Melo</h3>
-                    <p class="member-position">Pobre Estagiário</p>
+                    <p class="member-position">Estagiário</p>
                     <div class="member-description">
                         <p>Graduando em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2021 - 2027).</p>
                     </div>
