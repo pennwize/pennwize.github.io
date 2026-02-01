@@ -43,7 +43,6 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-            backdrop-filter: blur(10px);
         }
 
         .login-header {
@@ -56,7 +55,6 @@
         .login-header h1 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            font-family: 'Cinzel', serif;
         }
 
         .login-header p {
@@ -125,13 +123,6 @@
             border-top: 1px solid #eee;
         }
 
-        .logo-placeholder {
-            text-align: center;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
-            font-size: 2rem;
-        }
-
         .info-note {
             background-color: var(--light-blue);
             padding: 15px;
@@ -139,6 +130,15 @@
             margin-bottom: 25px;
             text-align: center;
             border-left: 4px solid var(--primary-blue);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
         }
 
         @media (max-width: 480px) {
@@ -153,7 +153,6 @@
     </style>
 </head>
 <body>
-    
     <div class="login-container">
         <div class="login-header">
             <h1>PENN & WIZE</h1>
@@ -182,11 +181,9 @@
                 </button>
             </form>
             
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">
-                    <i class="fas fa-arrow-left"></i> Voltar para o site
-                </a>
-            </div>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Voltar para o site
+            </a>
         </div>
         
         <div class="login-footer">
@@ -194,47 +191,43 @@
         </div>
     </div>
 
-        <script>
-    // Formulário de login - SEM verificação de senha
-    const loginForm = document.getElementById('loginForm');
-    
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+    <script>
+        // Formulário de login
+        const loginForm = document.getElementById('loginForm');
         
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value;
-        
-        // Validação básica
-        if (!username) {
-            alert('Por favor, digite seu nome para continuar.');
-            document.getElementById('username').focus();
-            return;
-        }
-        
-        // Salvar o nome do usuário com a chave CORRETA
-        localStorage.setItem('pennwize_username', username);
-        localStorage.setItem('pennwize_login_time', new Date().toISOString());
-        
-        // Opcional: salvar senha se fornecida
-        if (password) {
-            localStorage.setItem('pennwize_password', password);
-        }
-        
-     
-        // Redirecionar para a Proposta Comercial
-        window.location.href = "Proposta Comercial.html";
-    });
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            
+            // Validação básica
+            if (!username) {
+                alert('Por favor, digite seu nome para continuar.');
+                document.getElementById('username').focus();
+                return;
+            }
+            
+            // Salvar dados do usuário
+            localStorage.setItem('pennwize_username', username);
+            localStorage.setItem('pennwize_login_time', new Date().toISOString());
+            
+            if (password) {
+                localStorage.setItem('pennwize_password', password);
+            }
+            
+            // Redirecionar para a Proposta Comercial
+            window.location.href = "Proposta Comercial.html";
+        });
 
-    // Preencher automaticamente se já tiver nome salvo
-    window.addEventListener('DOMContentLoaded', function() {
-        const savedName = localStorage.getItem('pennwize_username');
-        if (savedName) {
-            document.getElementById('username').value = savedName;
-            document.getElementById('password').focus();
-        } else {
-            document.getElementById('username').focus();
-        }
-    });
-</script>
+        // Preencher automaticamente se já tiver nome salvo
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedName = localStorage.getItem('pennwize_username');
+            if (savedName) {
+                document.getElementById('username').value = savedName;
+                document.getElementById('password').focus();
+            }
+        });
+    </script>
 </body>
 </html>
