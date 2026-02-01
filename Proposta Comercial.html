@@ -922,6 +922,129 @@
         </div>
     </div>
 
+    // Função para atualizar zoom
+function updateZoom() {
+    // Em vez de recarregar o PDF com novo parâmetro de zoom,
+    // vamos ajustar a escala via transform CSS no iframe
+    pdfViewer.style.transform = `scale(${zoomLevel})`;
+    pdfViewer.style.transformOrigin = '0 0';
+    pdfViewer.style.width = `${100 / zoomLevel}%`;
+    pdfViewer.style.height = `${100 / zoomLevel}%`;
+}
+
+// Função para abrir PDF em tela cheia
+function openPdfModal(pdfUrl, title) {
+    currentPdfUrl = pdfUrl;
+    currentPdfTitle = title;
+    currentPage = 1;
+    zoomLevel = 1.0;
+    
+    // Reseta o zoom do iframe
+    pdfViewer.style.transform = 'scale(1)';
+    pdfViewer.style.transformOrigin = '0 0';
+    pdfViewer.style.width = '100%';
+    pdfViewer.style.height = '100%';
+    
+    // Configura o título
+    pdfModalTitle.textContent = title;
+    
+    // Configura o link de download
+    pdfDownloadLink.href = pdfUrl;
+    pdfDownloadLink.download = title.replace(/\s+/g, '_') + '.pdf';
+    
+    // Configura o visualizador de PDF
+    // Usamos parâmetros para ocultar controles nativos
+    const pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=0`;
+    pdfViewer.src = pdfUrlWithParams;
+    
+    // Atualiza indicador de página
+    updatePageIndicator();
+    
+    // Mostra o modal
+    pdfModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Tenta detectar o número total de páginas
+    setTimeout(() => {
+        try {
+            const pdfDoc = pdfViewer.contentWindow.PDFViewerApplication;
+            if (pdfDoc && pdfDoc.pdfDocument) {
+                pdfDoc.pdfDocument.getMetadata().then((metadata) => {
+                    if (metadata.info && metadata.info.NumPages) {
+                        totalPages = metadata.info.NumPages;
+                        updatePageIndicator();
+                    }
+                });
+            }
+        } catch (e) {
+            console.log("Não foi possível obter informações do PDF");
+        }
+    }, 1000);
+}
+
+// Controles de zoom
+pdfZoomInBtn.addEventListener('click', () => {
+    if (zoomLevel < 3.0) {
+        zoomLevel += 0.1;
+        updateZoom();
+    }
+});
+
+pdfZoomOutBtn.addEventListener('click', () => {
+    if (zoomLevel > 0.5) {
+        zoomLevel -= 0.1;
+        updateZoom();
+    }
+});
+
+// Controles de navegação de página
+pdfPrevPageBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--;
+        updatePageIndicator();
+        const newUrl = `${currentPdfUrl}#page=${currentPage}&view=FitH&toolbar=0&navpanes=0&scrollbar=0`;
+        pdfViewer.src = newUrl;
+        
+        // Mantém o zoom atual após mudar de página
+        setTimeout(() => {
+            updateZoom();
+        }, 100);
+    }
+});
+
+pdfNextPageBtn.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+        currentPage++;
+        updatePageIndicator();
+        const newUrl = `${currentPdfUrl}#page=${currentPage}&view=FitH&toolbar=0&navpanes=0&scrollbar=0`;
+        pdfViewer.src = newUrl;
+        
+        // Mantém o zoom atual após mudar de página
+        setTimeout(() => {
+            updateZoom();
+        }, 100);
+    }
+});
+
+// Função para fechar o modal
+function closePdfModal() {
+    pdfModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    // Limpa o visualizador
+    pdfViewer.src = '';
+    // Reseta o zoom
+    pdfViewer.style.transform = 'scale(1)';
+    pdfViewer.style.width = '100%';
+    pdfViewer.style.height = '100%';
+    // Sai do modo tela cheia se estiver ativo
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    }
+    pdfModal.classList.remove('fullscreen');
+}
+
+        //aaaaaaaaaaa
+
     <script>
         // Saudação personalizada - SIMPLIFICADA
         function showUserGreeting() {
@@ -1218,7 +1341,7 @@
                 pdfFullscreenBtn.title = "Tela cheia";
             }
         }
-        
+                //aaaaaaaaaaa
         // Função para atualizar zoom
         function updateZoom() {
             const newUrl = `${currentPdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
