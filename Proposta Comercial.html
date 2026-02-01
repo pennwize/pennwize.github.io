@@ -6,7 +6,6 @@
     <title>Projetos - Penn & Wize Instalações Prediais</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Cores da Penn & Wize */
         :root {
             --primary-blue: #1a3c8b;
             --secondary-blue: #2a5cbd;
@@ -39,7 +38,6 @@
             padding: 0 20px;
         }
         
-        /* Header */
         header {
             background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -136,7 +134,6 @@
             cursor: pointer;
         }
         
-        /* Hero Proposta Comercial */
         .portfolio-hero {
             background: linear-gradient(rgba(26, 60, 139, 0.9), rgba(42, 92, 189, 0.8));
             color: var(--white);
@@ -156,7 +153,6 @@
             margin: 0 auto 30px;
         }
         
-        /* Estilo para o nome do usuário no título */
         .user-name-title {
             font-family: 'Cinzel', serif;
             font-weight: 700;
@@ -165,7 +161,6 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
-        /* Filtros */
         .portfolio-filters {
             background-color: var(--white);
             padding: 30px 0;
@@ -197,7 +192,6 @@
             border-color: var(--accent-red);
         }
         
-        /* Grid de Proposta Comercial */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -302,7 +296,6 @@
             background-color: var(--secondary-blue);
         }
         
-        /* Modal para PDF em TELA CHEIA */
         .pdf-modal {
             display: none;
             position: fixed;
@@ -334,14 +327,8 @@
             flex: 1;
         }
         
-        .pdf-modal-controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        
-        .pdf-modal-btn, .pdf-modal-close {
-            background-color: rgba(255, 255, 255, 0.2);
+        .pdf-modal-close {
+            background-color: var(--accent-red);
             color: var(--white);
             border: none;
             width: 40px;
@@ -355,13 +342,8 @@
             font-size: 1.1rem;
         }
         
-        .pdf-modal-btn:hover, .pdf-modal-close:hover {
-            background-color: var(--accent-red);
+        .pdf-modal-close:hover {
             transform: scale(1.1);
-        }
-        
-        .pdf-modal-close {
-            background-color: var(--accent-red);
         }
         
         .pdf-modal-body {
@@ -377,7 +359,6 @@
             height: 100%;
             border: none;
             background-color: white;
-            transition: transform 0.3s ease;
         }
         
         .pdf-fullscreen-btn {
@@ -428,7 +409,6 @@
             transform: translateY(-3px);
         }
         
-        /* Estilo para tela cheia */
         .pdf-modal.fullscreen .pdf-modal-header {
             padding: 10px 20px;
         }
@@ -437,7 +417,6 @@
             height: calc(100% - 60px);
         }
         
-        /* Seção de Estatísticas */
         .portfolio-stats {
             background-color: var(--primary-blue);
             color: var(--white);
@@ -468,7 +447,6 @@
             font-size: 1.1rem;
         }
         
-        /* Mensagem de seção vazia */
         .empty-section {
             text-align: center;
             padding: 60px 20px;
@@ -484,7 +462,6 @@
             margin-bottom: 20px;
         }
         
-        /* Footer */
         footer {
             background-color: var(--primary-blue);
             color: var(--white);
@@ -553,7 +530,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
-        /* Responsividade */
         @media (max-width: 768px) {
             nav {
                 display: none;
@@ -609,7 +585,7 @@
                 white-space: nowrap;
             }
             
-            .pdf-modal-btn, .pdf-modal-close {
+            .pdf-modal-close {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
@@ -648,7 +624,6 @@
             }
         }
         
-        /* Animação de carregamento */
         .loading {
             text-align: center;
             padding: 40px;
@@ -670,22 +645,10 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
-        /* Indicador de página atual no PDF */
-        .page-indicator {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin: 0 10px;
-        }
     </style>
 </head>
     
 <body>
-    <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
@@ -716,7 +679,6 @@
         </div>
     </header>
 
-    <!-- Hero Proposta Comercial -->
     <section class="portfolio-hero">
         <div class="container">
             <h2 id="welcomeTitle">Proposta Comercial</h2>
@@ -724,7 +686,6 @@
         </div>
     </section>
 
-    <!-- Filtros -->
     <section class="portfolio-filters">
         <div class="container">
             <div class="filter-buttons">
@@ -739,7 +700,6 @@
         </div>
     </section>
 
-    <!-- Grid de Proposta Comercial -->
     <section class="portfolio-container">
         <div class="container">
             <div id="portfolioLoading" class="loading">
@@ -747,17 +707,12 @@
                 <p>Carregando projetos...</p>
             </div>
             
-            <!-- Seção Água Fria e Água Quente -->
             <div id="agua-fria-section" class="portfolio-section" style="display: none;">
                 <h2 style="color: var(--primary-blue); margin-bottom: 30px; font-family: 'Cinzel', serif; text-align: center;">Projetos de Água Fria</h2>
-                <div id="aguaFriaGrid" class="portfolio-grid">
-                    <!-- Projetos serão carregados aqui -->
-                </div>
+                <div id="aguaFriaGrid" class="portfolio-grid"></div>
             </div>
             
-            <!-- Seções vazias -->
             <div id="empty-sections">
-                <!-- Hidrossanitário -->
                 <div id="hidrossanitario-section" class="portfolio-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
@@ -768,7 +723,6 @@
                     </div>
                 </div>
                 
-                <!-- Esgoto -->
                 <div id="esgoto-section" class="portfolio-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
@@ -779,7 +733,6 @@
                     </div>
                 </div>
                 
-                <!-- Drenagem -->
                 <div id="drenagem-section" class="portfolio-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
@@ -790,7 +743,6 @@
                     </div>
                 </div>
                 
-                <!-- Gás -->
                 <div id="gas-section" class="portfolio-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
@@ -801,7 +753,6 @@
                     </div>
                 </div>
                 
-                <!-- Combate a Incêndio -->
                 <div id="incendio-section" class="portfolio-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
@@ -812,11 +763,8 @@
                     </div>
                 </div>
                 
-                <!-- Todos os Projetos -->
                 <div id="all-projects-section" class="portfolio-section" style="display: none;">
-                    <div id="allProjectsGrid" class="portfolio-grid">
-                        <!-- Todos os projetos serão carregados aqui -->
-                    </div>
+                    <div id="allProjectsGrid" class="portfolio-grid"></div>
                 </div>
             </div>
             
@@ -828,7 +776,6 @@
         </div>
     </section>
 
-    <!-- Estatísticas -->
     <section class="portfolio-stats">
         <div class="container">
             <div class="stats-grid">
@@ -852,7 +799,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -889,28 +835,12 @@
         </div>
     </footer>
 
-    <!-- Modal para visualização de PDF em TELA CHEIA -->
     <div id="pdfModal" class="pdf-modal">
         <div class="pdf-modal-header">
             <div class="pdf-modal-title" id="pdfModalTitle">Visualizando PDF</div>
-            <div class="pdf-modal-controls">
-                <button class="pdf-modal-btn" id="pdfZoomIn" title="Aumentar zoom">
-                    <i class="fas fa-search-plus"></i>
-                </button>
-                <button class="pdf-modal-btn" id="pdfZoomOut" title="Diminuir zoom">
-                    <i class="fas fa-search-minus"></i>
-                </button>
-                <button class="pdf-modal-btn" id="pdfPrevPage" title="Página anterior">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <span class="page-indicator" id="pageIndicator">Página 1</span>
-                <button class="pdf-modal-btn" id="pdfNextPage" title="Próxima página">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="pdf-modal-close" id="pdfModalClose" title="Fechar">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
+            <button class="pdf-modal-close" id="pdfModalClose" title="Fechar">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
         <div class="pdf-modal-body">
             <iframe id="pdfViewer" class="pdf-embed" src="" frameborder="0"></iframe>
@@ -923,157 +853,27 @@
         </div>
     </div>
 
-    // Função para atualizar zoom
-function updateZoom() {
-    // Em vez de recarregar o PDF com novo parâmetro de zoom,
-    // vamos ajustar a escala via transform CSS no iframe
-    pdfViewer.style.transform = `scale(${zoomLevel})`;
-    pdfViewer.style.transformOrigin = '0 0';
-    pdfViewer.style.width = `${100 / zoomLevel}%`;
-    pdfViewer.style.height = `${100 / zoomLevel}%`;
-}
-
-// Função para abrir PDF em tela cheia
-function openPdfModal(pdfUrl, title) {
-    currentPdfUrl = pdfUrl;
-    currentPdfTitle = title;
-    currentPage = 1;
-    zoomLevel = 1.0;
-    
-    // Reseta o zoom do iframe
-    pdfViewer.style.transform = 'scale(1)';
-    pdfViewer.style.transformOrigin = '0 0';
-    pdfViewer.style.width = '100%';
-    pdfViewer.style.height = '100%';
-    
-    // Configura o título
-    pdfModalTitle.textContent = title;
-    
-    // Configura o link de download
-    pdfDownloadLink.href = pdfUrl;
-    pdfDownloadLink.download = title.replace(/\s+/g, '_') + '.pdf';
-    
-    // Configura o visualizador de PDF
-    // Usamos parâmetros para ocultar controles nativos
-    const pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=0`;
-    pdfViewer.src = pdfUrlWithParams;
-    
-    // Atualiza indicador de página
-    updatePageIndicator();
-    
-    // Mostra o modal
-    pdfModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    
-    // Tenta detectar o número total de páginas
-    setTimeout(() => {
-        try {
-            const pdfDoc = pdfViewer.contentWindow.PDFViewerApplication;
-            if (pdfDoc && pdfDoc.pdfDocument) {
-                pdfDoc.pdfDocument.getMetadata().then((metadata) => {
-                    if (metadata.info && metadata.info.NumPages) {
-                        totalPages = metadata.info.NumPages;
-                        updatePageIndicator();
-                    }
-                });
-            }
-        } catch (e) {
-            console.log("Não foi possível obter informações do PDF");
-        }
-    }, 1000);
-}
-
-// Controles de zoom
-pdfZoomInBtn.addEventListener('click', () => {
-    if (zoomLevel < 3.0) {
-        zoomLevel += 0.1;
-        updateZoom();
-    }
-});
-
-pdfZoomOutBtn.addEventListener('click', () => {
-    if (zoomLevel > 0.5) {
-        zoomLevel -= 0.1;
-        updateZoom();
-    }
-});
-
-// Controles de navegação de página
-pdfPrevPageBtn.addEventListener('click', () => {
-    if (currentPage > 1) {
-        currentPage--;
-        updatePageIndicator();
-        const newUrl = `${currentPdfUrl}#page=${currentPage}&view=FitH&toolbar=0&navpanes=0&scrollbar=0`;
-        pdfViewer.src = newUrl;
-        
-        // Mantém o zoom atual após mudar de página
-        setTimeout(() => {
-            updateZoom();
-        }, 100);
-    }
-});
-
-pdfNextPageBtn.addEventListener('click', () => {
-    if (currentPage < totalPages) {
-        currentPage++;
-        updatePageIndicator();
-        const newUrl = `${currentPdfUrl}#page=${currentPage}&view=FitH&toolbar=0&navpanes=0&scrollbar=0`;
-        pdfViewer.src = newUrl;
-        
-        // Mantém o zoom atual após mudar de página
-        setTimeout(() => {
-            updateZoom();
-        }, 100);
-    }
-});
-
-// Função para fechar o modal
-function closePdfModal() {
-    pdfModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-    // Limpa o visualizador
-    pdfViewer.src = '';
-    // Reseta o zoom
-    pdfViewer.style.transform = 'scale(1)';
-    pdfViewer.style.width = '100%';
-    pdfViewer.style.height = '100%';
-    // Sai do modo tela cheia se estiver ativo
-    if (document.fullscreenElement) {
-        document.exitFullscreen();
-    }
-    pdfModal.classList.remove('fullscreen');
-}
-
-        //aaaaaaaaaaa
-
     <script>
-        // Saudação personalizada - SIMPLIFICADA
         function showUserGreeting() {
             const savedUsername = localStorage.getItem('pennwize_username');
             const welcomeTitle = document.getElementById('welcomeTitle');
             const welcomeSubtitle = document.getElementById('welcomeSubtitle');
             
             if (savedUsername && savedUsername.trim() !== '') {
-                // SE TEM NOME SALVO: Mostra mensagem personalizada
                 welcomeTitle.innerHTML = `BEM-VINDO(A), <span class="user-name-title">${savedUsername.toUpperCase()}</span>!`;
                 welcomeSubtitle.textContent = `Confira abaixo a proposta comercial de projetos da Penn & Wize.`;
-                
-                // Atualiza o tempo de login para agora
                 localStorage.setItem('pennwize_login_time', new Date().toISOString());
             } else {
-                // SE NÃO TEM NOME SALVO: Mantém o título original
                 welcomeTitle.textContent = 'PROPOSTA COMERCIAL';
                 welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
             }
         }
 
-        // Menu móvel
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
         
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
-            
             const icon = mobileMenuBtn.querySelector('i');
             if (mainNav.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
@@ -1084,7 +884,6 @@ function closePdfModal() {
             }
         });
         
-        // Fecha o menu ao clicar em um link
         const navLinks = document.querySelectorAll('nav a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -1109,31 +908,24 @@ function closePdfModal() {
             }
         ];
         
-        // Função para renderizar projetos por categoria
         function renderPortfolioByCategory(category) {
             const loadingElement = document.getElementById('portfolioLoading');
             const noProjectsElement = document.getElementById('noProjects');
             
-            // Esconde todas as seções primeiro
             document.querySelectorAll('.portfolio-section').forEach(section => {
                 section.style.display = 'none';
             });
             
-            // Esconde mensagem de nenhum projeto
             noProjectsElement.style.display = 'none';
-            
-            // Mostra loading
             loadingElement.style.display = 'block';
             
             setTimeout(() => {
                 loadingElement.style.display = 'none';
                 
                 if (category === 'all') {
-                    // Mostra todos os projetos
                     document.getElementById('all-projects-section').style.display = 'block';
                     renderProjects(portfolioProjects, 'allProjectsGrid');
                 } else if (category === 'agua-fria') {
-                    // Mostra apenas projetos de água fria
                     const aguaFriaProjects = portfolioProjects.filter(project => project.category === 'agua-fria');
                     if (aguaFriaProjects.length > 0) {
                         document.getElementById('agua-fria-section').style.display = 'block';
@@ -1142,13 +934,11 @@ function closePdfModal() {
                         showEmptySection('agua-fria-section');
                     }
                 } else {
-                    // Para outras categorias, mostra seção vazia
                     showEmptySection(`${category}-section`);
                 }
             }, 500);
         }
         
-        // Função para mostrar seção vazia
         function showEmptySection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
@@ -1156,7 +946,6 @@ function closePdfModal() {
             }
         }
         
-        // Função para renderizar projetos em um grid específico
         function renderProjects(projects, gridId) {
             const grid = document.getElementById(gridId);
             if (!grid) return;
@@ -1207,7 +996,6 @@ function closePdfModal() {
             });
         }
         
-        // Função para obter nome da categoria
         function getCategoryName(category) {
             const categories = {
                 'all': 'Todos',
@@ -1222,179 +1010,64 @@ function closePdfModal() {
             return categories[category] || category;
         }
         
-        // Filtragem de projetos
         document.querySelectorAll('.filter-btn').forEach(button => {
             button.addEventListener('click', function() {
-                // Remove classe active de todos os botões
                 document.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
-                
-                // Adiciona classe active ao botão clicado
                 this.classList.add('active');
-                
                 const filter = this.getAttribute('data-filter');
                 renderPortfolioByCategory(filter);
             });
         });
         
-        // Variáveis para controle do PDF
-        let currentPdfUrl = '';
-        let currentPdfTitle = '';
-        let currentPage = 1;
-        let totalPages = 1;
-        let zoomLevel = 1.0;
-        
-        // Modal para visualização de PDF em TELA CHEIA
         const pdfModal = document.getElementById('pdfModal');
         const pdfViewer = document.getElementById('pdfViewer');
         const pdfModalTitle = document.getElementById('pdfModalTitle');
         const pdfModalClose = document.getElementById('pdfModalClose');
         const pdfDownloadLink = document.getElementById('pdfDownloadLink');
         const pdfFullscreenBtn = document.getElementById('pdfFullscreenBtn');
-        const pdfZoomInBtn = document.getElementById('pdfZoomIn');
-        const pdfZoomOutBtn = document.getElementById('pdfZoomOut');
-        const pdfPrevPageBtn = document.getElementById('pdfPrevPage');
-        const pdfNextPageBtn = document.getElementById('pdfNextPage');
-        const pageIndicator = document.getElementById('pageIndicator');
         
-        // Função para abrir PDF em tela cheia
         function openPdfModal(pdfUrl, title) {
-            currentPdfUrl = pdfUrl;
-            currentPdfTitle = title;
-            currentPage = 1;
-            zoomLevel = 1.0;
-            
-            // Configura o título
             pdfModalTitle.textContent = title;
-            
-            // Configura o link de download
             pdfDownloadLink.href = pdfUrl;
             pdfDownloadLink.download = title.replace(/\s+/g, '_') + '.pdf';
-            
-            // Configura o visualizador de PDF
-            const pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
-            pdfViewer.src = pdfUrlWithParams;
-            
-            // Atualiza indicador de página
-            updatePageIndicator();
-            
-            // Mostra o modal
+            pdfViewer.src = pdfUrl;
             pdfModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            
-            // Tenta detectar o número total de páginas
-            setTimeout(() => {
-                try {
-                    const pdfDoc = pdfViewer.contentWindow.PDFViewerApplication;
-                    if (pdfDoc && pdfDoc.pdfDocument) {
-                        pdfDoc.pdfDocument.getMetadata().then((metadata) => {
-                            if (metadata.info && metadata.info.NumPages) {
-                                totalPages = metadata.info.NumPages;
-                                updatePageIndicator();
-                            }
-                        });
-                    }
-                } catch (e) {
-                    console.log("Não foi possível obter informações do PDF");
-                }
-            }, 1000);
         }
         
-        // Função para fechar o modal
         function closePdfModal() {
             pdfModal.style.display = 'none';
             document.body.style.overflow = 'auto';
-            // Limpa o visualizador
             pdfViewer.src = '';
-            // Sai do modo tela cheia se estiver ativo
             if (document.fullscreenElement) {
                 document.exitFullscreen();
             }
             pdfModal.classList.remove('fullscreen');
         }
         
-        // Função para alternar tela cheia
         function toggleFullscreen() {
             if (!document.fullscreenElement) {
-                // Entra em tela cheia
                 if (pdfModal.requestFullscreen) {
                     pdfModal.requestFullscreen();
-                } else if (pdfModal.webkitRequestFullscreen) {
-                    pdfModal.webkitRequestFullscreen();
-                } else if (pdfModal.msRequestFullscreen) {
-                    pdfModal.msRequestFullscreen();
                 }
                 pdfModal.classList.add('fullscreen');
                 pdfFullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
                 pdfFullscreenBtn.title = "Sair da tela cheia";
             } else {
-                // Sai da tela cheia
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
                 }
                 pdfModal.classList.remove('fullscreen');
                 pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
                 pdfFullscreenBtn.title = "Tela cheia";
             }
         }
-                //aaaaaaaaaaa
-        // Função para atualizar zoom
-        function updateZoom() {
-            const newUrl = `${currentPdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
-            pdfViewer.src = newUrl;
-        }
         
-        // Função para atualizar indicador de página
-        function updatePageIndicator() {
-            pageIndicator.textContent = `Página ${currentPage}`;
-        }
-        
-        // Event listeners para o modal de PDF
         pdfModalClose.addEventListener('click', closePdfModal);
-        
-        // Botão de tela cheia
         pdfFullscreenBtn.addEventListener('click', toggleFullscreen);
         
-        // Controles de zoom
-        pdfZoomInBtn.addEventListener('click', () => {
-            if (zoomLevel < 3.0) {
-                zoomLevel += 0.1;
-                updateZoom();
-            }
-        });
-        
-        pdfZoomOutBtn.addEventListener('click', () => {
-            if (zoomLevel > 0.5) {
-                zoomLevel -= 0.1;
-                updateZoom();
-            }
-        });
-        
-        // Controles de navegação de página
-        pdfPrevPageBtn.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                updatePageIndicator();
-                const newUrl = `${currentPdfUrl}#page=${currentPage}&view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
-                pdfViewer.src = newUrl;
-            }
-        });
-        
-        pdfNextPageBtn.addEventListener('click', () => {
-            if (currentPage < totalPages) {
-                currentPage++;
-                updatePageIndicator();
-                const newUrl = `${currentPdfUrl}#page=${currentPage}&view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
-                pdfViewer.src = newUrl;
-            }
-        });
-        
-        // Detecta mudanças no modo tela cheia
         document.addEventListener('fullscreenchange', () => {
             if (!document.fullscreenElement) {
                 pdfModal.classList.remove('fullscreen');
@@ -1403,53 +1076,31 @@ function closePdfModal() {
             }
         });
         
-        // Fecha o modal ao clicar fora do conteúdo
         pdfModal.addEventListener('click', (e) => {
             if (e.target === pdfModal) {
                 closePdfModal();
             }
         });
         
-        // Fecha o modal com a tecla ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
                 closePdfModal();
             }
-            
-            // Navegação com teclado
-            if (pdfModal.style.display === 'flex') {
-                if (e.key === 'ArrowLeft') {
-                    pdfPrevPageBtn.click();
-                } else if (e.key === 'ArrowRight') {
-                    pdfNextPageBtn.click();
-                } else if (e.key === '+' || e.key === '=') {
-                    e.preventDefault();
-                    pdfZoomInBtn.click();
-                } else if (e.key === '-') {
-                    e.preventDefault();
-                    pdfZoomOutBtn.click();
-                } else if (e.key === 'f' || e.key === 'F') {
-                    e.preventDefault();
-                    toggleFullscreen();
-                }
+            if (pdfModal.style.display === 'flex' && (e.key === 'f' || e.key === 'F')) {
+                e.preventDefault();
+                toggleFullscreen();
             }
         });
         
-        // Função para visualizar PDF (usada nos botões)
         window.viewPdf = function(pdfUrl, title) {
             openPdfModal(pdfUrl, title);
         };
         
-        // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
-            // Carrega todos os projetos inicialmente
             renderPortfolioByCategory('all');
-            
-            // Mostra a saudação personalizada (somente no título)
             showUserGreeting();
         });
         
-        // Suaviza o scroll para âncoras
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href') === '#') return;
@@ -1468,4 +1119,4 @@ function closePdfModal() {
         });
     </script>
 </body>
-                                                                    </html>
+</html>
