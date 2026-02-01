@@ -295,7 +295,7 @@
             background-color: var(--secondary-blue);
         }
         
-        /* Modal para PDF */
+        /* Modal para PDF em TELA CHEIA */
         .pdf-modal {
             display: none;
             position: fixed;
@@ -303,19 +303,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .pdf-modal-content {
-            width: 90%;
-            height: 90%;
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            display: flex;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
             flex-direction: column;
         }
         
@@ -323,61 +312,137 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 15px 25px;
             background-color: var(--primary-blue);
             color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 3001;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .pdf-modal-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            flex: 1;
+        }
+        
+        .pdf-modal-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .pdf-modal-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .pdf-modal-btn:hover {
+            background-color: var(--accent-red);
+            transform: scale(1.1);
         }
         
         .pdf-modal-close {
-            background: none;
-            border: none;
+            background-color: var(--accent-red);
             color: var(--white);
-            font-size: 1.8rem;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            font-size: 1.3rem;
         }
         
         .pdf-modal-close:hover {
-            color: var(--accent-red);
+            background-color: #b71c1c;
+            transform: scale(1.1);
         }
         
         .pdf-modal-body {
             flex: 1;
-            padding: 20px;
-            overflow: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            width: 100%;
+            height: calc(100% - 70px); /* altura total menos header */
+            position: relative;
+            overflow: hidden;
         }
         
         .pdf-embed {
             width: 100%;
             height: 100%;
             border: none;
-            flex: 1;
+            background-color: white;
+        }
+        
+        .pdf-fullscreen-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-red);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 3002;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pdf-fullscreen-btn:hover {
+            background-color: #b71c1c;
+            transform: scale(1.1);
         }
         
         .pdf-download-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background-color: var(--accent-red);
+            background-color: var(--primary-blue);
             color: var(--white);
-            padding: 10px 25px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 20px;
-            transition: background-color 0.3s;
+            z-index: 3002;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
         .pdf-download-btn:hover {
-            background-color: #b71c1c;
+            background-color: #0d2a6b;
+            transform: translateY(-3px);
+        }
+        
+        /* Estilo para tela cheia */
+        .pdf-modal.fullscreen .pdf-modal-header {
+            padding: 10px 20px;
+        }
+        
+        .pdf-modal.fullscreen .pdf-modal-body {
+            height: calc(100% - 60px);
         }
         
         /* Seção de Estatísticas */
@@ -557,6 +622,38 @@
                 overflow-x: auto;
                 padding-bottom: 10px;
             }
+            
+            .pdf-modal-header {
+                padding: 10px 15px;
+            }
+            
+            .pdf-modal-title {
+                font-size: 1rem;
+                max-width: 200px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            
+            .pdf-modal-btn, .pdf-modal-close {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .pdf-download-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                left: 10px;
+                bottom: 10px;
+            }
+            
+            .pdf-fullscreen-btn {
+                width: 45px;
+                height: 45px;
+                right: 10px;
+                bottom: 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -574,11 +671,6 @@
             
             .stats-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .pdf-modal-content {
-                width: 95%;
-                height: 95%;
             }
         }
         
@@ -603,6 +695,17 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        
+        /* Indicador de página atual no PDF */
+        .page-indicator {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0 10px;
         }
     </style>
 </head>
@@ -818,19 +921,37 @@
         </div>
     </footer>
 
-    <!-- Modal para visualização de PDF -->
+    <!-- Modal para visualização de PDF em TELA CHEIA -->
     <div id="pdfModal" class="pdf-modal">
-        <div class="pdf-modal-content">
-            <div class="pdf-modal-header">
-                <div class="pdf-modal-title" id="pdfModalTitle">Visualizando PDF</div>
-                <button class="pdf-modal-close" id="pdfModalClose">&times;</button>
+        <div class="pdf-modal-header">
+            <div class="pdf-modal-title" id="pdfModalTitle">Visualizando PDF</div>
+            <div class="pdf-modal-controls">
+                <button class="pdf-modal-btn" id="pdfZoomIn" title="Aumentar zoom">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="pdf-modal-btn" id="pdfZoomOut" title="Diminuir zoom">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="pdf-modal-btn" id="pdfPrevPage" title="Página anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span class="page-indicator" id="pageIndicator">Página 1</span>
+                <button class="pdf-modal-btn" id="pdfNextPage" title="Próxima página">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="pdf-modal-close" id="pdfModalClose" title="Fechar">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            <div class="pdf-modal-body">
-                <iframe id="pdfViewer" class="pdf-embed" src="" frameborder="0"></iframe>
-                <a id="pdfDownloadLink" class="pdf-download-btn" href="" target="_blank" download>
-                    <i class="fas fa-download"></i> Baixar PDF
-                </a>
-            </div>
+        </div>
+        <div class="pdf-modal-body">
+            <iframe id="pdfViewer" class="pdf-embed" src="" frameborder="0"></iframe>
+            <a id="pdfDownloadLink" class="pdf-download-btn" href="" target="_blank" download title="Baixar PDF">
+                <i class="fas fa-download"></i> Baixar PDF
+            </a>
+            <button class="pdf-fullscreen-btn" id="pdfFullscreenBtn" title="Tela cheia">
+                <i class="fas fa-expand"></i>
+            </button>
         </div>
     </div>
 
@@ -969,9 +1090,6 @@
                 const projectElement = document.createElement('div');
                 projectElement.className = 'portfolio-item';
                 
-                // Tenta carregar a imagem de preview, se não existir usa placeholder
-                const imageUrl = project.previewImage || `https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80&text=${encodeURIComponent(project.title)}`;
-                
                 projectElement.innerHTML = `
                     <div class="portfolio-image">
                         <div class="pdf-icon">
@@ -1030,36 +1148,176 @@
             });
         });
         
-        // Modal para visualização de PDF
+        // Variáveis para controle do PDF
+        let currentPdfUrl = '';
+        let currentPdfTitle = '';
+        let currentPage = 1;
+        let totalPages = 1;
+        let zoomLevel = 1.0;
+        
+        // Modal para visualização de PDF em TELA CHEIA
         const pdfModal = document.getElementById('pdfModal');
         const pdfViewer = document.getElementById('pdfViewer');
         const pdfModalTitle = document.getElementById('pdfModalTitle');
         const pdfModalClose = document.getElementById('pdfModalClose');
         const pdfDownloadLink = document.getElementById('pdfDownloadLink');
+        const pdfFullscreenBtn = document.getElementById('pdfFullscreenBtn');
+        const pdfZoomInBtn = document.getElementById('pdfZoomIn');
+        const pdfZoomOutBtn = document.getElementById('pdfZoomOut');
+        const pdfPrevPageBtn = document.getElementById('pdfPrevPage');
+        const pdfNextPageBtn = document.getElementById('pdfNextPage');
+        const pageIndicator = document.getElementById('pageIndicator');
         
+        // Função para abrir PDF em tela cheia
         function openPdfModal(pdfUrl, title) {
-            // Configura o visualizador de PDF
-            pdfViewer.src = pdfUrl;
+            currentPdfUrl = pdfUrl;
+            currentPdfTitle = title;
+            currentPage = 1;
+            zoomLevel = 1.0;
+            
+            // Configura o título
             pdfModalTitle.textContent = title;
+            
+            // Configura o link de download
             pdfDownloadLink.href = pdfUrl;
             pdfDownloadLink.download = title.replace(/\s+/g, '_') + '.pdf';
+            
+            // Configura o visualizador de PDF com parâmetros para melhor visualização
+            const pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
+            pdfViewer.src = pdfUrlWithParams;
+            
+            // Atualiza indicador de página
+            updatePageIndicator();
             
             // Mostra o modal
             pdfModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            
+            // Foca no modal
+            pdfModal.focus();
+            
+            // Tenta detectar o número total de páginas (isso funciona apenas se o PDF estiver no mesmo domínio)
+            setTimeout(() => {
+                try {
+                    // Para PDFs do mesmo domínio, podemos tentar acessar o objeto
+                    const pdfDoc = pdfViewer.contentWindow.PDFViewerApplication;
+                    if (pdfDoc && pdfDoc.pdfDocument) {
+                        pdfDoc.pdfDocument.getMetadata().then((metadata) => {
+                            if (metadata.info && metadata.info.NumPages) {
+                                totalPages = metadata.info.NumPages;
+                                updatePageIndicator();
+                            }
+                        });
+                    }
+                } catch (e) {
+                    console.log("Não foi possível obter informações do PDF (pode ser por restrições de CORS)");
+                }
+            }, 1000);
         }
         
+        // Função para fechar o modal
         function closePdfModal() {
             pdfModal.style.display = 'none';
             document.body.style.overflow = 'auto';
             // Limpa o visualizador
             pdfViewer.src = '';
+            // Sai do modo tela cheia se estiver ativo
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
+            pdfModal.classList.remove('fullscreen');
+        }
+        
+        // Função para alternar tela cheia
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                // Entra em tela cheia
+                if (pdfModal.requestFullscreen) {
+                    pdfModal.requestFullscreen();
+                } else if (pdfModal.webkitRequestFullscreen) {
+                    pdfModal.webkitRequestFullscreen();
+                } else if (pdfModal.msRequestFullscreen) {
+                    pdfModal.msRequestFullscreen();
+                }
+                pdfModal.classList.add('fullscreen');
+                pdfFullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                pdfFullscreenBtn.title = "Sair da tela cheia";
+            } else {
+                // Sai da tela cheia
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                pdfModal.classList.remove('fullscreen');
+                pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                pdfFullscreenBtn.title = "Tela cheia";
+            }
+        }
+        
+        // Função para atualizar zoom
+        function updateZoom() {
+            const newUrl = `${currentPdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
+            pdfViewer.src = newUrl;
+        }
+        
+        // Função para atualizar indicador de página
+        function updatePageIndicator() {
+            pageIndicator.textContent = `Página ${currentPage}`;
         }
         
         // Event listeners para o modal de PDF
         pdfModalClose.addEventListener('click', closePdfModal);
         
-        // Fecha o modal ao clicar fora do conteúdo
+        // Botão de tela cheia
+        pdfFullscreenBtn.addEventListener('click', toggleFullscreen);
+        
+        // Controles de zoom
+        pdfZoomInBtn.addEventListener('click', () => {
+            if (zoomLevel < 3.0) {
+                zoomLevel += 0.1;
+                updateZoom();
+            }
+        });
+        
+        pdfZoomOutBtn.addEventListener('click', () => {
+            if (zoomLevel > 0.5) {
+                zoomLevel -= 0.1;
+                updateZoom();
+            }
+        });
+        
+        // Controles de navegação de página
+        pdfPrevPageBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePageIndicator();
+                const newUrl = `${currentPdfUrl}#page=${currentPage}&view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
+                pdfViewer.src = newUrl;
+            }
+        });
+        
+        pdfNextPageBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePageIndicator();
+                const newUrl = `${currentPdfUrl}#page=${currentPage}&view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
+                pdfViewer.src = newUrl;
+            }
+        });
+        
+        // Detecta mudanças no modo tela cheia
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                pdfModal.classList.remove('fullscreen');
+                pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                pdfFullscreenBtn.title = "Tela cheia";
+            }
+        });
+        
+        // Fecha o modal ao clicar fora do conteúdo (mas dentro do modal)
         pdfModal.addEventListener('click', (e) => {
             if (e.target === pdfModal) {
                 closePdfModal();
@@ -1070,6 +1328,24 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
                 closePdfModal();
+            }
+            
+            // Navegação com teclado
+            if (pdfModal.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') {
+                    pdfPrevPageBtn.click();
+                } else if (e.key === 'ArrowRight') {
+                    pdfNextPageBtn.click();
+                } else if (e.key === '+' || e.key === '=') {
+                    e.preventDefault();
+                    pdfZoomInBtn.click();
+                } else if (e.key === '-') {
+                    e.preventDefault();
+                    pdfZoomOutBtn.click();
+                } else if (e.key === 'f' || e.key === 'F') {
+                    e.preventDefault();
+                    toggleFullscreen();
+                }
             }
         });
         
