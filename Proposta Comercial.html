@@ -135,16 +135,6 @@
             color: var(--primary-blue);
             cursor: pointer;
         }
-
-        /* Estilos para a mensagem de boas-vindas no hero */
-        #userWelcomeMsg {
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
         
         /* Hero Proposta Comercial */
         .portfolio-hero {
@@ -562,15 +552,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
-        /* Estilo personalizado para o nome do usuário */
-        #userGreeting {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--accent-red);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
         /* Responsividade */
         @media (max-width: 768px) {
             nav {
@@ -739,15 +720,6 @@
         <div class="container">
             <h2 id="welcomeTitle">Proposta Comercial</h2>
             <p id="welcomeSubtitle">Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.</p>
-            <div id="userWelcomeMsg" style="display: none; margin-top: 20px;">
-                <div style="background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; display: inline-block; border-left: 4px solid var(--accent-red);">
-                    <p style="margin: 0; font-size: 1.1rem;">
-                        <i class="fas fa-user-circle"></i> 
-                        <strong>Bem-vindo(a), <span id="userGreeting">VISITANTE</span>!</strong>
-                        <span id="visitInfo" style="margin-left: 15px; font-size: 0.9rem; opacity: 0.9;"></span>
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -951,69 +923,23 @@
     </div>
 
     <script>
-        // Saudação personalizada - CORRIGIDA
+        // Saudação personalizada - SIMPLIFICADA
         function showUserGreeting() {
             const savedUsername = localStorage.getItem('pennwize_username');
             const welcomeTitle = document.getElementById('welcomeTitle');
             const welcomeSubtitle = document.getElementById('welcomeSubtitle');
-            const userWelcomeMsg = document.getElementById('userWelcomeMsg');
-            const userGreeting = document.getElementById('userGreeting');
-            const visitInfo = document.getElementById('visitInfo');
             
             if (savedUsername && savedUsername.trim() !== '') {
                 // SE TEM NOME SALVO: Mostra mensagem personalizada
-                userGreeting.textContent = savedUsername.toUpperCase();
-                
-                // Atualiza o título e subtítulo
                 welcomeTitle.innerHTML = `BEM-VINDO(A), <span class="user-name-title">${savedUsername.toUpperCase()}</span>!`;
                 welcomeSubtitle.textContent = `Confira abaixo o portfólio de projetos da Penn & Wize.`;
                 
-                // MOSTRA a mensagem de boas-vindas
-                userWelcomeMsg.style.display = 'block';
-                
-                // Mostra informações da última visita
-                const lastVisit = localStorage.getItem('pennwize_login_time');
-                if (lastVisit) {
-                    const visitDate = new Date(lastVisit);
-                    const now = new Date();
-                    const diffMs = now - visitDate;
-                    const diffMins = Math.floor(diffMs / 60000);
-                    const diffHours = Math.floor(diffMs / 3600000);
-                    
-                    let timeText = '';
-                    if (diffMins < 1) {
-                        timeText = 'Acesso agora há pouco';
-                    } else if (diffMins < 60) {
-                        timeText = `Há ${diffMins} minuto${diffMins > 1 ? 's' : ''}`;
-                    } else if (diffHours < 24) {
-                        timeText = `Há ${diffHours} hora${diffHours > 1 ? 's' : ''}`;
-                    } else {
-                        const diffDays = Math.floor(diffHours / 24);
-                        timeText = `Há ${diffDays} dia${diffDays > 1 ? 's' : ''}`;
-                    }
-                    
-                    visitInfo.innerHTML = `<i class="fas fa-clock"></i> ${timeText}`;
-                } else {
-                    visitInfo.innerHTML = '<i class="fas fa-star"></i> Primeiro acesso';
-                }
-                
                 // Atualiza o tempo de login para agora
                 localStorage.setItem('pennwize_login_time', new Date().toISOString());
-                
             } else {
-                // SE NÃO TEM NOME SALVO: Mostra mensagem genérica para visitante
-                // Mantém o título original
+                // SE NÃO TEM NOME SALVO: Mantém o título original
                 welcomeTitle.textContent = 'PROPOSTA COMERCIAL';
                 welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
-                
-                // Define o texto do visitante
-                userGreeting.textContent = 'VISITANTE';
-                
-                // MOSTRA a mensagem de boas-vindas para visitante
-                userWelcomeMsg.style.display = 'block';
-                
-                // Convidando para login
-                visitInfo.innerHTML = '<i class="fas fa-sign-in-alt"></i> <a href="login.html" style="color: var(--accent-red); text-decoration: none; font-weight: bold;">Faça login para personalizar</a>';
             }
         }
 
@@ -1395,7 +1321,7 @@
             // Carrega todos os projetos inicialmente
             renderPortfolioByCategory('all');
             
-            // Mostra a saudação personalizada
+            // Mostra a saudação personalizada (somente no título)
             showUserGreeting();
         });
         
@@ -1418,4 +1344,4 @@
         });
     </script>
 </body>
-</html>
+                                                                    </html>
