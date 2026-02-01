@@ -197,7 +197,7 @@
             border-color: var(--accent-red);
         }
         
-        /* Grid de Portfólio */
+        /* Grid de Proposta Comercial */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -738,7 +738,7 @@
         </div>
     </section>
 
-    <!-- Grid de Portfólio -->
+    <!-- Grid de Proposta Comercial -->
     <section class="portfolio-container">
         <div class="container">
             <div id="portfolioLoading" class="loading">
@@ -932,7 +932,7 @@
             if (savedUsername && savedUsername.trim() !== '') {
                 // SE TEM NOME SALVO: Mostra mensagem personalizada
                 welcomeTitle.innerHTML = `BEM-VINDO(A), <span class="user-name-title">${savedUsername.toUpperCase()}</span>!`;
-                welcomeSubtitle.textContent = `Confira abaixo o portfólio de projetos da Penn & Wize.`;
+                welcomeSubtitle.textContent = `Confira abaixo o Proposta Comercial de projetos da Penn & Wize.`;
                 
                 // Atualiza o tempo de login para agora
                 localStorage.setItem('pennwize_login_time', new Date().toISOString());
