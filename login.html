@@ -194,35 +194,49 @@
         </div>
     </div>
 
-    <script>
-        // Formulário de login - SEM verificação de senha
-        const loginForm = document.getElementById('loginForm');
+        <script>
+    // Formulário de login - SEM verificação de senha
+    const loginForm = document.getElementById('loginForm');
+    
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value.trim();
-            
-            // Salvar o nome do usuário (opcional)
-            if (username) {
-                localStorage.setItem('visitante_nome', username);
-                localStorage.setItem('visitante_data', new Date().toLocaleString());
-            }
-            
-            // Sempre redirecionar para o portfólio
-            window.location.href = "Proposta Comercial.html";
-        });
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        
+        // Validação básica
+        if (!username) {
+            alert('Por favor, digite seu nome para continuar.');
+            document.getElementById('username').focus();
+            return;
+        }
+        
+        // Salvar o nome do usuário com a chave CORRETA
+        localStorage.setItem('pennwize_username', username);
+        localStorage.setItem('pennwize_login_time', new Date().toISOString());
+        
+        // Opcional: salvar senha se fornecida
+        if (password) {
+            localStorage.setItem('pennwize_password', password);
+        }
+        
+        // Mensagem de boas-vindas
+        alert(`Olá ${username}! Redirecionando para o portfólio...`);
+        
+        // Redirecionar para o portfólio
+        window.location.href = "Proposta Comercial.html";
+    });
 
-        // Preencher automaticamente se já tiver nome salvo
-        window.addEventListener('DOMContentLoaded', function() {
-            const savedName = localStorage.getItem('visitante_nome');
-            if (savedName) {
-                document.getElementById('username').value = savedName;
-                document.getElementById('password').focus();
-            } else {
-                document.getElementById('username').focus();
-            }
-        });
-    </script>
+    // Preencher automaticamente se já tiver nome salvo
+    window.addEventListener('DOMContentLoaded', function() {
+        const savedName = localStorage.getItem('pennwize_username');
+        if (savedName) {
+            document.getElementById('username').value = savedName;
+            document.getElementById('password').focus();
+        } else {
+            document.getElementById('username').focus();
+        }
+    });
+</script>
 </body>
 </html>
