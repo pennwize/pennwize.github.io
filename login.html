@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso ao Portfólio - Penn & Wize</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Cores do site Penn & Wize */
+        :root {
+            --primary-blue: #1a3c8b;
+            --secondary-blue: #2a5cbd;
+            --accent-red: #d32f2f;
+            --light-blue: #e8f0fe;
+            --dark-gray: #333333;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .login-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .login-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .login-form {
+            padding: 40px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: var(--accent-red);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+
+        .logo-placeholder {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .info-note {
+            background-color: var(--light-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                max-width: 100%;
+            }
+            
+            .login-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>PENN & WIZE</h1>
+            <p>Acesso ao Portfólio</p>
+        </div>
+        
+        <div class="login-form">
+            <div class="info-note">
+                <p><strong>Bem-vindo ao portfólio da Penn & Wize</strong></p>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Preencha qualquer nome para continuar</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> Seu nome</label>
+                    <input type="text" id="username" name="username" placeholder="Digite seu nome" required autofocus>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Senha (qualquer uma)</label>
+                    <input type="password" id="password" name="password" placeholder="Digite qualquer senha" required>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Entrar no Portfólio
+                </button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">
+                    <i class="fas fa-arrow-left"></i> Voltar para o site
+                </a>
+            </div>
+        </div>
+        
+        <div class="login-footer">
+            <p>&copy; 2024 Penn & Wize Instalações Prediais</p>
+        </div>
+    </div>
+
+    <script>
+        // Formulário de login - SEM verificação de senha
+        const loginForm = document.getElementById('loginForm');
+        
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            
+            // Salvar o nome do usuário (opcional)
+            if (username) {
+                localStorage.setItem('visitante_nome', username);
+                localStorage.setItem('visitante_data', new Date().toLocaleString());
+            }
+            
+            // Sempre redirecionar para o portfólio
+            window.location.href = "Proposta Comercial.html";
+        });
+
+        // Preencher automaticamente se já tiver nome salvo
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedName = localStorage.getItem('visitante_nome');
+            if (savedName) {
+                document.getElementById('username').value = savedName;
+                document.getElementById('password').focus();
+            } else {
+                document.getElementById('username').focus();
+            }
+        });
+    </script>
+</body>
+</html>
