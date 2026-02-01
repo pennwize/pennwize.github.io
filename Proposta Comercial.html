@@ -166,6 +166,15 @@
             margin: 0 auto 30px;
         }
         
+        /* Estilo para o nome do usuário no título */
+        .user-name-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--white);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
         /* Filtros */
         .portfolio-filters {
             background-color: var(--white);
@@ -558,7 +567,7 @@
             font-family: 'Cinzel', serif;
             font-weight: 700;
             text-transform: uppercase;
-            color: var(--white);
+            color: var(--accent-red);
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
@@ -734,7 +743,7 @@
                 <div style="background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; display: inline-block; border-left: 4px solid var(--accent-red);">
                     <p style="margin: 0; font-size: 1.1rem;">
                         <i class="fas fa-user-circle"></i> 
-                        <strong>Bem-vindo(a), <span id="userGreeting" style="color: var(--accent-red); text-transform: capitalize;">Visitante</span>!</strong>
+                        <strong>Bem-vindo(a), <span id="userGreeting">VISITANTE</span>!</strong>
                         <span id="visitInfo" style="margin-left: 15px; font-size: 0.9rem; opacity: 0.9;"></span>
                     </p>
                 </div>
@@ -942,7 +951,7 @@
     </div>
 
     <script>
-        // Saudação personalizada
+        // Saudação personalizada - CORRIGIDA
         function showUserGreeting() {
             const savedUsername = localStorage.getItem('pennwize_username');
             const welcomeTitle = document.getElementById('welcomeTitle');
@@ -952,11 +961,17 @@
             const visitInfo = document.getElementById('visitInfo');
             
             if (savedUsername && savedUsername.trim() !== '') {
+                // SE TEM NOME SALVO: Mostra mensagem personalizada
                 userGreeting.textContent = savedUsername.toUpperCase();
                 
-                welcomeTitle.innerHTML = `BEM-VINDO(A), <span style="font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; color: var(--white); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">${savedUsername.toUpperCase()}</span>!`;
+                // Atualiza o título e subtítulo
+                welcomeTitle.innerHTML = `BEM-VINDO(A), <span class="user-name-title">${savedUsername.toUpperCase()}</span>!`;
                 welcomeSubtitle.textContent = `Confira abaixo o portfólio de projetos da Penn & Wize.`;
                 
+                // MOSTRA a mensagem de boas-vindas
+                userWelcomeMsg.style.display = 'block';
+                
+                // Mostra informações da última visita
                 const lastVisit = localStorage.getItem('pennwize_login_time');
                 if (lastVisit) {
                     const visitDate = new Date(lastVisit);
@@ -982,14 +997,23 @@
                     visitInfo.innerHTML = '<i class="fas fa-star"></i> Primeiro acesso';
                 }
                 
+                // Atualiza o tempo de login para agora
                 localStorage.setItem('pennwize_login_time', new Date().toISOString());
+                
             } else {
+                // SE NÃO TEM NOME SALVO: Mostra mensagem genérica para visitante
+                // Mantém o título original
                 welcomeTitle.textContent = 'PROPOSTA COMERCIAL';
                 welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
                 
-                userWelcomeMsg.style.display = 'block';
+                // Define o texto do visitante
                 userGreeting.textContent = 'VISITANTE';
-                visitInfo.innerHTML = '<i class="fas fa-sign-in-alt"></i> <a href="login.html" style="color: var(--accent-red); text-decoration: none;">Faça login para personalizar</a>';
+                
+                // MOSTRA a mensagem de boas-vindas para visitante
+                userWelcomeMsg.style.display = 'block';
+                
+                // Convidando para login
+                visitInfo.innerHTML = '<i class="fas fa-sign-in-alt"></i> <a href="login.html" style="color: var(--accent-red); text-decoration: none; font-weight: bold;">Faça login para personalizar</a>';
             }
         }
 
