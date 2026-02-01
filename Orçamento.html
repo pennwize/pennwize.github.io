@@ -137,7 +137,7 @@
         }
         
         /* Hero Portfólio */
-        .portfolio-hero {
+        .orcamento-hero {
             background: linear-gradient(rgba(26, 60, 139, 0.9), rgba(42, 92, 189, 0.8)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
@@ -146,20 +146,20 @@
             text-align: center;
         }
         
-        .portfolio-hero h2 {
+        .orcamento-hero h2 {
             font-family: 'Cinzel', serif;
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
         
-        .portfolio-hero p {
+        .orcamento-hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 30px;
         }
         
         /* Filtros */
-        .portfolio-filters {
+        .orcamento-filters {
             background-color: var(--white);
             padding: 30px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -191,14 +191,14 @@
         }
         
         /* Grid de Portfólio */
-        .portfolio-grid {
+        .orcamento-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
         }
         
-        .portfolio-item {
+        .orcamento-item {
             background-color: var(--white);
             border-radius: 10px;
             overflow: hidden;
@@ -206,12 +206,12 @@
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .portfolio-item:hover {
+        .orcamento-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .portfolio-image {
+        .orcamento-image {
             width: 100%;
             height: 250px;
             overflow: hidden;
@@ -221,7 +221,7 @@
             justify-content: center;
         }
         
-        .portfolio-image img {
+        .orcamento-image img {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -229,7 +229,7 @@
             padding: 20px;
         }
         
-        .portfolio-item:hover .portfolio-image img {
+        .orcamento-item:hover .orcamento-image img {
             transform: scale(1.05);
         }
         
@@ -238,18 +238,18 @@
             color: var(--accent-red);
         }
         
-        .portfolio-content {
+        .orcamento-content {
             padding: 25px;
         }
         
-        .portfolio-content h3 {
+        .orcamento-content h3 {
             font-family: 'Cinzel', serif;
             color: var(--primary-blue);
             margin-bottom: 10px;
             font-size: 1.4rem;
         }
         
-        .portfolio-category {
+        .orcamento-category {
             display: inline-block;
             background-color: var(--accent-red);
             color: var(--white);
@@ -260,12 +260,12 @@
             margin-bottom: 15px;
         }
         
-        .portfolio-description {
+        .orcamento-description {
             margin-bottom: 20px;
             text-align: justify;
         }
         
-        .portfolio-details {
+        .orcamento-details {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -274,12 +274,12 @@
             border-top: 1px solid var(--light-gray);
         }
         
-        .portfolio-date {
+        .orcamento-date {
             font-size: 0.9rem;
             color: #666;
         }
         
-        .portfolio-view-btn {
+        .orcamento-view-btn {
             background-color: var(--primary-blue);
             color: var(--white);
             padding: 8px 20px;
@@ -291,7 +291,7 @@
             cursor: pointer;
         }
         
-        .portfolio-view-btn:hover {
+        .orcamento-view-btn:hover {
             background-color: var(--secondary-blue);
         }
         
@@ -381,7 +381,7 @@
         }
         
         /* Seção de Estatísticas */
-        .portfolio-stats {
+        .orcamento-stats {
             background-color: var(--primary-blue);
             color: var(--white);
             padding: 60px 0;
@@ -540,15 +540,15 @@
                 display: block;
             }
             
-            .portfolio-hero {
+            .orcamento-hero {
                 padding: 70px 0;
             }
             
-            .portfolio-hero h2 {
+            .orcamento-hero h2 {
                 font-size: 2rem;
             }
             
-            .portfolio-grid {
+            .orcamento-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -564,11 +564,11 @@
                 font-size: 1.5rem;
             }
             
-            .portfolio-hero h2 {
+            .orcamento-hero h2 {
                 font-size: 1.8rem;
             }
             
-            .portfolio-content {
+            .orcamento-content {
                 padding: 20px;
             }
             
@@ -630,7 +630,7 @@
                     <li><a href="index.html#about">Sobre</a></li>
                     <li><a href="index.html#services">Serviços</a></li>
                     <li><a href="index.html#team">Equipe</a></li>
-                    <li><a href="proposta-comercial.html" target="_blank">Proposta</a></li>
+                    <li><a href="index.html#orcamento">Orçamento</a></li>
                     <li><a href="index.html#contact">Contato</a></li>
                 </ul>
             </nav>
@@ -638,7 +638,7 @@
     </header>
 
     <!-- Hero Portfólio -->
-    <section class="portfolio-hero">
+    <section class="orcamento-hero">
         <div class="container">
             <h2>Nosso Portfólio</h2>
             <p>Conheça os projetos de instalações prediais que desenvolvemos com excelência técnica e compromisso com a qualidade.</p>
@@ -647,7 +647,7 @@
     </section>
 
     <!-- Filtros -->
-    <section class="portfolio-filters">
+    <section class="orcamento-filters">
         <div class="container">
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">Todos os Projetos</button>
@@ -663,25 +663,25 @@
     </section>
 
     <!-- Grid de Portfólio -->
-    <section class="portfolio-container">
+    <section class="orcamento-container">
         <div class="container">
-            <div id="portfolioLoading" class="loading">
+            <div id="orcamentoLoading" class="loading">
                 <div class="spinner"></div>
                 <p>Carregando projetos...</p>
             </div>
             
             <!-- Seção Água Fria -->
-            <div id="agua-fria-section" class="portfolio-section" style="display: none;">
+            <div id="agua-fria-section" class="orcamento-section" style="display: none;">
                 <h2 style="color: var(--primary-blue); margin-bottom: 30px; font-family: 'Cinzel', serif; text-align: center;">Projetos de Água Fria</h2>
-                <div id="aguaFriaGrid" class="portfolio-grid">
+                <div id="aguaFriaGrid" class="orcamento-grid">
                     <!-- Projetos serão carregados aqui -->
                 </div>
             </div>
             
             <!-- Seção Água Quente -->
-            <div id="agua-quente-section" class="portfolio-section" style="display: none;">
+            <div id="agua-quente-section" class="orcamento-section" style="display: none;">
                 <h2 style="color: var(--primary-blue); margin-bottom: 30px; font-family: 'Cinzel', serif; text-align: center;">Projetos de Água Quente</h2>
-                <div id="aguaQuenteGrid" class="portfolio-grid">
+                <div id="aguaQuenteGrid" class="orcamento-grid">
                     <!-- Projetos serão carregados aqui -->
                 </div>
             </div>
@@ -689,7 +689,7 @@
             <!-- Seções vazias (sem projetos ainda) -->
             <div id="empty-sections">
                 <!-- Hidrossanitário -->
-                <div id="hidrossanitario-section" class="portfolio-section" style="display: none;">
+                <div id="hidrossanitario-section" class="orcamento-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
                             <i class="fas fa-tools"></i>
@@ -700,7 +700,7 @@
                 </div>
                 
                 <!-- Esgoto -->
-                <div id="esgoto-section" class="portfolio-section" style="display: none;">
+                <div id="esgoto-section" class="orcamento-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
                             <i class="fas fa-water"></i>
@@ -711,7 +711,7 @@
                 </div>
                 
                 <!-- Drenagem -->
-                <div id="drenagem-section" class="portfolio-section" style="display: none;">
+                <div id="drenagem-section" class="orcamento-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
                             <i class="fas fa-cloud-rain"></i>
@@ -722,7 +722,7 @@
                 </div>
                 
                 <!-- Gás -->
-                <div id="gas-section" class="portfolio-section" style="display: none;">
+                <div id="gas-section" class="orcamento-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
                             <i class="fas fa-gas-pump"></i>
@@ -733,7 +733,7 @@
                 </div>
                 
                 <!-- Combate a Incêndio -->
-                <div id="incendio-section" class="portfolio-section" style="display: none;">
+                <div id="incendio-section" class="orcamento-section" style="display: none;">
                     <div class="empty-section">
                         <div class="empty-icon">
                             <i class="fas fa-fire-extinguisher"></i>
@@ -744,8 +744,8 @@
                 </div>
                 
                 <!-- Todos os Projetos -->
-                <div id="all-projects-section" class="portfolio-section" style="display: none;">
-                    <div id="allProjectsGrid" class="portfolio-grid">
+                <div id="all-projects-section" class="orcamento-section" style="display: none;">
+                    <div id="allProjectsGrid" class="orcamento-grid">
                         <!-- Todos os projetos serão carregados aqui -->
                     </div>
                 </div>
@@ -760,7 +760,7 @@
     </section>
 
     <!-- Estatísticas -->
-    <section class="portfolio-stats">
+    <section class="orcamento-stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
@@ -797,7 +797,7 @@
                         <li><a href="index.html">Página Inicial</a></li>
                         <li><a href="index.html#services">Nossos Serviços</a></li>
                         <li><a href="index.html#team">Nossa Equipe</a></li>
-                        <li><a href="proposta-comercial.html" target="_blank">Proposta Comercial</a></li>
+                        <li><a href="index.html#orcamento">Orçamento</a></li>
                         <li><a href="#contact">Contato</a></li>
                     </ul>
                 </div>
@@ -864,7 +864,7 @@
         });
         
         // Dados dos projetos do portfólio - APENAS 2 PROJETOS DE ÁGUA FRIA/QUENTE
-        const portfolioProjects = [
+        const orcamentoProjects = [
             {
                 id: 1,
                 title: "Projeto de Água Fria - Residencial Unifamiliar",
@@ -890,12 +890,12 @@
         ];
         
         // Função para renderizar projetos por categoria
-        function renderPortfolioByCategory(category) {
-            const loadingElement = document.getElementById('portfolioLoading');
+        function renderorcamentoByCategory(category) {
+            const loadingElement = document.getElementById('orcamentoLoading');
             const noProjectsElement = document.getElementById('noProjects');
             
             // Esconde todas as seções primeiro
-            document.querySelectorAll('.portfolio-section').forEach(section => {
+            document.querySelectorAll('.orcamento-section').forEach(section => {
                 section.style.display = 'none';
             });
             
@@ -911,10 +911,10 @@
                 if (category === 'all') {
                     // Mostra todos os projetos
                     document.getElementById('all-projects-section').style.display = 'block';
-                    renderProjects(portfolioProjects, 'allProjectsGrid');
+                    renderProjects(orcamentoProjects, 'allProjectsGrid');
                 } else if (category === 'agua-fria') {
                     // Mostra apenas projetos de água fria
-                    const aguaFriaProjects = portfolioProjects.filter(project => project.category === 'agua-fria');
+                    const aguaFriaProjects = orcamentoProjects.filter(project => project.category === 'agua-fria');
                     if (aguaFriaProjects.length > 0) {
                         document.getElementById('agua-fria-section').style.display = 'block';
                         renderProjects(aguaFriaProjects, 'aguaFriaGrid');
@@ -923,7 +923,7 @@
                     }
                 } else if (category === 'agua-quente') {
                     // Mostra apenas projetos de água quente
-                    const aguaQuenteProjects = portfolioProjects.filter(project => project.category === 'agua-quente');
+                    const aguaQuenteProjects = orcamentoProjects.filter(project => project.category === 'agua-quente');
                     if (aguaQuenteProjects.length > 0) {
                         document.getElementById('agua-quente-section').style.display = 'block';
                         renderProjects(aguaQuenteProjects, 'aguaQuenteGrid');
@@ -967,28 +967,28 @@
             
             projects.forEach(project => {
                 const projectElement = document.createElement('div');
-                projectElement.className = 'portfolio-item';
+                projectElement.className = 'orcamento-item';
                 
                 // Tenta carregar a imagem de preview, se não existir usa placeholder
                 const imageUrl = project.previewImage || `https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80&text=${encodeURIComponent(project.title)}`;
                 
                 projectElement.innerHTML = `
-                    <div class="portfolio-image">
+                    <div class="orcamento-image">
                         <div class="pdf-icon">
                             <i class="fas fa-file-pdf"></i>
                         </div>
                     </div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">${getCategoryName(project.category)}</span>
+                    <div class="orcamento-content">
+                        <span class="orcamento-category">${getCategoryName(project.category)}</span>
                         <h3>${project.title}</h3>
-                        <p class="portfolio-description">${project.description}</p>
-                        <div class="portfolio-details">
-                            <div class="portfolio-date">
+                        <p class="orcamento-description">${project.description}</p>
+                        <div class="orcamento-details">
+                            <div class="orcamento-date">
                                 <i class="far fa-calendar"></i> ${project.date}
                                 <br>
                                 <small><i class="far fa-user"></i> ${project.client}</small>
                             </div>
-                            <button class="portfolio-view-btn" onclick="viewPdf('${project.file}', '${project.title}')">
+                            <button class="orcamento-view-btn" onclick="viewPdf('${project.file}', '${project.title}')">
                                 <i class="fas fa-eye"></i> Ver PDF
                             </button>
                         </div>
@@ -1026,7 +1026,7 @@
                 this.classList.add('active');
                 
                 const filter = this.getAttribute('data-filter');
-                renderPortfolioByCategory(filter);
+                renderorcamentoByCategory(filter);
             });
         });
         
@@ -1081,7 +1081,7 @@
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
             // Carrega todos os projetos inicialmente
-            renderPortfolioByCategory('all');
+            renderorcamentoByCategory('all');
             
             // Tenta carregar o logo do footer
             const footerLogo = document.querySelector('.footer-logo');
