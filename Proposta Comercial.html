@@ -1023,16 +1023,16 @@ function showUserGreeting() {
                 // Atualiza o tempo de login para agora
                 localStorage.setItem('pennwize_login_time', new Date().toISOString());
                 
-            } else {
-                // Se não tem nome salvo, mantém o título original
-                welcomeTitle.textContent = 'Proposta Comercial';
-                welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
-                
-                // Mostra a mensagem convidando para login
-                userWelcomeMsg.style.display = 'block';
-                userGreeting.textContent = 'Visitante';
-                visitInfo.innerHTML = '<i class="fas fa-sign-in-alt"></i> <a href="login.html" style="color: var(--accent-red); text-decoration: none;">Faça login para personalizar</a>';
-            }
+          } else {
+    // Se não tem nome salvo, mantém o título original
+    welcomeTitle.textContent = 'PROPOSTA COMERCIAL';
+    welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
+    
+    // Mostra a mensagem convidando para login
+    userWelcomeMsg.style.display = 'block';
+    userGreeting.textContent = 'VISITANTE';
+    visitInfo.innerHTML = '<i class="fas fa-sign-in-alt"></i> <a href="login.html" style="color: var(--accent-red); text-decoration: none;">Faça login para personalizar</a>';
+}
         }
 
         // Menu móvel
