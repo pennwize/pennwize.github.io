@@ -17,48 +17,41 @@
             --white: #ffffff;
         }
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
-/* Aplicar a fonte a TODOS os títulos do site */
-h1, h2, h3, h4,
-.section-title h2,
-.service-card h3,
-.service-detail-header h3,
-.service-features h4,
-.service-benefits h4,
-.card h3,
-.benefit-item h4,
-.footer-links h4,
-.footer-contact h4,
-.footer-logo h3,
-.member-name,
-.member-position,
-.logo-text h1,
-.logo-text span, /* "INSTALAÇÕES PREDIAIS" */
-.hero h2, /* Título do hero/banner */
-.service-detail-header h3 /* Títulos das especificações técnicas */ {
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-/* Ajustes específicos */
-.logo-text span {
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 1px; /* Opcional: dá mais destaque */
-}
-
-.hero h2 {
-    font-size: 2.5rem; /* Mantém o tamanho original */
-}
+        /* Aplicar a fonte a TODOS os títulos do site */
+        h1, h2, h3, h4,
+        .section-title h2,
+        .service-card h3,
+        .service-detail-header h3,
+        .service-features h4,
+        .service-benefits h4,
+        .card h3,
+        .benefit-item h4,
+        .footer-links h4,
+        .footer-contact h4,
+        .footer-logo h3,
+        .member-name,
+        .member-position,
+        .logo-text h1,
+        .logo-text span,
+        .hero h2,
+        .service-detail-header h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
         
-/* Opcional: fonte diferente para h1 principal */
-.logo-text h1 {
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+        /* Ajustes específicos */
+        .logo-text span {
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+        }
         
         * {
             margin: 0;
@@ -133,22 +126,15 @@ h1, h2, h3, h4,
         }
         
         .logo-text {
-    display: flex;
-    flex-direction: column;
-    /* Mova apenas o texto para a esquerda: */
-    transform: translateX(-30px); /* ajuste o valor */
-}
+            display: flex;
+            flex-direction: column;
+            transform: translateX(-30px);
+        }
         
         .logo-text h1 {
             font-size: 1.8rem;
             color: var(--primary-blue);
             line-height: 1.2;
-        }
-        
-        .logo-text span {
-            color: var(--accent-red);
-            font-size: 1rem;
-            font-weight: 600;
         }
         
         nav ul {
@@ -296,7 +282,7 @@ h1, h2, h3, h4,
             object-fit: contain;
         }
         
-        /* Equipe - NOVA SEÇÃO ADICIONADA */
+        /* Equipe */
         .team {
             background-color: var(--light-gray);
         }
@@ -329,7 +315,6 @@ h1, h2, h3, h4,
             object-fit: cover;
             margin: 0 auto 20px;
             display: block;
-            border: none; /* Removido a borda/borda circular */
         }
         
         .member-name {
@@ -345,47 +330,32 @@ h1, h2, h3, h4,
             font-size: 1rem;
         }
         
-        .member-description {
-            line-height: 1.6;
+        .member-description p.special-text {
+            text-align: center !important;
+            text-justify: unset !important;
         }
         
         .special-text {
-    margin-top: 15px;
-    text-align: center;
-    color: var(--accent-red);
-    font-weight: bold;
-    font-style: italic;
-}
-
-/* 1. Remove a justificação APENAS para textos especiais */
-.member-description p.special-text {
-    text-align: center !important;
-    text-justify: unset !important;
-}
-
-/* 2. Aplica estilo vermelho */
-.special-text {
-    margin-top: 15px;
-    color: var(--accent-red);
-    font-weight: bold;
-    font-style: italic;
-}
+            margin-top: 15px;
+            color: var(--accent-red);
+            font-weight: bold;
+            font-style: italic;
+        }
         
-/* Responsividade para tablets */
-@media (max-width: 1024px) {
-    .team-members {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
-    }
-}
-
-/* Responsividade para mobile */
-@media (max-width: 768px) {
-    .team-members {
-        grid-template-columns: 1fr; /* 1 coluna em mobile */
-        max-width: 500px;
-        margin: 30px auto 0;
-    }
-}
+        /* Responsividade para equipe */
+        @media (max-width: 1024px) {
+            .team-members {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .team-members {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 30px auto 0;
+            }
+        }
         
         /* Serviços */
         .services {
@@ -447,6 +417,14 @@ h1, h2, h3, h4,
             background-color: var(--light-gray);
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .service-detail.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .service-detail:last-child {
@@ -508,6 +486,7 @@ h1, h2, h3, h4,
             margin-bottom: 12px;
             padding-left: 30px;
             position: relative;
+            text-align: left;
         }
         
         .features-list li::before {
@@ -641,6 +620,7 @@ h1, h2, h3, h4,
             margin-bottom: 15px;
             padding-left: 30px;
             position: relative;
+            text-align: left;
         }
         
         .values-list li::before {
@@ -663,23 +643,6 @@ h1, h2, h3, h4,
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
-        }
-        
-        .footer-logo .logo-img {
-            width: 180px;
-            height: 70px;
-            margin-bottom: 15px;
-        }
-        
-        .footer-logo .logo-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .footer-logo h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
         }
         
         .footer-links h4, .footer-contact h4 {
@@ -861,18 +824,6 @@ h1, h2, h3, h4,
                 text-align: left;
                 hyphens: auto;
             }
-            
-            /* Ajustes para a seção de equipe em mobile */
-            .team-members {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-                margin: 30px auto 0;
-            }
-            
-            .member-photo {
-                width: 150px;
-                height: 150px;
-            }
         }
         
         @media (max-width: 480px) {
@@ -916,18 +867,6 @@ h1, h2, h3, h4,
             }
         }
         
-        /* Animações de rolagem */
-        .service-detail {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s, transform 0.8s;
-        }
-        
-        .service-detail.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
         /* Melhorias na justificação */
         .about-text p, .drainage-text p, .card p, .service-normas p,
         .member-description p {
@@ -935,47 +874,10 @@ h1, h2, h3, h4,
             text-align-last: left;
         }
         
-        /* Exceções - itens de lista devem ficar alinhados à esquerda */
-        .features-list li, .benefits-list li, .values-list li {
-            text-align: left;
-        }
-        
         /* Links do footer alinhados à esquerda */
         .footer-links li {
             text-align: left;
         }
-        
-        /* Texto especial para membros da equipe */
-.special-text {
-    margin-top: 15px;
-    text-align: center;
-    color: var(--accent-red);
-    font-weight: bold;
-    font-style: italic;
-}
-
-/* Se quiser estilos diferentes */
-.special-mention {
-    margin-top: 15px;
-    text-align: center;
-    color: var(--accent-red);
-    font-weight: bold;
-}
-
-.special-note {
-    margin-top: 15px;
-    text-align: center;
-    color: var(--accent-red);
-    font-style: italic;
-}
-
-.cosplay-text {
-    margin-top: 15px;
-    text-align: center;
-    color: var(--accent-red);
-    font-style: italic;
-}
-        
     </style>
 </head>
 <body>
@@ -1046,7 +948,7 @@ h1, h2, h3, h4,
         </div>
     </section>
 
-    <!-- Equipe - NOVA SEÇÃO ADICIONADA -->
+    <!-- Equipe -->
     <section class="team" id="team">
         <div class="container">
             <div class="section-title">
@@ -1061,9 +963,9 @@ h1, h2, h3, h4,
                     <p class="member-position">Engenheira Sênior</p>
                     <div class="member-description">
                         <p>Possui graduação em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (1994), mestrado em Engenharia Sanitária pela Universidade Federal do Rio Grande do Norte (2001). Doutor em Ciência e Engenharia de Materiais pela Universidade Federal do Rio Grande do Norte (2017).</p>
-               <p style="text-align: center; margin-top: 15px; color: #d32f2f; font-weight: bold; font-style: italic;">Detentora de todo o conhecimento do universo</p>
-    </div>
-</div>
+                        <p class="special-text">Detentora de todo o conhecimento do universo</p>
+                    </div>
+                </div>
                 
                 <!-- Ueslei Wize -->
                 <div class="team-member">
@@ -1071,10 +973,10 @@ h1, h2, h3, h4,
                     <h3 class="member-name">Ueslei Wize</h3>
                     <p class="member-position">Engenheiro Pleno</p>
                     <div class="member-description">
-                        <p>Possui graduação em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2019) e mestrado em Engenharia Civil e Ambiental, com ênfase em Materiais de Construção. </p>
-                        <p style="text-align: center; margin-top: 15px; color: #d32f2f; font-weight: bold; font-style: italic;">Divooo</p>
-    </div>
-</div>
+                        <p>Possui graduação em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2019) e mestrado em Engenharia Civil e Ambiental, com ênfase em Materiais de Construção.</p>
+                        <p class="special-text">Divooo</p>
+                    </div>
+                </div>
                 
                 <!-- Leticia Torres -->
                 <div class="team-member">
@@ -1083,9 +985,9 @@ h1, h2, h3, h4,
                     <p class="member-position">Pobre Estagiária</p>
                     <div class="member-description">
                         <p>Graduando em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2021 - 2026).</p>
-                  <p style="text-align: center; margin-top: 15px; color: #d32f2f; font-weight: bold; font-style: italic;">Cosplay de Projetista 01</p>
-    </div>
-</div>
+                        <p class="special-text">Cosplay de Projetista 01</p>
+                    </div>
+                </div>
                 
                 <!-- João Melo -->
                 <div class="team-member">
@@ -1094,31 +996,31 @@ h1, h2, h3, h4,
                     <p class="member-position">Pobre Estagiário</p>
                     <div class="member-description">
                         <p>Graduando em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2021 - 2027).</p>
-                            <p style="text-align: center; margin-top: 15px; color: #d32f2f; font-weight: bold; font-style: italic;">Cosplay de Projetista 02</p>
-    </div>
-</div>
+                        <p class="special-text">Cosplay de Projetista 02</p>
+                    </div>
+                </div>
 
-              <!-- Amanda Campos -->
+                <!-- Amanda Campos -->
                 <div class="team-member">
                     <img src="img/Equipe/Amanda Campos.png" alt="Amanda Campos" class="member-photo">
                     <h3 class="member-name">Amanda Campos</h3>
                     <p class="member-position">Pobre Estagiária</p>
                     <div class="member-description">
-                        <p>Graduando em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2021 - 2026).</p> 
-   <p style="text-align: center; margin-top: 15px; color: #d32f2f; font-weight: bold; font-style: italic;">Cosplay de Projetista 03</p>
-    </div>
-</div>
+                        <p>Graduando em Engenharia Civil pela Universidade Federal do Rio Grande do Norte (2021 - 2026).</p>
+                        <p class="special-text">Cosplay de Projetista 03</p>
+                    </div>
+                </div>
                 
                 <!-- Bigúzinho -->
-              <div class="team-member">
-    <img src="img/Equipe/Bigúzinho.png" alt="Bigúzinho" class="member-photo">
-    <h3 class="member-name">Bigúzinho</h3>
-    <p class="member-position">Gerente de Apoio Emocional</p>
-    <div class="member-description">
-        <p>Possui Graduação em Engenharia da Soneca pela Universidade Federal do Rio Grande do Norte (2019). Mestre em Gastronomia dos Petiscos Premium pela Universidade Federal do Rio Grande do Norte (2022). Doutor em Relações Caninas pela Universidade Federal do Rio Grande do Norte (2025).</p>
-              <p style="text-align: center; margin-top: 15px; color: #d32f2f; font-weight: bold; font-style: italic;">Um bom garoto</p>
-    </div>
-</div>
+                <div class="team-member">
+                    <img src="img/Equipe/Bigúzinho.png" alt="Bigúzinho" class="member-photo">
+                    <h3 class="member-name">Bigúzinho</h3>
+                    <p class="member-position">Gerente de Apoio Emocional</p>
+                    <div class="member-description">
+                        <p>Possui Graduação em Engenharia da Soneca pela Universidade Federal do Rio Grande do Norte (2019). Mestre em Gastronomia dos Petiscos Premium pela Universidade Federal do Rio Grande do Norte (2022). Doutor em Relações Caninas pela Universidade Federal do Rio Grande do Norte (2025).</p>
+                        <p class="special-text">Um bom garoto</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1531,71 +1433,58 @@ h1, h2, h3, h4,
         </div>
     </section>
 
-<!-- //////////////// ORÇAMENTO //////////////// -->
-
-<!-- Seção de Orçamento -->
-<section id="budget" style="background-color: var(--light-gray); padding: 80px 0;">
-    <div class="container">
-        <div class="section-title">
-            <h2>Faça seu Orçamento</h2>
-        </div>
-        
-        <div class="mission-vision-values" style="max-width: 1000px; margin: 0 auto;">
-            <!-- Cartão com a mesma estrutura da Missão, Visão e Valores -->
-            <div class="card" style="text-align: center; border-top: 4px solid var(--accent-red);">
-                <div style="margin-bottom: 30px;">
-                    <h3 style="color: var(--primary-blue); font-size: 1.8rem; margin-bottom: 20px;">
-        
-                    </h3>
-                </div>
-                
-                <div style="background-color: var(--light-blue); padding: 25px; border-radius: 8px; margin: 30px 0;">
-                    <p style="font-size: 1.2rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 20px; text-align: center;">
-                        Solicite um orçamento personalizado para seu projeto ou baixe nossa proposta comercial completa.
-                    </p>
-                    
-                    <div class="budget-buttons" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                        <!-- Botão 1: Orçamento -->
-                        <a href="Orçamento.html" class="btn"
-                           style="background-color: var(--accent-red); color: white; padding: 12px 25px; 
-                                  text-decoration: none; border-radius: 5px; font-weight: 600;
-                                  display: inline-flex; align-items: center; gap: 8px;
-                                  transition: background-color 0.3s, transform 0.3s;">
-                            <i class="fas fa-calculator"></i> Faça seu orçamento aqui
-                        </a>
-                        
-                        <!-- Botão 2: Propostas Comerciais -->
-                        <a href="login.html" class="btn"
-                           style="background-color: var(--primary-blue); color: white; padding: 12px 25px; 
-                                  text-decoration: none; border-radius: 5px; font-weight: 600;
-                                  display: inline-flex; align-items: center; gap: 8px;
-                                  transition: background-color 0.3s, transform 0.3s;">
-                            <i class="fas fa-folder-open"></i> Propostas Comerciais
-                        </a>
+    <!-- Seção de Orçamento -->
+    <section id="budget" style="background-color: var(--light-gray); padding: 80px 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Faça seu Orçamento</h2>
+            </div>
+            
+            <div class="mission-vision-values" style="max-width: 1000px; margin: 0 auto;">
+                <div class="card" style="text-align: center; border-top: 4px solid var(--accent-red);">
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="color: var(--primary-blue); font-size: 1.8rem; margin-bottom: 20px;">
+                        </h3>
                     </div>
-                </div>
-                
-                <div style="margin-top: 20px;">
-                    <p style="font-size: 0.9rem; color: var(--dark-gray); font-style: italic; text-align: center;">
-                        Entre em contato também pelo WhatsApp para uma consulta rápida
-                    </p>
+                    
+                    <div style="background-color: var(--light-blue); padding: 25px; border-radius: 8px; margin: 30px 0;">
+                        <p style="font-size: 1.2rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 20px; text-align: center;">
+                            Solicite um orçamento personalizado para seu projeto ou baixe nossa proposta comercial completa.
+                        </p>
+                        
+                        <div class="budget-buttons" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                            <a href="Orçamento.html" class="btn"
+                               style="background-color: var(--accent-red); color: white; padding: 12px 25px; 
+                                      text-decoration: none; border-radius: 5px; font-weight: 600;
+                                      display: inline-flex; align-items: center; gap: 8px;
+                                      transition: background-color 0.3s, transform 0.3s;">
+                                <i class="fas fa-calculator"></i> Faça seu orçamento aqui
+                            </a>
+                            
+                            <a href="login.html" class="btn"
+                               style="background-color: var(--primary-blue); color: white; padding: 12px 25px; 
+                                      text-decoration: none; border-radius: 5px; font-weight: 600;
+                                      display: inline-flex; align-items: center; gap: 8px;
+                                      transition: background-color 0.3s, transform 0.3s;">
+                                <i class="fas fa-folder-open"></i> Propostas Comerciais
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <p style="font-size: 0.9rem; color: var(--dark-gray); font-style: italic; text-align: center;">
+                            Entre em contato também pelo WhatsApp para uma consulta rápida
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- //////////////// ORÇAMENTO //////////////// -->
+    </section>
     
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-
-            
-                </div>
-                
                 <div class="footer-links">
                     <h4>Links Rápidos</h4>
                     <ul>
@@ -1633,7 +1522,6 @@ h1, h2, h3, h4,
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
             
-            // Altera o ícone do botão
             const icon = mobileMenuBtn.querySelector('i');
             if (mainNav.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
