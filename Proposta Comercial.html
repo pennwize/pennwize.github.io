@@ -148,9 +148,7 @@
         
         /* Hero Proposta Comercial */
         .portfolio-hero {
-            background: linear-gradient(rgba(26, 60, 139, 0.9), rgba(42, 92, 189, 0.8)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(26, 60, 139, 0.9), rgba(42, 92, 189, 0.8));
             color: var(--white);
             padding: 100px 0;
             text-align: center;
@@ -343,7 +341,7 @@
             align-items: center;
         }
         
-        .pdf-modal-btn {
+        .pdf-modal-btn, .pdf-modal-close {
             background-color: rgba(255, 255, 255, 0.2);
             color: var(--white);
             border: none;
@@ -358,35 +356,19 @@
             font-size: 1.1rem;
         }
         
-        .pdf-modal-btn:hover {
+        .pdf-modal-btn:hover, .pdf-modal-close:hover {
             background-color: var(--accent-red);
             transform: scale(1.1);
         }
         
         .pdf-modal-close {
             background-color: var(--accent-red);
-            color: var(--white);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1.3rem;
-        }
-        
-        .pdf-modal-close:hover {
-            background-color: #b71c1c;
-            transform: scale(1.1);
         }
         
         .pdf-modal-body {
             flex: 1;
             width: 100%;
-            height: calc(100% - 70px); /* altura total menos header */
+            height: calc(100% - 70px);
             position: relative;
             overflow: hidden;
         }
@@ -571,32 +553,14 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-red);
+        /* Estilo personalizado para o nome do usuário */
+        #userGreeting {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
             color: var(--white);
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s, transform 0.3s;
-            border: none;
-            cursor: pointer;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
-        
-        .btn:hover {
-            background-color: #b71c1c;
-            transform: translateY(-3px);
-        }
-
-/* Estilo personalizado para o nome do usuário */
-#userGreeting {
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--white) !important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
         
         /* Responsividade */
         @media (max-width: 768px) {
@@ -808,9 +772,8 @@
                     <!-- Projetos serão carregados aqui -->
                 </div>
             </div>
-       
             
-            <!-- Seções vazias (sem projetos ainda) -->
+            <!-- Seções vazias -->
             <div id="empty-sections">
                 <!-- Hidrossanitário -->
                 <div id="hidrossanitario-section" class="portfolio-section" style="display: none;">
@@ -819,7 +782,7 @@
                             <i class="fas fa-tools"></i>
                         </div>
                         <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de sistemas hidrossanitários completos. Em breve, você poderá visualizar nossos trabalhos nesta categoria.</p>
+                        <p>Estamos trabalhando em projetos de sistemas hidrossanitários completos.</p>
                     </div>
                 </div>
                 
@@ -830,7 +793,7 @@
                             <i class="fas fa-water"></i>
                         </div>
                         <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de sistemas de esgoto. Em breve, você poderá visualizar nossos trabalhos nesta categoria.</p>
+                        <p>Estamos trabalhando em projetos de sistemas de esgoto.</p>
                     </div>
                 </div>
                 
@@ -841,7 +804,7 @@
                             <i class="fas fa-cloud-rain"></i>
                         </div>
                         <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de sistemas de drenagem. Em breve, você poderá visualizar nossos trabalhos nesta categoria.</p>
+                        <p>Estamos trabalhando em projetos de sistemas de drenagem.</p>
                     </div>
                 </div>
                 
@@ -852,7 +815,7 @@
                             <i class="fas fa-gas-pump"></i>
                         </div>
                         <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de instalações de gás. Em breve, você poderá visualizar nossos trabalhos nesta categoria.</p>
+                        <p>Estamos trabalhando em projetos de instalações de gás.</p>
                     </div>
                 </div>
                 
@@ -863,7 +826,7 @@
                             <i class="fas fa-fire-extinguisher"></i>
                         </div>
                         <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de combate a incêndio. Em breve, você poderá visualizar nossos trabalhos nesta categoria.</p>
+                        <p>Estamos trabalhando em projetos de combate a incêndio.</p>
                     </div>
                 </div>
                 
@@ -912,7 +875,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <!-- Logo será carregada do site principal -->
+                    <div style="color: white; font-family: 'Cinzel', serif;">
+                        <div style="font-size: 1.8rem;">PENN & WIZE</div>
+                        <div style="font-size: 0.9rem; margin-top: 5px; color: var(--light-blue);">INSTALAÇÕES PREDIAIS</div>
+                    </div>
                 </div>
                 
                 <div class="footer-links">
@@ -976,25 +942,21 @@
     </div>
 
     <script>
-
         // Saudação personalizada
-function showUserGreeting() {
-    const savedUsername = localStorage.getItem('pennwize_username');
-    const welcomeTitle = document.getElementById('welcomeTitle');
-    const welcomeSubtitle = document.getElementById('welcomeSubtitle');
-    const userWelcomeMsg = document.getElementById('userWelcomeMsg');
-    const userGreeting = document.getElementById('userGreeting');
-    const visitInfo = document.getElementById('visitInfo');
-    
-    if (savedUsername && savedUsername.trim() !== '') {
-        // Exibe o nome do usuário EM MAIÚSCULAS
-        userGreeting.textContent = savedUsername.toUpperCase();
-        
-        // Muda o título e subtítulo COM NOME EM BRANCO E FONTE CINZEL
-        welcomeTitle.innerHTML = `BEM-VINDO(A), <span style="font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; color: var(--white); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">${savedUsername.toUpperCase()}</span>!`;
-        welcomeSubtitle.textContent = `Confira abaixo o portfólio de projetos da Penn & Wize.`;
+        function showUserGreeting() {
+            const savedUsername = localStorage.getItem('pennwize_username');
+            const welcomeTitle = document.getElementById('welcomeTitle');
+            const welcomeSubtitle = document.getElementById('welcomeSubtitle');
+            const userWelcomeMsg = document.getElementById('userWelcomeMsg');
+            const userGreeting = document.getElementById('userGreeting');
+            const visitInfo = document.getElementById('visitInfo');
+            
+            if (savedUsername && savedUsername.trim() !== '') {
+                userGreeting.textContent = savedUsername.toUpperCase();
                 
-                // Mostra informações da última visita
+                welcomeTitle.innerHTML = `BEM-VINDO(A), <span style="font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; color: var(--white); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">${savedUsername.toUpperCase()}</span>!`;
+                welcomeSubtitle.textContent = `Confira abaixo o portfólio de projetos da Penn & Wize.`;
+                
                 const lastVisit = localStorage.getItem('pennwize_login_time');
                 if (lastVisit) {
                     const visitDate = new Date(lastVisit);
@@ -1020,19 +982,15 @@ function showUserGreeting() {
                     visitInfo.innerHTML = '<i class="fas fa-star"></i> Primeiro acesso';
                 }
                 
-                // Atualiza o tempo de login para agora
                 localStorage.setItem('pennwize_login_time', new Date().toISOString());
+            } else {
+                welcomeTitle.textContent = 'PROPOSTA COMERCIAL';
+                welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
                 
-          } else {
-    // Se não tem nome salvo, mantém o título original
-    welcomeTitle.textContent = 'PROPOSTA COMERCIAL';
-    welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
-    
-    // Mostra a mensagem convidando para login
-    userWelcomeMsg.style.display = 'block';
-    userGreeting.textContent = 'VISITANTE';
-    visitInfo.innerHTML = '<i class="fas fa-sign-in-alt"></i> <a href="login.html" style="color: var(--accent-red); text-decoration: none;">Faça login para personalizar</a>';
-}
+                userWelcomeMsg.style.display = 'block';
+                userGreeting.textContent = 'VISITANTE';
+                visitInfo.innerHTML = '<i class="fas fa-sign-in-alt"></i> <a href="login.html" style="color: var(--accent-red); text-decoration: none;">Faça login para personalizar</a>';
+            }
         }
 
         // Menu móvel
@@ -1068,7 +1026,7 @@ function showUserGreeting() {
                 id: 1,
                 title: "Projeto de Água Fria - Residencial Multifamiliar",
                 category: "agua-fria",
-                description: "Dimensionamento completo do sistema de água fria para residência multifamiliar com 5.490,54 m² de área construida, incluindo reservatório inferior e superior, sistema de recalque e distribuição de água, sistema de aquecimento e sistema de abastecimento da piscina.",
+                description: "Dimensionamento completo do sistema de água fria para residência multifamiliar com 5.490,54 m² de área construída, incluindo reservatório inferior e superior, sistema de recalque e distribuição de água, sistema de aquecimento e sistema de abastecimento da piscina.",
                 file: "img/Proposta/AFAQ.pdf",
                 previewImage: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
                 date: "Janeiro 2026",
@@ -1108,15 +1066,6 @@ function showUserGreeting() {
                         renderProjects(aguaFriaProjects, 'aguaFriaGrid');
                     } else {
                         showEmptySection('agua-fria-section');
-                    }
-                } else if (category === 'agua-quente') {
-                    // Mostra apenas projetos de água quente
-                    const aguaQuenteProjects = portfolioProjects.filter(project => project.category === 'agua-quente');
-                    if (aguaQuenteProjects.length > 0) {
-                        document.getElementById('agua-quente-section').style.display = 'block';
-                        renderProjects(aguaQuenteProjects, 'aguaQuenteGrid');
-                    } else {
-                        showEmptySection('agua-quente-section');
                     }
                 } else {
                     // Para outras categorias, mostra seção vazia
@@ -1249,7 +1198,7 @@ function showUserGreeting() {
             pdfDownloadLink.href = pdfUrl;
             pdfDownloadLink.download = title.replace(/\s+/g, '_') + '.pdf';
             
-            // Configura o visualizador de PDF com parâmetros para melhor visualização
+            // Configura o visualizador de PDF
             const pdfUrlWithParams = `${pdfUrl}#view=FitH&toolbar=0&navpanes=0&scrollbar=0&zoom=${zoomLevel * 100}`;
             pdfViewer.src = pdfUrlWithParams;
             
@@ -1260,13 +1209,9 @@ function showUserGreeting() {
             pdfModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             
-            // Foca no modal
-            pdfModal.focus();
-            
-            // Tenta detectar o número total de páginas (isso funciona apenas se o PDF estiver no mesmo domínio)
+            // Tenta detectar o número total de páginas
             setTimeout(() => {
                 try {
-                    // Para PDFs do mesmo domínio, podemos tentar acessar o objeto
                     const pdfDoc = pdfViewer.contentWindow.PDFViewerApplication;
                     if (pdfDoc && pdfDoc.pdfDocument) {
                         pdfDoc.pdfDocument.getMetadata().then((metadata) => {
@@ -1277,7 +1222,7 @@ function showUserGreeting() {
                         });
                     }
                 } catch (e) {
-                    console.log("Não foi possível obter informações do PDF (pode ser por restrições de CORS)");
+                    console.log("Não foi possível obter informações do PDF");
                 }
             }, 1000);
         }
@@ -1384,7 +1329,7 @@ function showUserGreeting() {
             }
         });
         
-        // Fecha o modal ao clicar fora do conteúdo (mas dentro do modal)
+        // Fecha o modal ao clicar fora do conteúdo
         pdfModal.addEventListener('click', (e) => {
             if (e.target === pdfModal) {
                 closePdfModal();
@@ -1428,17 +1373,6 @@ function showUserGreeting() {
             
             // Mostra a saudação personalizada
             showUserGreeting();
-            
-            // Tenta carregar o logo do footer
-            const footerLogo = document.querySelector('.footer-logo');
-            if (footerLogo) {
-                footerLogo.innerHTML = `
-                    <div style="color: white; font-family: 'Cinzel', serif;">
-                        <div style="font-size: 1.8rem;">PENN & WIZE</div>
-                        <div style="font-size: 0.9rem; margin-top: 5px; color: var(--light-blue);">INSTALAÇÕES PREDIAIS</div>
-                    </div>
-                `;
-            }
         });
         
         // Suaviza o scroll para âncoras
