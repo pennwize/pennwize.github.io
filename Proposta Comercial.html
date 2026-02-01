@@ -144,7 +144,7 @@
         <span id="visitInfo" style="font-size: 0.85rem; color: #666; margin-left: 10px;"></span>
     </p>
 </div>
-        /* Hero Portfólio */
+        /* Hero Proposta Comercial */
         .portfolio-hero {
             background: linear-gradient(rgba(26, 60, 139, 0.9), rgba(42, 92, 189, 0.8)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
@@ -153,6 +153,16 @@
             padding: 100px 0;
             text-align: center;
         }
+
+/* Estilos para a mensagem de boas-vindas no hero */
+#userWelcomeMsg {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
         
         .portfolio-hero h2 {
             font-family: 'Cinzel', serif;
@@ -779,11 +789,20 @@
         </div>
     </header>
 
-    <!-- Hero Portfólio -->
-    <section class="portfolio-hero">
+    <!-- Hero Proposta Comercial -->
+    <section class="Proposta Comercial-hero">
         <div class="container">
-            <h2>Proposta Comercial</h2>
-            <p>Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.</p>
+            <h2 id="welcomeTitle">Proposta Comercial</h2>
+            <p id="welcomeSubtitle">Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.</p>
+            <div id="userWelcomeMsg" style="display: none; margin-top: 20px;">
+                <div style="background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; display: inline-block; border-left: 4px solid var(--accent-red);">
+                    <p style="margin: 0; font-size: 1.1rem;">
+                        <i class="fas fa-user-circle"></i> 
+                        <strong>Bem-vindo(a), <span id="userGreeting" style="color: var(--accent-red); text-transform: capitalize;">Visitante</span>!</strong>
+                        <span id="visitInfo" style="margin-left: 15px; font-size: 0.9rem; opacity: 0.9;"></span>
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
