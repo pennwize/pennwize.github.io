@@ -588,6 +588,15 @@
             background-color: #b71c1c;
             transform: translateY(-3px);
         }
+
+/* Estilo personalizado para o nome do usuário */
+#userGreeting {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
         
         /* Responsividade */
         @media (max-width: 768px) {
@@ -967,25 +976,23 @@
     </div>
 
     <script>
+
         // Saudação personalizada
-        function showUserGreeting() {
-            const savedUsername = localStorage.getItem('pennwize_username');
-            const welcomeTitle = document.getElementById('welcomeTitle');
-            const welcomeSubtitle = document.getElementById('welcomeSubtitle');
-            const userWelcomeMsg = document.getElementById('userWelcomeMsg');
-            const userGreeting = document.getElementById('userGreeting');
-            const visitInfo = document.getElementById('visitInfo');
-            
-            if (savedUsername && savedUsername.trim() !== '') {
-                // Exibe o nome do usuário
-                userGreeting.textContent = savedUsername;
-                
-                // Muda o título e subtítulo
-                welcomeTitle.textContent = `Bem-vindo(a), ${savedUsername}!`;
-                welcomeSubtitle.textContent = `Confira abaixo o portfólio de projetos da Penn & Wize.`;
-                
-                // Mostra a mensagem de boas-vindas
-                userWelcomeMsg.style.display = 'block';
+function showUserGreeting() {
+    const savedUsername = localStorage.getItem('pennwize_username');
+    const welcomeTitle = document.getElementById('welcomeTitle');
+    const welcomeSubtitle = document.getElementById('welcomeSubtitle');
+    const userWelcomeMsg = document.getElementById('userWelcomeMsg');
+    const userGreeting = document.getElementById('userGreeting');
+    const visitInfo = document.getElementById('visitInfo');
+    
+    if (savedUsername && savedUsername.trim() !== '') {
+        // Exibe o nome do usuário EM MAIÚSCULAS
+        userGreeting.textContent = savedUsername.toUpperCase();
+        
+        // Muda o título e subtítulo COM NOME EM BRANCO E FONTE CINZEL
+        welcomeTitle.innerHTML = `BEM-VINDO(A), <span style="font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; color: var(--white); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">${savedUsername.toUpperCase()}</span>!`;
+        welcomeSubtitle.textContent = `Confira abaixo o portfólio de projetos da Penn & Wize.`;
                 
                 // Mostra informações da última visita
                 const lastVisit = localStorage.getItem('pennwize_login_time');
