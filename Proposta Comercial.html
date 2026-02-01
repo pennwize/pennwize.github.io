@@ -135,7 +135,15 @@
             color: var(--primary-blue);
             cursor: pointer;
         }
-        
+        <div class="user-welcome" style="background: #e8f0fe; padding: 10px 15px; border-left: 4px solid #d32f2f; margin: 10px 0 20px 0; border-radius: 0 5px 5px 0;">
+    <p style="margin: 0; font-size: 0.95rem;">
+        <i class="fas fa-user-circle" style="color: #1a3c8b;"></i>
+        <strong>Bem-vindo(a), 
+            <span id="userGreeting" style="color: #d32f2f; text-transform: capitalize;">Visitante</span>!
+        </strong>
+        <span id="visitInfo" style="font-size: 0.85rem; color: #666; margin-left: 10px;"></span>
+    </p>
+</div>
         /* Hero Portfólio */
         .portfolio-hero {
             background: linear-gradient(rgba(26, 60, 139, 0.9), rgba(42, 92, 189, 0.8)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
@@ -709,6 +717,36 @@
         }
     </style>
 </head>
+
+<script>
+    // Mostrar saudação personalizada
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedUsername = localStorage.getItem('pennwize_username');
+        const userGreeting = document.getElementById('userGreeting');
+        const visitInfo = document.getElementById('visitInfo');
+        
+        if (savedUsername) {
+            userGreeting.textContent = savedUsername;
+            
+            const lastVisit = localStorage.getItem('pennwize_login_time');
+            if (lastVisit) {
+                const visitDate = new Date(lastVisit);
+                const now = new Date();
+                const diffMs = now - visitDate;
+                const diffMins = Math.floor(diffMs / 60000);
+                
+                if (diffMins < 1) {
+                    visitInfo.textContent = '• Acesso recente';
+                } else if (diffMins < 60) {
+                    visitInfo.textContent = `• Há ${diffMins} min`;
+                } else {
+                    visitInfo.textContent = `• ${visitDate.toLocaleDateString('pt-BR')}`;
+                }
+            }
+        }
+    });
+</script>
+    
 <body>
     <!-- Header -->
     <header>
