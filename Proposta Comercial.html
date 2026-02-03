@@ -299,832 +299,6 @@
             background-color: var(--secondary-blue);
         }
         
-        .portfolio-stats {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 60px 0;
-            margin: 60px 0;
-            text-align: center;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-        
-        .stat-item {
-            padding: 20px;
-        }
-        
-        .stat-number {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-red);
-            margin-bottom: 10px;
-        }
-        
-        .stat-text {
-            font-size: 1.1rem;
-        }
-        
-        .empty-section {
-            text-align: center;
-            padding: 60px 20px;
-            background-color: var(--white);
-            border-radius: 10px;
-            margin: 30px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .empty-icon {
-            font-size: 4rem;
-            color: var(--light-blue);
-            margin-bottom: 20px;
-        }
-        
-        footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-links h4, .footer-contact h4 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-links h4::after, .footer-contact h4::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent-red);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: var(--light-blue);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent-red);
-        }
-        
-        .footer-contact p {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-contact i {
-            color: var(--accent-red);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--white);
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .portfolio-hero {
-                padding: 70px 0;
-            }
-            
-            .portfolio-hero h2 {
-                font-size: 2rem;
-            }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .filter-buttons {
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 10px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo-text h1 {
-                font-size: 1.5rem;
-            }
-            
-            .portfolio-hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .portfolio-content {
-                padding: 20px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 40px;
-            font-size: 1.2rem;
-            color: var(--primary-blue);
-        }
-        
-        .spinner {
-            border: 4px solid var(--light-gray);
-            border-top: 4px solid var(--accent-red);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-</head>
-    
-<body>
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-img">
-                    <img src="img/logo.png" alt="Penn & Wize Logo" class="logo-image">
-                </div>
-                <div class="logo-text">
-                    <h1>PENN & WIZE</h1>
-                    <span>INSTALAÇÕES PREDIAIS</span>
-                </div>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="index.html#about">Sobre</a></li>
-                    <li><a href="index.html#team">Equipe</a></li>
-                    <li><a href="index.html#services">Serviços</a></li>
-                    <li><a href="index.html#mission">Missão e Valores</a></li>
-                    <li><a href="index.html#budget">Orçamento</a></li>
-                    <li><a href="index.html#contact">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="portfolio-hero">
-        <div class="container">
-            <h2 id="welcomeTitle">Proposta Comercial</h2>
-            <p id="welcomeSubtitle">Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.</p>
-        </div>
-    </section>
-
-    <section class="portfolio-filters">
-        <div class="container">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">Todos os Projetos</button>
-                <button class="filter-btn" data-filter="agua-fria">Água Fria e Água Quente</button>
-                <button class="filter-btn" data-filter="esgoto">Esgoto</button>
-                <button class="filter-btn" data-filter="drenagem">Drenagem</button>
-                <button class="filter-btn" data-filter="gas">Gás</button>
-                <button class="filter-btn" data-filter="incendio">Combate a Incêndio</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="portfolio-container">
-        <div class="container">
-            <div id="portfolioLoading" class="loading">
-                <div class="spinner"></div>
-                <p>Carregando projetos...</p>
-            </div>
-            
-            <div id="agua-fria-section" class="portfolio-section" style="display: none;">
-                <h2 style="color: var(--primary-blue); margin-bottom: 30px; font-family: 'Cinzel', serif; text-align: center;">Projetos de Água Fria e Água Quente</h2>
-                <div id="aguaFriaGrid" class="portfolio-grid"></div>
-            </div>
-                
-                <div id="esgoto-section" class="portfolio-section" style="display: none;">
-                    <div class="empty-section">
-                        <div class="empty-icon">
-                            <i class="fas fa-water"></i>
-                        </div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de sistemas de esgoto.</p>
-                    </div>
-                </div>
-                
-                <div id="drenagem-section" class="portfolio-section" style="display: none;">
-                    <div class="empty-section">
-                        <div class="empty-icon">
-                            <i class="fas fa-cloud-rain"></i>
-                        </div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de sistemas de drenagem.</p>
-                    </div>
-                </div>
-                
-                <div id="gas-section" class="portfolio-section" style="display: none;">
-                    <div class="empty-section">
-                        <div class="empty-icon">
-                            <i class="fas fa-gas-pump"></i>
-                        </div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de instalações de gás.</p>
-                    </div>
-                </div>
-                
-                <div id="incendio-section" class="portfolio-section" style="display: none;">
-                    <div class="empty-section">
-                        <div class="empty-icon">
-                            <i class="fas fa-fire-extinguisher"></i>
-                        </div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de combate a incêndio.</p>
-                    </div>
-                </div>
-                
-                <div id="all-projects-section" class="portfolio-section" style="display: none;">
-                    <div id="allProjectsGrid" class="portfolio-grid"></div>
-                </div>
-            </div>
-            
-            <div id="noProjects" style="display: none; text-align: center; padding: 60px 0;">
-                <i class="fas fa-folder-open" style="font-size: 4rem; color: var(--primary-blue); margin-bottom: 20px;"></i>
-                <h3>Nenhum projeto encontrado</h3>
-                <p>Os projetos serão carregados em breve.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="portfolio-stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">2</div>
-                    <div class="stat-text">Projetos Entregues</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-text">Clientes Satisfeitos</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">3</div>
-                    <div class="stat-text">Semanas de Experiência</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">3</div>
-                    <div class="stat-text">Especialidades Ativas</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <div style="color: white; font-family: 'Cinzel', serif;">
-                        <div style="font-size: 1.8rem;">PENN & WIZE</div>
-                        <div style="font-size: 0.9rem; margin-top: 5px; color: var(--light-blue);">INSTALAÇÕES PREDIAIS</div>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Links Rápidos</h4>
-                    <ul>
-                        <li><a href="index.html">Página Inicial</a></li>
-                        <li><a href="index.html#services">Nossos Serviços</a></li>
-                        <li><a href="index.html#team">Nossa Equipe</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4>Contato</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> R. das Biociências, Setor IV, Sala G6 - Lagoa Nova, Natal RN</p>
-                    <p><i class="fas fa-phone"></i> +55 84 99818-7493</p>
-                    <p><i class="fas fa-envelope"></i> contato@pennwize.com.br</p>
-                    <p><i class="fas fa-clock"></i> Segunda a Sexta: 8h às 18h</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2024 Penn & Wize Instalações Prediais. Todos os direitos reservados.</p>
-                <p style="margin-top: 5px;">CNPJ: 26.844.777/0001-26</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        function showUserGreeting() {
-            const savedUsername = localStorage.getItem('pennwize_username');
-            const welcomeTitle = document.getElementById('welcomeTitle');
-            const welcomeSubtitle = document.getElementById('welcomeSubtitle');
-            
-            if (savedUsername && savedUsername.trim() !== '') {
-                welcomeTitle.innerHTML = `BEM-VINDO(A), <span class="user-name-title">${savedUsername.toUpperCase()}</span>!`;
-                welcomeSubtitle.textContent = `Confira abaixo a proposta comercial de projetos da Penn & Wize.`;
-                localStorage.setItem('pennwize_login_time', new Date().toISOString());
-            } else {
-                welcomeTitle.textContent = 'PROPOSTA COMERCIAL';
-                welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
-            }
-        }
-
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (mainNav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-        
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-        
-        const portfolioProjects = [
-            {
-                id: 1,
-                title: "Projeto de Água Fria - Residencial Multifamiliar",
-                category: "agua-fria",
-                description: "Dimensionamento completo do sistema de água fria para residência multifamiliar com 5.490,54 m² de área construída, incluindo reservatório inferior e superior, sistema de recalque e distribuição de água, sistema de aquecimento e sistema de abastecimento da piscina.",
-                file: "img/Proposta/AFAQ.pdf",
-                previewImage: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                date: "Janeiro 2026",
-                client: "Edifício Derry and Georgie",
-                pages: 1
-            }
-        ];
-        
-        function renderPortfolioByCategory(category) {
-            const loadingElement = document.getElementById('portfolioLoading');
-            const noProjectsElement = document.getElementById('noProjects');
-            
-            document.querySelectorAll('.portfolio-section').forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            noProjectsElement.style.display = 'none';
-            loadingElement.style.display = 'block';
-            
-            setTimeout(() => {
-                loadingElement.style.display = 'none';
-                
-                if (category === 'all') {
-                    document.getElementById('all-projects-section').style.display = 'block';
-                    renderProjects(portfolioProjects, 'allProjectsGrid');
-                } else if (category === 'agua-fria') {
-                    const aguaFriaProjects = portfolioProjects.filter(project => project.category === 'agua-fria');
-                    if (aguaFriaProjects.length > 0) {
-                        document.getElementById('agua-fria-section').style.display = 'block';
-                        renderProjects(aguaFriaProjects, 'aguaFriaGrid');
-                    } else {
-                        showEmptySection('agua-fria-section');
-                    }
-                } else {
-                    showEmptySection(`${category}-section`);
-                }
-            }, 500);
-        }
-        
-        function showEmptySection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.style.display = 'block';
-            }
-        }
-        
-        function renderProjects(projects, gridId) {
-            const grid = document.getElementById(gridId);
-            if (!grid) return;
-            
-            grid.innerHTML = '';
-            
-            if (projects.length === 0) {
-                grid.innerHTML = `
-                    <div class="empty-section" style="grid-column: 1 / -1;">
-                        <div class="empty-icon">
-                            <i class="fas fa-folder-open"></i>
-                        </div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Nenhum projeto disponível</h3>
-                        <p>Em breve adicionaremos projetos a esta categoria.</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            projects.forEach(project => {
-                const projectElement = document.createElement('div');
-                projectElement.className = 'portfolio-item';
-                
-                projectElement.innerHTML = `
-                    <div class="portfolio-image">
-                        <div class="pdf-icon">
-                            <i class="fas fa-file-pdf"></i>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">${getCategoryName(project.category)}</span>
-                        <h3>${project.title}</h3>
-                        <p class="portfolio-description">${project.description}</p>
-                        <div class="portfolio-details">
-                            <div class="portfolio-date">
-                                <i class="far fa-calendar"></i> ${project.date}
-                                <br>
-                                <small><i class="far fa-user"></i> ${project.client}</small>
-                            </div>
-                            <a class="portfolio-view-btn" href="${project.file}" target="_blank">
-                                <i class="fas fa-eye"></i> Ver PDF
-                            </a>
-                        </div>
-                    </div>
-                `;
-                
-                grid.appendChild(projectElement);
-            });
-        }
-        
-        function getCategoryName(category) {
-            const categories = {
-                'all': 'Todos',
-                'agua-fria': 'Água Fria',
-                'agua-quente': 'Água Quente',
-                'esgoto': 'Esgoto',
-                'drenagem': 'Drenagem',
-                'gas': 'Gás',
-                'incendio': 'Combate a Incêndio'
-            };
-            return categories[category] || category;
-        }
-        
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
-                const filter = this.getAttribute('data-filter');
-                renderPortfolioByCategory(filter);
-            });
-        });
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            renderPortfolioByCategory('all');
-            showUserGreeting();
-        });
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#') return;
-                
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo-img {
-            width: 180px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .logo-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-text h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--primary-blue);
-            line-height: 1.2;
-        }
-        
-        .logo-text span {
-            color: var(--accent-red);
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: var(--dark-gray);
-            font-weight: 600;
-            transition: color 0.3s;
-            padding: 5px 0;
-            position: relative;
-        }
-        
-        nav a:hover {
-            color: var(--primary-blue);
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-red);
-            bottom: 0;
-            left: 0;
-            transition: width 0.3s;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            cursor: pointer;
-        }
-        
-        .portfolio-hero {
-            background: linear-gradient(rgba(26, 60, 139, 0.9), rgba(42, 92, 189, 0.8));
-            color: var(--white);
-            padding: 100px 0;
-            text-align: center;
-        }
-        
-        .portfolio-hero h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .portfolio-hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        .user-name-title {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--white);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .portfolio-filters {
-            background-color: var(--white);
-            padding: 30px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 40px;
-        }
-        
-        .filter-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .filter-btn {
-            padding: 10px 25px;
-            background-color: var(--light-gray);
-            border: 2px solid transparent;
-            border-radius: 5px;
-            font-weight: 600;
-            color: var(--dark-gray);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border-color: var(--accent-red);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .portfolio-item {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .portfolio-image {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            background-color: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .portfolio-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.5s;
-            padding: 20px;
-        }
-        
-        .portfolio-item:hover .portfolio-image img {
-            transform: scale(1.05);
-        }
-        
-        .pdf-icon {
-            font-size: 4rem;
-            color: var(--accent-red);
-        }
-        
-        .portfolio-content {
-            padding: 25px;
-        }
-        
-        .portfolio-content h3 {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-blue);
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-        
-        .portfolio-category {
-            display: inline-block;
-            background-color: var(--accent-red);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .portfolio-description {
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-        
-        .portfolio-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--light-gray);
-        }
-        
-        .portfolio-date {
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        .portfolio-view-btn {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 8px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .portfolio-view-btn:hover {
-            background-color: var(--secondary-blue);
-        }
-        
         .pdf-modal {
             display: none;
             position: fixed;
@@ -1539,50 +713,49 @@
                 <h2 style="color: var(--primary-blue); margin-bottom: 30px; font-family: 'Cinzel', serif; text-align: center;">Projetos de Água Fria e Água Quente</h2>
                 <div id="aguaFriaGrid" class="portfolio-grid"></div>
             </div>
-                
-                <div id="esgoto-section" class="portfolio-section" style="display: none;">
-                    <div class="empty-section">
-                        <div class="empty-icon">
-                            <i class="fas fa-water"></i>
-                        </div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de sistemas de esgoto.</p>
+            
+            <div id="esgoto-section" class="portfolio-section" style="display: none;">
+                <div class="empty-section">
+                    <div class="empty-icon">
+                        <i class="fas fa-water"></i>
                     </div>
+                    <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
+                    <p>Estamos trabalhando em projetos de sistemas de esgoto.</p>
                 </div>
-                
-                <div id="drenagem-section" class="portfolio-section" style="display: none;">
-                    <div class="empty-section">
-                        <div class="empty-icon">
-                            <i class="fas fa-cloud-rain"></i>
-                        </div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de sistemas de drenagem.</p>
+            </div>
+            
+            <div id="drenagem-section" class="portfolio-section" style="display: none;">
+                <div class="empty-section">
+                    <div class="empty-icon">
+                        <i class="fas fa-cloud-rain"></i>
                     </div>
+                    <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
+                    <p>Estamos trabalhando em projetos de sistemas de drenagem.</p>
                 </div>
-                
-                <div id="gas-section" class="portfolio-section" style="display: none;">
-                    <div class="empty-section">
-                        <div class="empty-icon">
-                            <i class="fas fa-gas-pump"></i>
-                        </div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de instalações de gás.</p>
+            </div>
+            
+            <div id="gas-section" class="portfolio-section" style="display: none;">
+                <div class="empty-section">
+                    <div class="empty-icon">
+                        <i class="fas fa-gas-pump"></i>
                     </div>
+                    <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
+                    <p>Estamos trabalhando em projetos de instalações de gás.</p>
                 </div>
-                
-                <div id="incendio-section" class="portfolio-section" style="display: none;">
-                    <div class="empty-section">
-                        <div class="empty-icon">
-                            <i class="fas fa-fire-extinguisher"></i>
-                        </div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
-                        <p>Estamos trabalhando em projetos de combate a incêndio.</p>
+            </div>
+            
+            <div id="incendio-section" class="portfolio-section" style="display: none;">
+                <div class="empty-section">
+                    <div class="empty-icon">
+                        <i class="fas fa-fire-extinguisher"></i>
                     </div>
+                    <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Em Desenvolvimento</h3>
+                    <p>Estamos trabalhando em projetos de combate a incêndio.</p>
                 </div>
-                
-                <div id="all-projects-section" class="portfolio-section" style="display: none;">
-                    <div id="allProjectsGrid" class="portfolio-grid"></div>
-                </div>
+            </div>
+            
+            <div id="all-projects-section" class="portfolio-section" style="display: none;">
+                <div id="allProjectsGrid" class="portfolio-grid"></div>
             </div>
             
             <div id="noProjects" style="display: none; text-align: center; padding: 60px 0;">
@@ -1669,6 +842,270 @@
             </button>
         </div>
     </div>
-    
+
+    <script>
+        function showUserGreeting() {
+            const savedUsername = localStorage.getItem('pennwize_username');
+            const welcomeTitle = document.getElementById('welcomeTitle');
+            const welcomeSubtitle = document.getElementById('welcomeSubtitle');
+            
+            if (savedUsername && savedUsername.trim() !== '') {
+                welcomeTitle.innerHTML = `BEM-VINDO(A), <span class="user-name-title">${savedUsername.toUpperCase()}</span>!`;
+                welcomeSubtitle.textContent = `Confira abaixo a proposta comercial de projetos da Penn & Wize.`;
+                localStorage.setItem('pennwize_login_time', new Date().toISOString());
+            } else {
+                welcomeTitle.textContent = 'PROPOSTA COMERCIAL';
+                welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
+            }
+        }
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        const portfolioProjects = [
+            {
+                id: 1,
+                title: "Projeto de Água Fria - Residencial Multifamiliar",
+                category: "agua-fria",
+                description: "Dimensionamento completo do sistema de água fria para residência multifamiliar com 5.490,54 m² de área construída, incluindo reservatório inferior e superior, sistema de recalque e distribuição de água, sistema de aquecimento e sistema de abastecimento da piscina.",
+                file: "img/Proposta/AFAQ.pdf",
+                previewImage: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                date: "Janeiro 2026",
+                client: "Edifício Derry and Georgie",
+                pages: 1
+            }
+        ];
+        
+        function renderPortfolioByCategory(category) {
+            const loadingElement = document.getElementById('portfolioLoading');
+            const noProjectsElement = document.getElementById('noProjects');
+            
+            document.querySelectorAll('.portfolio-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            noProjectsElement.style.display = 'none';
+            loadingElement.style.display = 'block';
+            
+            setTimeout(() => {
+                loadingElement.style.display = 'none';
+                
+                if (category === 'all') {
+                    document.getElementById('all-projects-section').style.display = 'block';
+                    renderProjects(portfolioProjects, 'allProjectsGrid');
+                } else if (category === 'agua-fria') {
+                    const aguaFriaProjects = portfolioProjects.filter(project => project.category === 'agua-fria');
+                    if (aguaFriaProjects.length > 0) {
+                        document.getElementById('agua-fria-section').style.display = 'block';
+                        renderProjects(aguaFriaProjects, 'aguaFriaGrid');
+                    } else {
+                        showEmptySection('agua-fria-section');
+                    }
+                } else {
+                    showEmptySection(`${category}-section`);
+                }
+            }, 500);
+        }
+        
+        function showEmptySection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = 'block';
+            }
+        }
+        
+        function renderProjects(projects, gridId) {
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            
+            if (projects.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-section" style="grid-column: 1 / -1;">
+                        <div class="empty-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Nenhum projeto disponível</h3>
+                        <p>Em breve adicionaremos projetos a esta categoria.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            projects.forEach(project => {
+                const projectElement = document.createElement('div');
+                projectElement.className = 'portfolio-item';
+                
+                projectElement.innerHTML = `
+                    <div class="portfolio-image">
+                        <div class="pdf-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">${getCategoryName(project.category)}</span>
+                        <h3>${project.title}</h3>
+                        <p class="portfolio-description">${project.description}</p>
+                        <div class="portfolio-details">
+                            <div class="portfolio-date">
+                                <i class="far fa-calendar"></i> ${project.date}
+                                <br>
+                                <small><i class="far fa-user"></i> ${project.client}</small>
+                            </div>
+                            <button class="portfolio-view-btn" onclick="viewPdf('${project.file}', '${project.title}')">
+                                <i class="fas fa-eye"></i> Ver PDF
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(projectElement);
+            });
+        }
+        
+        function getCategoryName(category) {
+            const categories = {
+                'all': 'Todos',
+                'agua-fria': 'Água Fria',
+                'agua-quente': 'Água Quente',
+                'esgoto': 'Esgoto',
+                'drenagem': 'Drenagem',
+                'gas': 'Gás',
+                'incendio': 'Combate a Incêndio'
+            };
+            return categories[category] || category;
+        }
+        
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                const filter = this.getAttribute('data-filter');
+                renderPortfolioByCategory(filter);
+            });
+        });
+        
+        const pdfModal = document.getElementById('pdfModal');
+        const pdfViewer = document.getElementById('pdfViewer');
+        const pdfModalTitle = document.getElementById('pdfModalTitle');
+        const pdfModalClose = document.getElementById('pdfModalClose');
+        const pdfDownloadLink = document.getElementById('pdfDownloadLink');
+        const pdfFullscreenBtn = document.getElementById('pdfFullscreenBtn');
+        
+        function openPdfModal(pdfUrl, title) {
+            pdfModalTitle.textContent = title;
+            pdfDownloadLink.href = pdfUrl;
+            pdfDownloadLink.download = title.replace(/\s+/g, '_') + '.pdf';
+            pdfViewer.src = pdfUrl;
+            pdfModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closePdfModal() {
+            pdfModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            pdfViewer.src = '';
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
+            pdfModal.classList.remove('fullscreen');
+        }
+        
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                if (pdfModal.requestFullscreen) {
+                    pdfModal.requestFullscreen();
+                }
+                pdfModal.classList.add('fullscreen');
+                pdfFullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                pdfFullscreenBtn.title = "Sair da tela cheia";
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+                pdfModal.classList.remove('fullscreen');
+                pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                pdfFullscreenBtn.title = "Tela cheia";
+            }
+        }
+        
+        pdfModalClose.addEventListener('click', closePdfModal);
+        pdfFullscreenBtn.addEventListener('click', toggleFullscreen);
+        
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                pdfModal.classList.remove('fullscreen');
+                pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                pdfFullscreenBtn.title = "Tela cheia";
+            }
+        });
+        
+        pdfModal.addEventListener('click', (e) => {
+            if (e.target === pdfModal) {
+                closePdfModal();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
+                closePdfModal();
+            }
+            if (pdfModal.style.display === 'flex' && (e.key === 'f' || e.key === 'F')) {
+                e.preventDefault();
+                toggleFullscreen();
+            }
+        });
+        
+        window.viewPdf = function(pdfUrl, title) {
+            openPdfModal(pdfUrl, title);
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPortfolioByCategory('all');
+            showUserGreeting();
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
