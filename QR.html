@@ -13,7 +13,6 @@
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -35,11 +34,10 @@
             margin-bottom: 30px;
         }
         
-        h1 {
-            color: #333;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+       h1 {
+    color: #1a3c8b;
+}
+
         
         .subtitle {
             color: #666;
@@ -47,15 +45,10 @@
             margin-bottom: 20px;
         }
         
-        .url-display {
-            background-color: #f5f5f5;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            word-break: break-all;
-            font-family: monospace;
-            border: 2px dashed #ddd;
-        }
+       .url-display a {
+    color: #e80f04;
+}
+
         
         .url-display a {
             color: #667eea;
@@ -117,12 +110,10 @@
             color: #555;
         }
         
-        .qr-info li:before {
-            content: "✓";
-            color: #4CAF50;
-            font-weight: bold;
-            margin-right: 10px;
-        }
+      .qr-info li:before {
+    color: #e80f04;
+}
+
         
         .color-controls {
             display: flex;
@@ -174,14 +165,14 @@
         }
         
         .btn-download {
-            background-color: #4CAF50;
-            color: white;
-        }
-        
-        .btn-download:hover {
-            background-color: #3d8b40;
-            transform: translateY(-3px);
-        }
+    background-color: #e80f04;
+    color: #ffffff;
+}
+
+.btn-download:hover {
+    background-color: #c70d03;
+}
+
         
         .btn-reset {
             background-color: #f0f0f0;
@@ -193,15 +184,15 @@
             transform: translateY(-3px);
         }
         
-        .btn-share {
-            background-color: #2196F3;
-            color: white;
-        }
-        
-        .btn-share:hover {
-            background-color: #0b7dda;
-            transform: translateY(-3px);
-        }
+.btn-share {
+    background-color: #1a3c8b;
+    color: #ffffff;
+}
+
+.btn-share:hover {
+    background-color: #142f6f;
+}
+
         
         button i {
             font-size: 1.2rem;
@@ -265,9 +256,18 @@
             "
         >
     </div>
+          <div class="controls">
+    <button class="btn-download" id="download-btn">
+        <i class="fas fa-download"></i> Baixar QR Code
+    </button>
+
+    <button class="btn-share" id="share-btn">
+        <i class="fas fa-share-alt"></i> Compartilhar
+    </button>
+</div>         
 </div>
 
-            
+      
             <div class="qr-info">
                 <h3><i class="fas fa-info-circle"></i> Como usar</h3>
                 <ul>
@@ -282,20 +282,8 @@
                 </div>
             </div>
         </div>
+    
         
-        <div class="controls">
-            <button class="btn-download" id="download-btn">
-                <i class="fas fa-download"></i> Baixar QR Code
-            </button>
-        
-            <button class="btn-share" id="share-btn">
-                <i class="fas fa-share-alt"></i> Compartilhar
-            </button>
-        </div>
-        
-        <div class="footer">
-        </div>
-    </div>
 
     <script>
     const siteUrl = "https://pennwize.github.io";
@@ -310,6 +298,11 @@
             <html>
                 <head>
                     <title>QR Code Ampliado - Penn & Wize</title>
+
+                    .controls.inside {
+    margin-top: 30px;
+}
+
                     <style>
                         body {
                             display: flex;
