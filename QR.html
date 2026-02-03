@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code - Penn & Wize</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .url-display {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            word-break: break-all;
+            font-family: monospace;
+            border: 2px dashed #ddd;
+        }
+        
+        .url-display a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .url-display a:hover {
+            text-decoration: underline;
+        }
+        
+        .qr-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .qr-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        #qrcode {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        #qrcode:hover {
+            transform: translateY(-5px);
+        }
+        
+        .qr-info {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+        
+        .qr-info h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .qr-info ul {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .qr-info li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        
+        .qr-info li:before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .color-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .color-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .color-control label {
+            min-width: 120px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .color-control input[type="color"] {
+            width: 50px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-download {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .btn-download:hover {
+            background-color: #3d8b40;
+            transform: translateY(-3px);
+        }
+        
+        .btn-reset {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+        .btn-reset:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-3px);
+        }
+        
+        .btn-share {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        .btn-share:hover {
+            background-color: #0b7dda;
+            transform: translateY(-3px);
+        }
+        
+        button i {
+            font-size: 1.2rem;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #888;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .qr-section {
+                flex-direction: column;
+            }
+            
+            .qr-info {
+                text-align: center;
+            }
+        }
+    </style>
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-qrcode"></i> QR Code do Site</h1>
+            <p class="subtitle">Escaneie este código para acessar o site Penn & Wize</p>
+        </div>
+        
+        <div class="url-display">
+            URL: <a href="https://pennwize.github.io" target="_blank">https://pennwize.github.io</a>
+        </div>
+        
+        <div class="qr-section">
+            <div class="qr-container">
+                <div id="qrcode"></div>
+            </div>
+            
+            <div class="qr-info">
+                <h3><i class="fas fa-info-circle"></i> Como usar</h3>
+                <ul>
+                    <li>Use a câmera do seu celular para escanear</li>
+                    <li>Compartilhe com amigos ou colegas</li>
+                    <li>Cole em apresentações ou materiais impressos</li>
+                    <li>É permanente e sempre funcionará</li>
+                </ul>
+                
+          
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn-download" id="download-btn">
+                <i class="fas fa-download"></i> Baixar QR Code
+            </button>
+        
+            <button class="btn-share" id="share-btn">
+                <i class="fas fa-share-alt"></i> Compartilhar
+            </button>
+        </div>
+        
+        <div class="footer">
+        </div>
+    </div>
+
+    <script>
+        // URL do seu site
+        const siteUrl = "https://pennwize.github.io";
+        
+        // Elementos DOM
+        const qrcodeElement = document.getElementById('qrcode');
+        const colorDarkInput = document.getElementById('color-dark');
+        const colorLightInput = document.getElementById('color-light');
+        const downloadBtn = document.getElementById('download-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const shareBtn = document.getElementById('share-btn');
+        const currentDateElement = document.getElementById('current-date');
+        
+        // Configurações iniciais
+        let currentColors = {
+            dark: '#000000',
+            light: '#FFFFFF'
+        };
+        
+        // Gerar QR code inicial
+        function generateQRCode() {
+            // Limpar elemento QR code
+            qrcodeElement.innerHTML = '';
+            
+            // Criar elemento canvas para o QR code
+            const canvas = document.createElement('canvas');
+            qrcodeElement.appendChild(canvas);
+            
+            // Gerar QR code
+            QRCode.toCanvas(canvas, siteUrl, {
+                width: 250,
+                margin: 2,
+                color: {
+                    dark: currentColors.dark,
+                    light: currentColors.light
+                },
+                errorCorrectionLevel: 'H'
+            }, function(error) {
+                if (error) {
+                    console.error(error);
+                    qrcodeElement.innerHTML = '<p style="color:red;">Erro ao gerar QR code</p>';
+                } else {
+                    console.log('QR code gerado com sucesso!');
+                    
+                    // Adicionar efeito de clique para visualização ampliada
+                    canvas.style.cursor = 'pointer';
+                    canvas.title = 'Clique para ampliar';
+                    canvas.addEventListener('click', function() {
+                        const newWindow = window.open('', '_blank');
+                        newWindow.document.write(`
+                            <html>
+                                <head>
+                                    <title>QR Code Ampliado - Penn & Wize</title>
+                                    <style>
+                                        body {
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            height: 100vh;
+                                            margin: 0;
+                                            background-color: #f5f5f5;
+                                        }
+                                        img {
+                                            max-width: 90vw;
+                                            max-height: 90vh;
+                                            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                                            border-radius: 10px;
+                                        }
+                                    </style>
+                                </head>
+                                <body>
+                                    <img src="${canvas.toDataURL()}">
+                                </body>
+                            </html>
+                        `);
+                    });
+                }
+            });
+        }
+        
+        // Baixar QR code como imagem
+        function downloadQRCode() {
+            const canvas = qrcodeElement.querySelector('canvas');
+            if (!canvas) {
+                alert('QR code não está disponível para download');
+                return;
+            }
+            
+            const link = document.createElement('a');
+            link.download = `pennwize-qrcode-${new Date().toISOString().slice(0,10)}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            
+            // Feedback visual
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '<i class="fas fa-check"></i> Baixado!';
+            downloadBtn.style.backgroundColor = '#2E7D32';
+            
+            setTimeout(() => {
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.style.backgroundColor = '';
+            }, 2000);
+        }
+        
+        // Redefinir cores para padrão
+        function resetColors() {
+            colorDarkInput.value = '#000000';
+            colorLightInput.value = '#FFFFFF';
+            currentColors = {
+                dark: '#000000',
+                light: '#FFFFFF'
+            };
+            generateQRCode();
+            
+            // Feedback visual
+            const originalText = resetBtn.innerHTML;
+            resetBtn.innerHTML = '<i class="fas fa-check"></i> Resetado!';
+            
+            setTimeout(() => {
+                resetBtn.innerHTML = originalText;
+            }, 1500);
+        }
+        
+        // Compartilhar QR code
+        function shareQRCode() {
+            const canvas = qrcodeElement.querySelector('canvas');
+            if (!canvas) {
+                alert('QR code não está disponível para compartilhar');
+                return;
+            }
+            
+            // Converter canvas para blob
+            canvas.toBlob(function(blob) {
+                const file = new File([blob], "pennwize-qrcode.png", { type: "image/png" });
+                
+                // Verificar se a Web Share API está disponível
+                if (navigator.share && navigator.canShare) {
+                    navigator.share({
+                        title: 'QR Code do Site da Penn & Wize',
+                        text: 'Escaneie este QR code para acessar pennwize.github.io',
+                        url: siteUrl,
+                        files: [file]
+                    })
+                    .then(() => console.log('Compartilhado com sucesso!'))
+                    .catch(error => {
+                        console.log('Erro ao compartilhar:', error);
+                        // Fallback: copiar para área de transferência
+                        fallbackShare();
+                    });
+                } else {
+                    // Fallback para navegadores que não suportam compartilhamento de arquivos
+                    fallbackShare();
+                }
+            });
+        }
+        
+        // Fallback para compartilhamento
+        function fallbackShare() {
+            const canvas = qrcodeElement.querySelector('canvas');
+            if (!canvas) return;
+            
+            // Copiar imagem para área de transferência
+            canvas.toBlob(function(blob) {
+                const item = new ClipboardItem({ "image/png": blob });
+                navigator.clipboard.write([item])
+                    .then(() => {
+                        alert('QR code copiado para a área de transferência!');
+                    })
+                    .catch(err => {
+                        console.error('Erro ao copiar:', err);
+                        // Último fallback: oferecer download
+                        const link = document.createElement('a');
+                        link.href = canvas.toDataURL();
+                        link.download = 'pennwize-qrcode.png';
+                        link.click();
+                    });
+            });
+        }
+        
+        // Atualizar data atual
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            currentDateElement.textContent = now.toLocaleDateString('pt-BR', options);
+        }
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gerar QR code inicial
+            generateQRCode();
+            
+            // Atualizar data
+            updateCurrentDate();
+            
+            // Event listeners
+            colorDarkInput.addEventListener('input', function() {
+                currentColors.dark = this.value;
+                generateQRCode();
+            });
+            
+            colorLightInput.addEventListener('input', function() {
+                currentColors.light = this.value;
+                generateQRCode();
+            });
+            
+            downloadBtn.addEventListener('click', downloadQRCode);
+            resetBtn.addEventListener('click', resetColors);
+            shareBtn.addEventListener('click', shareQRCode);
+            
+            // Adicionar instrução de uso no console
+            console.log('%cQR Code gerado para: pennwize.github.io', 
+                'color: #764ba2; font-size: 14px; font-weight: bold;');
+        });
+    </script>
+</body>
+</html>
