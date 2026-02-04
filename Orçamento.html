@@ -1,1 +1,1164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penn & Wize - Solicitar Orçamento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Cores extraídas da logo - tons de azul e vermelho */
+        :root {
+            --primary-blue: #1a3c8b;
+            --secondary-blue: #2a5cbd;
+            --accent-red: #d32f2f;
+            --light-blue: #e8f0fe;
+            --dark-gray: #333333;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --success-green: #4CAF50;
+            --warning-orange: #FF9800;
+        }
 
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+        /* Aplicar a fonte a TODOS os títulos do site */
+        h1, h2, h3, h4, h5,
+        .section-title h2,
+        .service-card h3,
+        .service-detail-header h3,
+        .service-features h4,
+        .service-benefits h4,
+        .card h3,
+        .benefit-item h4,
+        .footer-links h4,
+        .footer-contact h4,
+        .footer-logo h3,
+        .member-name,
+        .member-position,
+        .logo-text h1,
+        .logo-text span,
+        .hero h2,
+        .service-detail-header h3,
+        .budget-form h2 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Ajustes específicos */
+        .logo-text span {
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Configuração de texto justificado */
+        p, li, .about-text, .drainage-text, .service-features, .service-benefits, 
+        .service-normas, .card p, .benefit-item p, .footer-contact p,
+        .member-description p, .form-instructions, .budget-info {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        
+        /* Configuração de títulos centralizados */
+        h1, h2, h3, h4, .section-title h2, .service-card h3, .service-detail-header h3,
+        .service-features h4, .service-benefits h4, .card h3, .benefit-item h4,
+        .footer-links h4, .footer-contact h4, .footer-logo h3,
+        .member-name, .member-position, .budget-form h2 {
+            text-align: center;
+        }
+        
+        /* Header e Navegação */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            transform: translateX(-30px);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            line-height: 1.2;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-red);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 60, 139, 0.9), rgba(42, 92, 189, 0.8)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-blue);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #0d2b6c;
+        }
+        
+        .btn-success {
+            background-color: var(--success-green);
+        }
+        
+        .btn-success:hover {
+            background-color: #388E3C;
+        }
+        
+        /* Seções Gerais */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-blue);
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-red);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Formulário de Orçamento */
+        .budget-form-section {
+            background-color: var(--light-gray);
+        }
+        
+        .budget-form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .budget-form {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .budget-form h2 {
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--light-blue);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-blue);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .required::after {
+            content: " *";
+            color: var(--accent-red);
+        }
+        
+        .form-instructions {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-red);
+        }
+        
+        .form-instructions h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        
+        .form-instructions ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .form-instructions li {
+            margin-bottom: 5px;
+        }
+        
+        /* Informações de Orçamento */
+        .budget-info {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .budget-info h3 {
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .info-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--light-blue);
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-item h4 {
+            color: var(--accent-red);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+        
+        .info-item h4 i {
+            font-size: 1.2rem;
+        }
+        
+        .services-checklist {
+            margin-top: 20px;
+        }
+        
+        .service-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .service-option input {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .service-option label {
+            font-weight: normal;
+            color: var(--dark-gray);
+            cursor: pointer;
+        }
+        
+        /* Processo de Orçamento */
+        .budget-process {
+            background-color: var(--white);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-red);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        /* Tabela de Prazos */
+        .prazos-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .prazos-table th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .prazos-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--light-blue);
+        }
+        
+        .prazos-table tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .prazos-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-red);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        
+        .footer-links a {
+            color: var(--light-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-red);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-contact i {
+            color: var(--accent-red);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .cnpj {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+        
+        /* Botão do WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Mensagem de sucesso */
+        .success-message {
+            display: none;
+            background-color: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .success-message i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .success-message h3 {
+            margin-bottom: 10px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .budget-form-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-img {
+                width: 160px;
+                height: 65px;
+            }
+            
+            .budget-form, .budget-info {
+                padding: 30px 20px;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+            
+            /* Ajustes de texto para mobile */
+            p, li, .about-text, .drainage-text, .service-features, .service-benefits, 
+            .service-normas, .card p, .benefit-item p, .footer-contact p,
+            .member-description p, .form-instructions, .budget-info {
+                text-align: left;
+                hyphens: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+            
+            .budget-form, .budget-info, .process-step {
+                padding: 20px;
+            }
+            
+            .logo-img {
+                width: 140px;
+                height: 55px;
+            }
+            
+            .whatsapp-float {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 22px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .prazos-table th, .prazos-table td {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Melhorias na justificação */
+        .about-text p, .drainage-text p, .card p, .service-normas p,
+        .member-description p, .form-instructions, .budget-info p {
+            line-height: 1.8;
+            text-align-last: left;
+        }
+        
+        /* Links do footer alinhados à esquerda */
+        .footer-links li {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5584998187493?text=Olá! Gostaria de mais informações sobre orçamentos da Penn Wize." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header e Navegação -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- LOGO REAL - agora na pasta img -->
+                <div class="logo-img">
+                    <img src="img/logo.png" alt="Penn & Wize Logo" class="logo-image">
+                </div>
+                <div class="logo-text">
+                    <h1>PENN & WIZE</h1>
+                    <span>INSTALAÇÕES PREDIAIS</span>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#about">Sobre</a></li>
+                    <li><a href="index.html#team">Equipe</a></li>
+                    <li><a href="index.html#services">Serviços</a></li>
+                    <li><a href="index.html#mission">Missão e Valores</a></li>
+                    <li><a href="#budget">Orçamento</a></li>
+                    <li><a href="index.html#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Solicite seu Orçamento</h2>
+            <p>Preencha o formulário abaixo para receber uma proposta personalizada para seu projeto de instalações prediais.</p>
+            <a href="#budget-form" class="btn">Preencher Formulário</a>
+        </div>
+    </section>
+
+    <!-- Formulário de Orçamento -->
+    <section class="budget-form-section" id="budget">
+        <div class="container">
+            <div class="section-title">
+                <h2>Solicitação de Orçamento</h2>
+            </div>
+            
+            <div class="form-instructions">
+                <h4>Instruções para Solicitação de Orçamento:</h4>
+                <p>Para que possamos elaborar um orçamento preciso, por favor, forneça o máximo de informações possíveis sobre seu projeto. Quanto mais detalhes, mais precisa será nossa proposta.</p>
+                <ul>
+                    <li>Informe o tipo de edificação (residencial, comercial, industrial)</li>
+                    <li>Forneça as dimensões aproximadas (área construída, número de pavimentos)</li>
+                    <li>Descreva quais sistemas são necessários (água fria, esgoto, combate a incêndio, etc.)</li>
+                    <li>Caso tenha plantas ou desenhos, mencione no campo de observações</li>
+                </ul>
+            </div>
+            
+            <div class="budget-form-container">
+                <div class="budget-form" id="budget-form">
+                    <h2>Formulário de Solicitação</h2>
+                    
+                    <form id="budgetRequestForm">
+                        <div class="form-group">
+                            <label for="nome" class="required">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="empresa">Empresa (se aplicável)</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">E-mail</label>
+                            <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone" class="required">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" required placeholder="(84) 99999-9999">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tipo-projeto" class="required">Tipo de Projeto</label>
+                            <select id="tipo-projeto" name="tipo-projeto" required>
+                                <option value="">Selecione o tipo de projeto</option>
+                                <option value="residencial">Residencial</option>
+                                <option value="comercial">Comercial</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="corporativo">Corporativo</option>
+                                <option value="institucional">Institucional</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="servicos" class="required">Serviços Necessários</label>
+                            <div class="services-checklist">
+                                <div class="service-option">
+                                    <input type="checkbox" id="agua-fria" name="servicos" value="agua-fria">
+                                    <label for="agua-fria">Água Fria</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="agua-quente" name="servicos" value="agua-quente">
+                                    <label for="agua-quente">Água Quente</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="esgoto" name="servicos" value="esgoto">
+                                    <label for="esgoto">Esgoto</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="drenagem" name="servicos" value="drenagem">
+                                    <label for="drenagem">Drenagem</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="gas" name="servicos" value="gas">
+                                    <label for="gas">Gás</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="combate-incendio" name="servicos" value="combate-incendio">
+                                    <label for="combate-incendio">Combate a Incêndio</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="consultoria" name="servicos" value="consultoria">
+                                    <label for="consultoria">Consultoria</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="descricao" class="required">Descrição do Projeto</label>
+                            <textarea id="descricao" name="descricao" required placeholder="Descreva seu projeto com o máximo de detalhes possível. Inclua dimensões, localização, prazos desejados e qualquer informação relevante."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="prazo-desejado">Prazo Desejado para Execução</label>
+                            <select id="prazo-desejado" name="prazo-desejado">
+                                <option value="">Selecione um prazo</option>
+                                <option value="urgente">Urgente (até 15 dias)</option>
+                                <option value="curto">Curto Prazo (15-30 dias)</option>
+                                <option value="medio">Médio Prazo (1-3 meses)</option>
+                                <option value="longo">Longo Prazo (acima de 3 meses)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="observacoes">Observações Adicionais</label>
+                            <textarea id="observacoes" name="observacoes" placeholder="Informações complementares, arquivos disponíveis, restrições, etc."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Enviar Solicitação de Orçamento
+                        </button>
+                    </form>
+                    
+                    <div id="successMessage" class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Solicitação Enviada com Sucesso!</h3>
+                        <p>Recebemos sua solicitação de orçamento. Entraremos em contato em até 24 horas úteis para discutir os detalhes do seu projeto.</p>
+                        <a href="index.html" class="btn" style="margin-top: 15px;">
+                            <i class="fas fa-home"></i> Voltar para a Página Inicial
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="budget-info">
+                    <h3>Informações sobre Orçamentos</h3>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-clock"></i> Prazos de Resposta</h4>
+                        <p>Nossa equipe analisa cada solicitação de forma personalizada. O prazo para envio da proposta completa é de 2 a 5 dias úteis, dependendo da complexidade do projeto.</p>
+                        
+                        <table class="prazos-table">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Projeto</th>
+                                    <th>Prazo Estimado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Residencial Simples</td>
+                                    <td>2 dias úteis</td>
+                                </tr>
+                                <tr>
+                                    <td>Comercial Médio</td>
+                                    <td>3-4 dias úteis</td>
+                                </tr>
+                                <tr>
+                                    <td>Industrial/Complexo</td>
+                                    <td>5 dias úteis</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-file-invoice-dollar"></i> Validade da Proposta</h4>
+                        <p>Todas as nossas propostas têm validade de 30 dias a partir da data de emissão. Após este período, valores e condições podem ser reavaliados conforme variações de mercado.</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-money-bill-wave"></i> Formas de Pagamento</h4>
+                        <p>Aceitamos as seguintes formas de pagamento:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>PIX (melhor condição)</li>
+                            <li>Transferência bancária</li>
+                            <li>Cartão de crédito (parcelado)</li>
+                            <li>Boleto bancário</li>
+                        </ul>
+                        <p style="margin-top: 10px;">Condições especiais para pagamento à vista.</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-headset"></i> Suporte Pós-venda</h4>
+                        <p>Nossos projetos incluem suporte técnico durante toda a execução e por 90 dias após a entrega final. Estamos disponíveis para esclarecer dúvidas e garantir a perfeita implementação do projeto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo de Orçamento -->
+    <section class="budget-process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como Funciona Nosso Processo</h2>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Solicitação</h4>
+                    <p>Preencha o formulário com os detalhes do seu projeto. Quanto mais informações, mais precisa será nossa proposta.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Análise Técnica</h4>
+                    <p>Nossa equipe analisa os requisitos do projeto, verificando normas técnicas, materiais necessários e complexidade.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Elaboração da Proposta</h4>
+                    <p>Desenvolvemos um orçamento detalhado com especificações técnicas, cronograma e valores transparentes.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Apresentação</h4>
+                    <p>Entramos em contato para apresentar a proposta, esclarecer dúvidas e ajustar detalhes conforme necessário.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#about">Sobre a Empresa</a></li>
+                        <li><a href="index.html#team">Nossa Equipe</a></li>
+                        <li><a href="index.html#services">Nossos Serviços</a></li>
+                        <li><a href="index.html#service-details">Especificações Técnicas</a></li>
+                        <li><a href="index.html#mission">Missão e Valores</a></li>
+                        <li><a href="#budget">Orçamento</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> R. das Biociências, Setor IV, Sala G6 - Lagoa Nova, Natal RN</p>
+                    <p><i class="fas fa-phone"></i> +55 84 99818-7493</p>
+                    <p><i class="fas fa-envelope"></i> contato@pennwize.com.br</p>
+                    <p><i class="fas fa-clock"></i> Segunda a Sexta: 8h às 18h</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Penn & Wize Instalações Prediais. Todos os direitos reservados.</p>
+                <p style="margin-top: 5px;">CNPJ: 26.844.777/0001-26</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu móvel
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Fecha o menu ao clicar em um link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // Suaviza o scroll para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Formulário de orçamento
+        const budgetForm = document.getElementById('budgetRequestForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        budgetForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validação básica
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const tipoProjeto = document.getElementById('tipo-projeto').value;
+            const descricao = document.getElementById('descricao').value;
+            
+            // Verificar se pelo menos um serviço foi selecionado
+            const servicosSelecionados = document.querySelectorAll('input[name="servicos"]:checked');
+            
+            if (!nome || !email || !telefone || !tipoProjeto || !descricao || servicosSelecionados.length === 0) {
+                alert('Por favor, preencha todos os campos obrigatórios e selecione pelo menos um serviço.');
+                return;
+            }
+            
+            // Aqui normalmente enviaríamos os dados para um servidor
+            // Por enquanto, apenas mostramos a mensagem de sucesso
+            budgetForm.style.display = 'none';
+            successMessage.style.display = 'block';
+            
+            // Scroll para a mensagem de sucesso
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            
+            // Opcional: Enviar dados por email (simulação)
+            console.log('Dados do formulário:', {
+                nome,
+                empresa: document.getElementById('empresa').value,
+                email,
+                telefone,
+                tipoProjeto,
+                servicos: Array.from(servicosSelecionados).map(s => s.value),
+                descricao,
+                prazoDesejado: document.getElementById('prazo-desejado').value,
+                observacoes: document.getElementById('observacoes').value
+            });
+        });
+        
+        // Máscara para telefone
+        const telefoneInput = document.getElementById('telefone');
+        telefoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 11) {
+                value = value.substring(0, 11);
+            }
+            
+            if (value.length <= 10) {
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+            } else {
+                value = value.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+            }
+            
+            e.target.value = value;
+        });
+        
+        // Atualizar ano do copyright automaticamente
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElement = document.querySelector('.copyright p');
+            if (yearElement) {
+                const currentYear = new Date().getFullYear();
+                yearElement.innerHTML = yearElement.innerHTML.replace('2024', currentYear);
+            }
+        });
+    </script>
+</body>
+</html>
