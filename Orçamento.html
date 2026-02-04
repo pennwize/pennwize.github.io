@@ -1210,5 +1210,272 @@
             }
         });
     </script>
+
+////////
+ <script>
+        function showUserGreeting() {
+            const savedUsername = localStorage.getItem('pennwize_username');
+            const welcomeTitle = document.getElementById('welcomeTitle');
+            const welcomeSubtitle = document.getElementById('welcomeSubtitle');
+            
+            if (savedUsername && savedUsername.trim() !== '') {
+                welcomeTitle.innerHTML = `BEM-VINDO(A), <span class="user-name-title">${savedUsername.toUpperCase()}</span>!`;
+                welcomeSubtitle.textContent = `Confira abaixo os Projetos da Penn & Wize.`;
+                localStorage.setItem('pennwize_login_time', new Date().toISOString());
+            } else {
+                welcomeTitle.textContent = 'Projetos';
+                welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
+            }
+        }
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        const portfolioProjects = [
+            {
+                id: 1,
+                title: "Projeto de Água Fria - Residencial Multifamiliar",
+                category: "agua-fria",
+                description: "Dimensionamento completo do sistema de água fria para residência multifamiliar com 5.490,54 m² de área construída, incluindo reservatório inferior e superior, sistema de recalque e distribuição de água, sistema de aquecimento e sistema de abastecimento da piscina.",
+                file: "img/Proposta/AFAQ.pdf",
+                previewImage: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                date: "Janeiro 2026",
+                client: "Edifício Derry and Georgie",
+                pages: 1
+            }
+        ];
+        
+        function renderPortfolioByCategory(category) {
+            const loadingElement = document.getElementById('portfolioLoading');
+            const noProjectsElement = document.getElementById('noProjects');
+            
+            document.querySelectorAll('.portfolio-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            noProjectsElement.style.display = 'none';
+            loadingElement.style.display = 'block';
+            
+            setTimeout(() => {
+                loadingElement.style.display = 'none';
+                
+                if (category === 'all') {
+                    document.getElementById('all-projects-section').style.display = 'block';
+                    renderProjects(portfolioProjects, 'allProjectsGrid');
+                } else if (category === 'agua-fria') {
+                    const aguaFriaProjects = portfolioProjects.filter(project => project.category === 'agua-fria');
+                    if (aguaFriaProjects.length > 0) {
+                        document.getElementById('agua-fria-section').style.display = 'block';
+                        renderProjects(aguaFriaProjects, 'aguaFriaGrid');
+                    } else {
+                        showEmptySection('agua-fria-section');
+                    }
+                } else {
+                    showEmptySection(`${category}-section`);
+                }
+            }, 500);
+        }
+        
+        function showEmptySection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = 'block';
+            }
+        }
+        
+        function renderProjects(projects, gridId) {
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            
+            if (projects.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-section" style="grid-column: 1 / -1;">
+                        <div class="empty-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Nenhum projeto disponível</h3>
+                        <p>Em breve adicionaremos projetos a esta categoria.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            projects.forEach(project => {
+                const projectElement = document.createElement('div');
+                projectElement.className = 'portfolio-item';
+                
+                projectElement.innerHTML = `
+                    <div class="portfolio-image">
+                        <div class="pdf-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">${getCategoryName(project.category)}</span>
+                        <h3>${project.title}</h3>
+                        <p class="portfolio-description">${project.description}</p>
+                        <div class="portfolio-details">
+                            <div class="portfolio-date">
+                                <i class="far fa-calendar"></i> ${project.date}
+                                <br>
+                                <small><i class="far fa-user"></i> ${project.client}</small>
+                            </div>
+                            <button class="portfolio-view-btn" onclick="viewPdf('${project.file}', '${project.title}')">
+                                <i class="fas fa-eye"></i> Ver PDF
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(projectElement);
+            });
+        }
+        
+        function getCategoryName(category) {
+            const categories = {
+                'all': 'Todos',
+                'agua-fria': 'Água Fria',
+                'agua-quente': 'Água Quente',
+                'esgoto': 'Esgoto',
+                'drenagem': 'Drenagem',
+                'gas': 'Gás',
+                'incendio': 'Combate a Incêndio'
+            };
+            return categories[category] || category;
+        }
+        
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                const filter = this.getAttribute('data-filter');
+                renderPortfolioByCategory(filter);
+            });
+        });
+        
+        const pdfModal = document.getElementById('pdfModal');
+        const pdfViewer = document.getElementById('pdfViewer');
+        const pdfModalTitle = document.getElementById('pdfModalTitle');
+        const pdfModalClose = document.getElementById('pdfModalClose');
+        const pdfDownloadLink = document.getElementById('pdfDownloadLink');
+        const pdfFullscreenBtn = document.getElementById('pdfFullscreenBtn');
+        
+        function openPdfModal(pdfUrl, title) {
+            pdfModalTitle.textContent = title;
+            pdfDownloadLink.href = pdfUrl;
+            pdfDownloadLink.download = title.replace(/\s+/g, '_') + '.pdf';
+            pdfViewer.src = pdfUrl;
+            pdfModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closePdfModal() {
+            pdfModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            pdfViewer.src = '';
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
+            pdfModal.classList.remove('fullscreen');
+        }
+        
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                if (pdfModal.requestFullscreen) {
+                    pdfModal.requestFullscreen();
+                }
+                pdfModal.classList.add('fullscreen');
+                pdfFullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                pdfFullscreenBtn.title = "Sair da tela cheia";
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+                pdfModal.classList.remove('fullscreen');
+                pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                pdfFullscreenBtn.title = "Tela cheia";
+            }
+        }
+        
+        pdfModalClose.addEventListener('click', closePdfModal);
+        pdfFullscreenBtn.addEventListener('click', toggleFullscreen);
+        
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                pdfModal.classList.remove('fullscreen');
+                pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                pdfFullscreenBtn.title = "Tela cheia";
+            }
+        });
+        
+        pdfModal.addEventListener('click', (e) => {
+            if (e.target === pdfModal) {
+                closePdfModal();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
+                closePdfModal();
+            }
+            if (pdfModal.style.display === 'flex' && (e.key === 'f' || e.key === 'F')) {
+                e.preventDefault();
+                toggleFullscreen();
+            }
+        });
+        
+        window.viewPdf = function(pdfUrl, title) {
+            openPdfModal(pdfUrl, title);
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPortfolioByCategory('all');
+            showUserGreeting();
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    
 </body>
 </html>
