@@ -156,28 +156,23 @@
     <div class="login-container">
         <div class="login-header">
             <h1>PENN & WIZE</h1>
-            <p></p>
+            <p>Área de Acesso à Proposta Comercial</p>
         </div>
         
         <div class="login-form">
             <div class="info-note">
-                <p><strong>Bem-vindo</strong></p>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Preencha seu login para continuar</p>
+                <p><strong>Bem-vindo à Penn & Wize</strong></p>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Digite seu nome para acessar a proposta comercial do seu projeto</p>
             </div>
             
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="username"><i class="fas fa-user"></i> Seu nome</label>
-                    <input type="text" id="username" name="username" placeholder="Digite seu nome de usuário" required autofocus>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password"><i class="fas fa-lock"></i> Senha</label>
-                    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                    <label for="username"><i class="fas fa-user"></i> Seu nome completo</label>
+                    <input type="text" id="username" name="username" placeholder="Digite seu nome completo" required autofocus>
                 </div>
                 
                 <button type="submit" class="login-btn">
-                    <i class="fas fa-sign-in-alt"></i> Entrar
+                    <i class="fas fa-sign-in-alt"></i> Acessar Proposta
                 </button>
             </form>
             
@@ -199,7 +194,6 @@
             e.preventDefault();
             
             const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
             
             // Validação básica
             if (!username) {
@@ -212,10 +206,6 @@
             localStorage.setItem('pennwize_username', username);
             localStorage.setItem('pennwize_login_time', new Date().toISOString());
             
-            if (password) {
-                localStorage.setItem('pennwize_password', password);
-            }
-            
             // Redirecionar para a Proposta Comercial
             window.location.href = "Proposta Comercial.html";
         });
@@ -225,7 +215,6 @@
             const savedName = localStorage.getItem('pennwize_username');
             if (savedName) {
                 document.getElementById('username').value = savedName;
-                document.getElementById('password').focus();
             }
         });
     </script>
