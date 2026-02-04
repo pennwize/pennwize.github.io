@@ -864,6 +864,17 @@
             box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
         }
         
+        .btn-project {
+            background-color: var(--revit-orange);
+            color: var(--white);
+        }
+        
+        .btn-project:hover {
+            background-color: #d87a0a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(242, 145, 17, 0.3);
+        }
+        
         /* Observações */
         .observations {
             background-color: #fff9e6;
@@ -1043,6 +1054,38 @@
         .benefit-item i {
             color: var(--revit-orange);
             margin-top: 3px;
+        }
+        
+        /* Seção de visualização de projeto */
+        .project-preview-section {
+            background: linear-gradient(135deg, #f0f8ff, #e6f2ff);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+            border: 2px solid var(--primary-blue);
+            text-align: center;
+        }
+        
+        .project-preview-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+        }
+        
+        .project-preview-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .project-icon {
+            font-size: 3rem;
+            color: var(--revit-orange);
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -1298,6 +1341,26 @@
                 </div>
             </div>
             
+            <!-- Seção de Visualização do Projeto -->
+            <div class="project-preview-section fade-in">
+                <h3><i class="fas fa-eye"></i> VISUALIZAÇÃO DO PROJETO</h3>
+                <div class="project-preview-box">
+                    <div class="project-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h4>Confira uma prévia do nosso projeto em Revit</h4>
+                    <p style="margin-bottom: 20px; color: #666;">Visualize uma amostra da qualidade técnica e detalhamento do projeto que desenvolvemos.</p>
+                    
+                    <button class="btn btn-project" onclick="viewProjectPrancheta()">
+                        <i class="fas fa-search"></i> Verifique seu Projeto
+                    </button>
+                    
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #888;">
+                        <i class="fas fa-info-circle"></i> Será aberto o arquivo de prancha técnica em PDF
+                    </p>
+                </div>
+            </div>
+            
             <!-- Prazo de Entrega -->
             <div class="project-details fade-in">
                 <h3><i class="fas fa-calendar-alt"></i> PRAZO DE ENTREGA</h3>
@@ -1445,8 +1508,8 @@
             <button class="btn btn-primary" onclick="window.print()">
                 <i class="fas fa-print"></i> Imprimir Proposta
             </button>
-            <button class="btn btn-secondary" onclick="downloadPDF()">
-                <i class="fas fa-download"></i> Baixar PDF
+            <button class="btn btn-project" onclick="viewProjectPrancheta()">
+                <i class="fas fa-search"></i> Verifique seu Projeto
             </button>
         </div>
     </div>
@@ -1543,6 +1606,21 @@
                 justification: "Etapa fundamental para garantir a qualidade técnica e coerência do projeto final, com uso de tecnologia BIM."
             }
         };
+
+        // Função para abrir a prancha do projeto
+        function viewProjectPrancheta() {
+            const projectPath = "img/prancha/Projeto.pdf";
+            const userName = localStorage.getItem('pennwize_username') || 'Cliente';
+            const greeting = getGreeting();
+            
+            // Tentar abrir o arquivo
+            window.open(projectPath, '_blank');
+            
+            // Mensagem informativa
+            setTimeout(() => {
+                alert(`${greeting}, ${userName}!\n\nAbrindo prancha técnica do projeto...\n\nArquivo: ${projectPath}\n\nCaso o arquivo não abra, verifique se ele está no diretório correto.`);
+            }, 300);
+        }
 
         // Função para obter saudação baseada na hora
         function getGreeting() {
@@ -1678,15 +1756,6 @@
             if (event.target === modal) {
                 closeDetailModal();
             }
-        }
-        
-        // Simulação de download de PDF
-        function downloadPDF() {
-            const projectName = "Proposta_PennWize_Residencial_Multifamiliar";
-            const userName = localStorage.getItem('pennwize_username') || 'Cliente';
-            const greeting = getGreeting();
-            
-            alert(`${greeting}, ${userName}!\n\nIniciando download da proposta...\n\nArquivo: ${projectName}.pdf\n\nValor total: R$ 70.500,00\n\nTecnologia: 100% Autodesk Revit BIM\n\nEm um sistema real, esta proposta seria convertida para PDF com todas as informações.`);
         }
         
         // Função para preencher valores na impressão
