@@ -21,6 +21,7 @@
             --advanced-teal: #0097a7;
             --extreme-orange: #ff5722;
             --calculation-blue: #1976d2;
+            --revit-orange: #f29111;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
@@ -172,6 +173,26 @@
             color: rgba(255, 255, 255, 0.95);
             text-transform: uppercase;
             margin-top: 5px;
+        }
+        
+        .revit-badge {
+            background-color: var(--revit-orange);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .proposal-date {
@@ -746,6 +767,11 @@
                 box-shadow: none;
                 border: 1px solid #ddd;
             }
+            
+            .revit-badge {
+                border: 2px solid var(--revit-orange);
+                animation: none;
+            }
         }
         
         /* Animações */
@@ -983,6 +1009,41 @@
             border-radius: 5px;
             border-left: 3px solid var(--primary-blue);
         }
+        
+        .revit-highlight {
+            background: linear-gradient(135deg, #fef5e7, #fff3e0);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 2px solid var(--revit-orange);
+        }
+        
+        .revit-highlight h4 {
+            color: var(--revit-orange);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .benefit-item i {
+            color: var(--revit-orange);
+            margin-top: 3px;
+        }
     </style>
 </head>
 <body>
@@ -1016,6 +1077,9 @@
             <div class="logo-section">
                 <div class="logo-main">PENN & WIZE</div>
                 <div class="logo-sub">INSTALAÇÕES PREDIAIS</div>
+                <div class="revit-badge">
+                    <i class="fas fa-cube"></i> PROJETO 100% EM REVIT
+                </div>
             </div>
             
             <div class="subtitle">PROPOSTA COMERCIAL</div>
@@ -1036,6 +1100,42 @@
                 <p>A presente proposta tem como objetivo apresentar os serviços de elaboração de <strong>projeto executivo de instalações prediais</strong> para o empreendimento <strong>Residência Multifamiliar</strong>, incluindo memorial descritivo e pranchas técnicas conforme normas técnicas vigentes.</p>
                 
                 <p>A <strong>Penn & Wize Instalações Prediais</strong> desenvolve projetos técnicos com foco na conformidade normativa, funcionalidade das instalações e clareza na documentação para execução. Nossa abordagem prioriza soluções técnicas adequadas ao contexto construtivo brasileiro.</p>
+                
+                <div class="revit-highlight">
+                    <h4><i class="fas fa-cube"></i> DIFERENCIAL TECNOLÓGICO</h4>
+                    <p><strong>TODOS OS PROJETOS SÃO DESENVOLVIDOS 100% EM AUTODESK REVIT</strong>, garantindo modelagem BIM completa, compatibilização automática, extração de quantitativos e visualização 3D integrada.</p>
+                    
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Modelagem Paramétrica</strong>
+                                <p>Objetos inteligentes com informações técnicas</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Compatibilização Automática</strong>
+                                <p>Detecção de interferências em tempo real</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Quantitativos Automáticos</strong>
+                                <p>Extração precisa de materiais e equipamentos</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Visualização 3D Integrada</strong>
+                                <p>Navegação e verificação espacial completa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Detalhes do Projeto -->
@@ -1064,10 +1164,10 @@
                         </div>
                     </div>
                     <div class="detail-item">
-                        <i class="fas fa-tint"></i>
+                        <i class="fas fa-cube"></i>
                         <div class="detail-text">
-                            <h4>Sistemas a Projetar</h4>
-                            <p>Água fria, água quente, esgoto sanitário, águas pluviais, combate a incêndio, gás</p>
+                            <h4>Plataforma BIM</h4>
+                            <p>Autodesk Revit 2025 - Modelagem Completa</p>
                         </div>
                     </div>
                 </div>
@@ -1088,8 +1188,9 @@
                         <li><strong>Projeto de combate a incêndio</strong> - conforme IT 01/19 do Corpo de Bombeiros</li>
                         <li><strong>Projeto de gás</strong> - instalações para gás encanado (GLP ou GN)</li>
                         <li><strong>Memorial descritivo técnico</strong> - especificações e procedimentos de execução</li>
-                        <li><strong>Elaboração de pranchas técnicas</strong> - plantas, cortes e detalhes executivos</li>
-                        <li><strong>Revisão técnica</strong> - compatibilização básica com projetos complementares</li>
+                        <li><strong>Modelagem BIM completa em Revit</strong> - famílias paramétricas, quantitativos, visualização 3D</li>
+                        <li><strong>Compatibilização automática</strong> - detecção de interferências com outros projetos</li>
+                        <li><strong>Revisão técnica</strong> - verificação de conformidade normativa</li>
                     </ul>
                     
                     <h4 style="margin-top: 25px;"><i class="fas fa-times-circle"></i> SERVIÇOS NÃO INCLUÍDOS</h4>
@@ -1116,23 +1217,23 @@
                     </div>
                     
                     <div class="deliverable-item">
-                        <h4><i class="fas fa-drafting-compass"></i> Conjunto de Pranchas</h4>
-                        <p>Plantas de cada pavimento, cortes, detalhes construtivos e esquemas hidráulicos em formato A3.</p>
+                        <h4><i class="fas fa-cube"></i> Modelo BIM Revit</h4>
+                        <p>Arquivo RVT completo com toda a modelagem paramétrica das instalações prediais.</p>
                     </div>
                     
                     <div class="deliverable-item">
-                        <h4><i class="fas fa-file-pdf"></i> Arquivos Digitais</h4>
-                        <p>Versões em PDF para impressão e DWG para eventual compatibilização com outros projetos.</p>
+                        <h4><i class="fas fa-file-pdf"></i> Conjunto de Pranchas PDF</h4>
+                        <p>Plantas, cortes e detalhes executivos em formato A3 para impressão.</p>
                     </div>
                     
                     <div class="deliverable-item">
-                        <h4><i class="fas fa-calculator"></i> Cálculos Técnicos</h4>
-                        <p>Planilhas com dimensionamento de tubulações, reservatórios e sistemas de bombeamento.</p>
+                        <h4><i class="fas fa-table"></i> Tabelas de Quantitativos</h4>
+                        <p>Planilhas extraídas do Revit com dimensionamento de tubulações, reservatórios e equipamentos.</p>
                     </div>
                 </div>
                 
                 <div style="margin-top: 20px; padding: 15px; background-color: #f0f7ff; border-radius: 5px; border-left: 4px solid var(--primary-blue);">
-                    <p style="margin: 0;"><i class="fas fa-info-circle" style="color: var(--primary-blue);"></i> <strong>Nota:</strong> Os arquivos serão desenvolvidos em software CAD (AutoCAD) e modelados no Revit para representação 3D básica. A entrega inclui até 3 revisões por parte do cliente.</p>
+                    <p style="margin: 0;"><i class="fas fa-info-circle" style="color: var(--primary-blue);"></i> <strong>Nota:</strong> TODOS OS ARQUIVOS serão desenvolvidos em <strong>Autodesk Revit</strong> (formato .RVT). Não utilizamos AutoCAD/DWG. A entrega inclui até 3 revisões por parte do cliente.</p>
                 </div>
             </div>
             
@@ -1174,26 +1275,26 @@
                             <td class="clickable-value" onclick="showValueDetail('memorial')">R$ 9.500,00</td>
                         </tr>
                         <tr>
-                            <td>Desenvolvimento das pranchas técnicas</td>
-                            <td class="clickable-value" onclick="showValueDetail('pranchas')">R$ 10.000,00</td>
+                            <td>Modelagem BIM completa em Revit</td>
+                            <td class="clickable-value" onclick="showValueDetail('pranchas')">R$ 12.000,00</td>
                         </tr>
                         <tr>
-                            <td>Revisão técnica e compatibilização básica</td>
+                            <td>Revisão técnica e compatibilização</td>
                             <td class="clickable-value" onclick="showValueDetail('revisao')">R$ 3.500,00</td>
                         </tr>
                         <tr class="subtotal-row">
                             <td><strong>Subtotal (Valor Base)</strong></td>
-                            <td><strong>R$ 68.500,00</strong></td>
+                            <td><strong>R$ 70.500,00</strong></td>
                         </tr>
                         <tr class="total-row">
                             <td><strong>TOTAL DO PROJETO COMPLETO</strong></td>
-                            <td class="highlight-cell"><strong>R$ 68.500,00</strong></td>
+                            <td class="highlight-cell"><strong>R$ 70.500,00</strong></td>
                         </tr>
                     </tbody>
                 </table>
                 
                 <div style="margin-top: 20px; padding: 15px; background-color: #fff3e0; border-radius: 5px; border-left: 4px solid #ff9800;">
-                    <p style="margin: 0;"><i class="fas fa-calculator" style="color: #ff9800;"></i> <strong>Nota:</strong> O valor de R$ 68.500,00 representa um investimento de <strong>R$ 12,48 por m² construído</strong>, considerando a área total de 5.490,54 m². Este valor está alinhado com o mercado para projetos de instalações prediais em empreendimentos multifamiliares.</p>
+                    <p style="margin: 0;"><i class="fas fa-calculator" style="color: #ff9800;"></i> <strong>Nota:</strong> O valor de R$ 70.500,00 representa um investimento de <strong>R$ 12,84 por m² construído</strong>, considerando a área total de 5.490,54 m². Inclui diferencial tecnológico da modelagem BIM completa em Revit.</p>
                 </div>
             </div>
             
@@ -1204,12 +1305,12 @@
                 <p><strong>Etapas do cronograma:</strong></p>
                 <ul style="margin: 15px 0 15px 20px;">
                     <li><strong>Semana 1-2:</strong> Levantamento e estudos preliminares</li>
-                    <li><strong>Semana 3-4:</strong> Desenvolvimento dos projetos hidrossanitários</li>
-                    <li><strong>Semana 5-6:</strong> Projetos de combate a incêndio e drenagem</li>
-                    <li><strong>Semana 7-8:</strong> Finalização de pranchas e memorial</li>
-                    <li><strong>Semana 9:</strong> Revisão técnica e entrega final</li>
+                    <li><strong>Semana 3-4:</strong> Desenvolvimento dos projetos hidrossanitários em Revit</li>
+                    <li><strong>Semana 5-6:</strong> Modelagem BIM dos sistemas de combate a incêndio e drenagem</li>
+                    <li><strong>Semana 7-8:</strong> Finalização do modelo Revit e extração de pranchas</li>
+                    <li><strong>Semana 9:</strong> Revisão técnica, compatibilização e entrega final</li>
                 </ul>
-                <p><strong>Metodologia de trabalho:</strong> Utilizaremos software CAD para desenvolvimento 2D e Revit para modelagem 3D básica para visualização.</p>
+                <p><strong>Metodologia de trabalho:</strong> Utilizaremos exclusivamente <strong>Autodesk Revit 2025</strong> para modelagem BIM completa, permitindo visualização 3D, extração de quantitativos e compatibilização automática.</p>
             </div>
             
             <!-- Validade da Proposta -->
@@ -1230,7 +1331,7 @@
                             <p>30% do valor total do projeto</p>
                         </div>
                         <div style="font-size: 1.3rem; font-weight: bold; color: var(--accent-red);">
-                            R$ 20.550,00
+                            R$ 21.150,00
                         </div>
                     </div>
                     
@@ -1240,7 +1341,7 @@
                             <p>40% do valor total</p>
                         </div>
                         <div style="font-size: 1.3rem; font-weight: bold; color: var(--accent-red);">
-                            R$ 27.400,00
+                            R$ 28.200,00
                         </div>
                     </div>
                     
@@ -1250,7 +1351,7 @@
                             <p>30% restante do valor total</p>
                         </div>
                         <div style="font-size: 1.3rem; font-weight: bold; color: var(--accent-red);">
-                            R$ 20.550,00
+                            R$ 21.150,00
                         </div>
                     </div>
                 </div>
@@ -1273,13 +1374,15 @@
                 <ul>
                     <li>Esta proposta inclui até 3 reuniões de alinhamento durante a elaboração do projeto;</li>
                     <li>O projeto será elaborado conforme as normas ABNT/NBR vigentes e IT 01/19 do Corpo de Bombeiros;</li>
-                    <li>Inclui compatibilização básica com projetos arquitetônico e estrutural;</li>
+                    <li><strong>TODO O PROJETO SERÁ DESENVOLVIDO EM AUTODESK REVIT</strong> - não utilizamos AutoCAD/DWG;</li>
+                    <li>Inclui modelagem BIM completa com famílias paramétricas e extração de quantitativos;</li>
+                    <li>Compatibilização automática via Revit com detecção de interferências;</li>
                     <li>Não estão incluídas taxas de aprovação junto aos órgãos competentes;</li>
                     <li>Alterações significativas no escopo após o início do projeto poderão gerar custos adicionais;</li>
-                    <li>Será fornecida uma cópia digital completa do projeto em PDF e DWG;</li>
+                    <li>Será fornecida uma cópia digital completa do projeto em PDF e arquivo .RVT (Revit);</li>
                     <li>A Penn & Wize mantém a propriedade intelectual do projeto até a quitação total;</li>
                     <li>Garantia de 90 dias para correções técnicas após a entrega final;</li>
-                    <li>O cliente deverá fornecer todas as plantas arquitetônicas atualizadas em DWG ou PDF vetorial.</li>
+                    <li>O cliente deverá fornecer todas as plantas arquitetônicas atualizadas em formato compatível com Revit.</li>
                 </ul>
             </div>
             
@@ -1288,7 +1391,14 @@
             <div class="section-content fade-in">
                 <p>A <strong>Penn & Wize Instalações Prediais</strong> compromete-se com a qualidade técnica na elaboração do projeto executivo, garantindo soluções adequadas, conformidade normativa e documentação clara para execução.</p>
                 
-                <p>Nossa equipe técnica, com formação em engenharia e arquitetura, desenvolverá o projeto com atenção aos detalhes construtivos e funcionais necessários para um empreendimento desta natureza.</p>
+                <p>Nossa equipe técnica, especializada em <strong>BIM (Building Information Modeling)</strong>, desenvolverá o projeto com a mais avançada tecnologia do mercado, proporcionando:</p>
+                
+                <ul style="margin: 15px 0 15px 20px;">
+                    <li><strong>Visualização 3D completa</strong> de todas as instalações</li>
+                    <li><strong>Compatibilização automática</strong> com outros projetos</li>
+                    <li><strong>Extração precisa de quantitativos</strong> para orçamento</li>
+                    <li><strong>Detecção de interferências</strong> antes da execução</li>
+                </ul>
                 
                 <p>Agradecemos pela oportunidade e colocamo-nos à disposição para discutirmos os detalhes desta proposta.</p>
             </div>
@@ -1308,6 +1418,7 @@
                     <p><i class="fas fa-id-card"></i> CNPJ: 26.844.777/0001-26</p>
                     <p><i class="fas fa-calendar-alt"></i> Data da proposta: 04/02/2025</p>
                     <p><i class="fas fa-file-alt"></i> Proposta nº: PW-PROJ-2025-017</p>
+                    <p><i class="fas fa-cube"></i> Plataforma BIM: Autodesk Revit 2025</p>
                 </div>
             </div>
             
@@ -1318,11 +1429,10 @@
                 <div style="margin-top: 50px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
                     <div>
                         <div class="signature-name">Letícia Tôrres</div>
-
                     </div>
                     <div>
                         <div class="signature-name">João Pedro</div>
-                            </div>
+                    </div>
                     <div>
                         <div class="signature-name">Amanda Campos</div>
                     </div>
@@ -1342,7 +1452,7 @@
     </div>
 
     <script>
-        // Dados detalhados para cada item da tabela
+        // Dados detalhados para cada item da tabela - ATUALIZADO para Revit
         const valueDetails = {
             levantamento: {
                 title: "Levantamento Técnico e Estudos Preliminares",
@@ -1411,26 +1521,26 @@
                 justification: "Documento essencial para licitação e execução da obra, exigindo rigor técnico."
             },
             pranchas: {
-                title: "Desenvolvimento das Pranchas Técnicas",
-                totalValue: 10000,
-                description: "Conjunto completo de plantas, cortes, detalhes construtivos e esquemas hidráulicos.",
+                title: "Modelagem BIM Completa em Revit",
+                totalValue: 12000,
+                description: "Modelagem paramétrica completa no Autodesk Revit, incluindo famílias customizadas e extração de quantitativos.",
                 breakdown: {
-                    "Desenho técnico em CAD": 5000,
-                    "Modelagem 3D básica no Revit": 3000,
-                    "Diagramas e esquemas hidráulicos": 2000
+                    "Modelagem paramétrica em Revit": 6000,
+                    "Criação de famílias customizadas": 3000,
+                    "Extrações de pranchas e quantitativos": 3000
                 },
-                justification: "Quantidade significativa de pavimentos (17) que exige produção extensa de pranchas."
+                justification: "Tecnologia BIM avançada que proporciona compatibilização automática e visualização 3D integrada."
             },
             revisao: {
-                title: "Revisão Técnica e Compatibilização Básica",
+                title: "Revisão Técnica e Compatibilização",
                 totalValue: 3500,
-                description: "Verificação técnica do projeto e compatibilização com projetos complementares.",
+                description: "Verificação técnica do projeto e compatibilização automática via Revit com outros projetos.",
                 breakdown: {
                     "Revisão técnica interna": 1500,
-                    "Compatibilização com projetos arquitetônico e estrutural": 1500,
+                    "Compatibilização automática via Revit": 1500,
                     "Ajustes finais e preparação para entrega": 500
                 },
-                justification: "Etapa fundamental para garantir a qualidade técnica e coerência do projeto final."
+                justification: "Etapa fundamental para garantir a qualidade técnica e coerência do projeto final, com uso de tecnologia BIM."
             }
         };
 
@@ -1524,14 +1634,14 @@
                             </h4>
                             <div style="text-align: center; margin: 15px 0;">
                                 <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue);">
-                                    ${((detail.totalValue / 68500) * 100).toFixed(1)}%
+                                    ${((detail.totalValue / 70500) * 100).toFixed(1)}%
                                 </div>
                                 <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">
                                     do valor total da proposta
                                 </p>
                             </div>
                             <p style="color: #555; font-size: 0.9rem; text-align: center;">
-                                Este item representa R$ ${(detail.totalValue/1000).toFixed(1)}k do total de R$ 68,5k
+                                Este item representa R$ ${(detail.totalValue/1000).toFixed(1)}k do total de R$ 70,5k
                             </p>
                         </div>
                     </div>
@@ -1544,7 +1654,7 @@
                     <div style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-radius: 5px; border-left: 4px solid #4caf50;">
                         <p style="margin: 0; color: #2e7d32;">
                             <i class="fas fa-lightbulb"></i> <strong>Nota:</strong> 
-                            Este serviço está incluso no pacote completo de projeto executivo de instalações prediais.
+                            Este serviço está incluso no pacote completo de projeto executivo de instalações prediais em Revit.
                         </p>
                     </div>
                 </div>
@@ -1576,7 +1686,7 @@
             const userName = localStorage.getItem('pennwize_username') || 'Cliente';
             const greeting = getGreeting();
             
-            alert(`${greeting}, ${userName}!\n\nIniciando download da proposta...\n\nArquivo: ${projectName}.pdf\n\nValor total: R$ 68.500,00\n\nEm um sistema real, esta proposta seria convertida para PDF com todas as informações.`);
+            alert(`${greeting}, ${userName}!\n\nIniciando download da proposta...\n\nArquivo: ${projectName}.pdf\n\nValor total: R$ 70.500,00\n\nTecnologia: 100% Autodesk Revit BIM\n\nEm um sistema real, esta proposta seria convertida para PDF com todas as informações.`);
         }
         
         // Função para preencher valores na impressão
@@ -1591,4 +1701,4 @@
         };
     </script>
 </body>
-                                                                                                           </html>
+    </html>
