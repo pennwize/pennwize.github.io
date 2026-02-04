@@ -684,7 +684,7 @@
 
     <section class="portfolio-hero">
         <div class="container">
-            <h2 id="welcomeTitle">Proposta Comercial</h2>
+            <h2 id="welcomeTitle">Projetos</h2>
             <p id="welcomeSubtitle">Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.</p>
         </div>
     </section>
@@ -851,10 +851,10 @@
             
             if (savedUsername && savedUsername.trim() !== '') {
                 welcomeTitle.innerHTML = `BEM-VINDO(A), <span class="user-name-title">${savedUsername.toUpperCase()}</span>!`;
-                welcomeSubtitle.textContent = `Confira abaixo a proposta comercial de projetos da Penn & Wize.`;
+                welcomeSubtitle.textContent = `Confira abaixo os Projetos da Penn & Wize.`;
                 localStorage.setItem('pennwize_login_time', new Date().toISOString());
             } else {
-                welcomeTitle.textContent = 'PROPOSTA COMERCIAL';
+                welcomeTitle.textContent = 'Projetos';
                 welcomeSubtitle.textContent = 'Veja abaixo todos os projetos desenvolvidos pela Penn & Wize.';
             }
         }
