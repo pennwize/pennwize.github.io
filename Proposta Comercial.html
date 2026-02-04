@@ -17,6 +17,7 @@
             --white: #ffffff;
             --success-green: #32CD32;
             --warning-orange: #FF9800;
+            --complexity-purple: #6a1b9a;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
@@ -85,7 +86,7 @@
         }
         
         .logo-img {
-            width: 200px; /* Aumentado para melhor visualização */
+            width: 200px;
             height: 80px;
         }
         
@@ -93,7 +94,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: brightness(0) invert(1); /* Torna a logo branca no fundo azul */
+            filter: brightness(0) invert(1);
         }
         
         .logo-text {
@@ -183,6 +184,49 @@
             color: #555;
         }
         
+        /* Seção de Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--primary-blue);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-card h4 i {
+            color: var(--accent-red);
+        }
+        
+        .service-card ul {
+            margin-left: 20px;
+        }
+        
+        .service-card li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
         /* Tabela de investimento */
         .investment-table {
             width: 100%;
@@ -259,6 +303,27 @@
             color: var(--warning-orange);
         }
         
+        /* Pagamento Section */
+        .payment-details {
+            background-color: #e8f5e9;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid var(--success-green);
+        }
+        
+        .payment-details h3 {
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .payment-details h3 i {
+            color: var(--success-green);
+        }
+        
         /* Rodapé da proposta */
         .proposal-footer {
             background-color: var(--light-gray);
@@ -330,9 +395,19 @@
         
         .proposal-date {
             text-align: right;
-            color: #777;
+            color: #ffffff;
             font-style: italic;
             margin-top: 10px;
+        }
+        
+        /* Validade da proposta */
+        .validity-box {
+            background-color: #ffe6e6;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            border-left: 4px solid var(--accent-red);
         }
         
         /* Botões de ação */
@@ -403,7 +478,7 @@
                 font-size: 1.5rem;
             }
             
-            .details-grid {
+            .details-grid, .services-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -459,9 +534,8 @@
                 box-shadow: none;
             }
             
-            /* Para impressão, ajustar a logo para preto */
             .logo-img img {
-                filter: brightness(0); /* Preto para impressão */
+                filter: brightness(0);
             }
             
             .proposal-header {
@@ -480,6 +554,11 @@
             
             .logo-text span {
                 color: var(--dark-gray) !important;
+            }
+            
+            .service-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
             }
         }
     </style>
@@ -500,8 +579,8 @@
             </div>
             
             <h1>PROPOSTA COMERCIAL</h1>
-            <h2>Instalações Prediais - Residência Multifamiliar</h2>
-            <p>Proposta técnica e comercial para execução de sistemas prediais completos</p>
+            <h2>Serviços de Projeto para Instalações Prediais</h2>
+            <p>Elaboração de projeto executivo completo com memorial descritivo, pranchas e assessoria técnica</p>
             
             <div class="proposal-date">
                 Data: <span id="current-date">04 de Fevereiro de 2025</span>
@@ -513,9 +592,9 @@
             <!-- Introdução/Objeto -->
             <h2 class="section-title">1. OBJETO DA PROPOSTA</h2>
             <div class="section-content">
-                <p>A presente proposta tem como objetivo apresentar os serviços de instalações prediais para o empreendimento <strong>Residência Multifamiliar</strong>, compreendendo projeto, fornecimento de materiais e execução dos sistemas prediais conforme normas técnicas vigentes.</p>
+                <p>A presente proposta tem como objetivo apresentar os <strong>serviços de elaboração de projeto executivo completo</strong> para as instalações prediais do empreendimento <strong>Residência Multifamiliar</strong>, incluindo memorial descritivo, pranchas técnicas, assessoria e análise técnica para escolha das melhores soluções.</p>
                 
-                <p>A <strong>Penn & Wize Instalações Prediais</strong> atua no mercado com expertise técnica comprovada, garantindo qualidade, segurança e eficiência em todos os seus projetos. Nossa equipe é composta por profissionais qualificados e com vasta experiência em instalações prediais de alto padrão.</p>
+                <p>A <strong>Penn & Wize Instalações Prediais</strong> especializa-se em soluções técnicas completas para projetos prediais, garantindo qualidade, conformidade normativa e otimização de custos através de análise técnica especializada.</p>
             </div>
             
             <!-- Detalhes do Projeto -->
@@ -546,17 +625,97 @@
                     <div class="detail-item">
                         <i class="fas fa-tint"></i>
                         <div class="detail-text">
-                            <h4>Sistemas Incluídos</h4>
+                            <h4>Sistemas a Projetar</h4>
                             <p>Água fria, água quente, esgoto, drenagem, gás, combate a incêndio</p>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Investimento -->
-            <h2 class="section-title">2. INVESTIMENTO</h2>
+            <!-- Serviços Incluídos -->
+            <h2 class="section-title">2. SERVIÇOS INCLUÍDOS</h2>
             <div class="section-content">
-                <p>O valor total do investimento para execução completa dos sistemas prediais, incluindo projeto, materiais premium e mão de obra especializada, é apresentado na tabela abaixo:</p>
+                <p>A Penn & Wize oferece um pacote completo de serviços de projeto, incluindo todas as etapas necessárias para a elaboração de projeto executivo conforme normas técnicas vigentes:</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h4><i class="fas fa-file-alt"></i> Memorial Descritivo</h4>
+                    <ul>
+                        <li>Memorial técnico completo e detalhado</li>
+                        <li>Especificação de materiais e equipamentos</li>
+                        <li>Justificativas técnicas das soluções adotadas</li>
+                        <li>Normas técnicas aplicáveis (ABNT/NBR)</li>
+                        <li>Procedimentos de execução recomendados</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h4><i class="fas fa-drafting-compass"></i> Desenhos Técnicos</h4>
+                    <ul>
+                        <li>Plantas baixas com localização de instalações</li>
+                        <li>Cortes e detalhes construtivos</li>
+                        <li>Esquemas unifilares e diagramas</li>
+                        <li>Detalhes de conexões e amarrações</li>
+                        <li>Desenhos em AutoCAD e PDF editável</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h4><i class="fas fa-headset"></i> Assessoria Técnica</h4>
+                    <ul>
+                        <li>Análise técnica inicial do projeto arquitetônico</li>
+                        <li>Consultoria durante todo o processo</li>
+                        <li>Reuniões de alinhamento com a equipe</li>
+                        <li>Esclarecimentos de dúvidas técnicas</li>
+                        <li>Acompanhamento para aprovações</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h4><i class="fas fa-search"></i> Análise Técnica</h4>
+                    <ul>
+                        <li>Estudo de alternativas técnicas</li>
+                        <li>Análise de viabilidade de soluções</li>
+                        <li>Comparativo técnico-econômico</li>
+                        <li>Verificação de conformidade normativa</li>
+                        <li>Identificação de pontos críticos</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h4><i class="fas fa-lightbulb"></i> Soluções Otimizadas</h4>
+                    <ul>
+                        <li>Indicação da melhor solução técnica</li>
+                        <li>Otimização de custos e materiais</li>
+                        <li>Sugestões de melhoria do projeto</li>
+                        <li>Alternativas sustentáveis</li>
+                        <li>Recomendações de fornecedores</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <h4><i class="fas fa-print"></i> Pranchas Completas</h4>
+                    <ul>
+                        <li>Conjunto completo de pranchas A3</li>
+                        <li>Layout padronizado e profissional</li>
+                        <li>Tabelas de materiais e legendas</li>
+                        <li>Especificações em todas as pranchas</li>
+                        <li>Entregas em PDF e DWG</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Validade da Proposta -->
+            <div class="validity-box">
+                <h3><i class="fas fa-clock"></i> VALIDADE DA PROPOSTA: <strong>7 DIAS</strong></h3>
+                <p>Esta proposta é válida por 1 semana a partir da data de emissão. Após este período, os valores estão sujeitos a reajuste.</p>
+            </div>
+            
+            <!-- Investimento -->
+            <h2 class="section-title">3. INVESTIMENTO</h2>
+            <div class="section-content">
+                <p>O valor total para elaboração do projeto executivo completo, incluindo todos os serviços descritos acima, é apresentado na tabela abaixo:</p>
                 
                 <table class="investment-table">
                     <thead>
@@ -567,80 +726,101 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Projeto executivo de instalações prediais</td>
-                            <td>R$ 45.000,00</td>
+                            <td>Elaboração de Memorial Descritivo Completo</td>
+                            <td>R$ 12.000,00</td>
                         </tr>
                         <tr>
-                            <td>Sistema de água fria (incluindo reservatórios e bombas)</td>
-                            <td>R$ 185.000,00</td>
+                            <td>Desenhos Técnicos Detalhados (AutoCAD)</td>
+                            <td>R$ 18.000,00</td>
                         </tr>
                         <tr>
-                            <td>Sistema de água quente (com aquecedores a gás)</td>
-                            <td>R$ 95.000,00</td>
+                            <td>Assessoria e Consultoria Técnica</td>
+                            <td>R$ 8.000,00</td>
                         </tr>
                         <tr>
-                            <td>Sistema de esgoto sanitário</td>
-                            <td>R$ 120.000,00</td>
+                            <td>Análise Técnica e Estudo de Soluções</td>
+                            <td>R$ 10.000,00</td>
                         </tr>
                         <tr>
-                            <td>Sistema de drenagem pluvial</td>
-                            <td>R$ 75.000,00</td>
+                            <td>Indicação de Soluções Otimizadas</td>
+                            <td>R$ 7.000,00</td>
                         </tr>
                         <tr>
-                            <td>Sistema de gás encanado</td>
-                            <td>R$ 65.000,00</td>
-                        </tr>
-                        <tr>
-                            <td>Sistema de combate a incêndio (hidrantes e extintores)</td>
-                            <td>R$ 110.000,00</td>
-                        </tr>
-                        <tr>
-                            <td>Instalações específicas para áreas comuns (piscina, churrasqueira)</td>
-                            <td>R$ 45.000,00</td>
+                            <td>Conjunto Completo de Pranchas Técnicas</td>
+                            <td>R$ 5.000,00</td>
                         </tr>
                         <tr class="total-row">
-                            <td><strong>TOTAL DO INVESTIMENTO</strong></td>
-                            <td class="highlight-cell"><strong>R$ 740.000,00</strong></td>
+                            <td><strong>TOTAL DO PROJETO COMPLETO</strong></td>
+                            <td class="highlight-cell"><strong>R$ 60.000,00</strong></td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            
+            <!-- Condições de Pagamento -->
+            <div class="payment-details">
+                <h3><i class="fas fa-credit-card"></i> CONDIÇÕES DE PAGAMENTO</h3>
+                <p><strong>Forma de pagamento simplificada:</strong></p>
                 
-                <div class="project-details" style="margin-top: 30px;">
-                    <h3><i class="fas fa-credit-card"></i> CONDIÇÕES DE PAGAMENTO</h3>
-                    <p><strong>Forma de pagamento:</strong></p>
-                    <ul>
-                        <li><strong>Entrada:</strong> R$ 148.000,00 (20% do valor total) na assinatura do contrato</li>
-                        <li><strong>Parcelas mensais:</strong> 8 parcelas de R$ 74.000,00 (10% do valor total cada)</li>
-                        <li><strong>Última parcela:</strong> R$ 74.000,00 (10% do valor total) na entrega final</li>
-                    </ul>
-                    <p><strong>Meios de pagamento aceitos:</strong> PIX (5% de desconto), transferência bancária, ou cheque.</p>
+                <div style="background-color: white; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                        <div>
+                            <h4 style="color: var(--primary-blue); margin-bottom: 5px;">1ª Parcela - Assinatura do Contrato</h4>
+                            <p>50% do valor total do projeto</p>
+                        </div>
+                        <div style="font-size: 1.3rem; font-weight: bold; color: var(--accent-red);">
+                            R$ 30.000,00
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <h4 style="color: var(--primary-blue); margin-bottom: 5px;">2ª Parcela - Entrega do Projeto</h4>
+                            <p>50% restante do valor total</p>
+                        </div>
+                        <div style="font-size: 1.3rem; font-weight: bold; color: var(--accent-red);">
+                            R$ 30.000,00
+                        </div>
+                    </div>
                 </div>
                 
-                <div style="margin-top: 30px;">
-                    <p><strong>Validade da proposta:</strong> 15 dias a partir da data de emissão.</p>
-                    <p><strong>Prazo de execução:</strong> 180 dias úteis a partir da liberação do canteiro de obras e aprovação do projeto.</p>
+                <p><strong>Meios de pagamento aceitos:</strong></p>
+                <ul>
+                    <li><strong>PIX:</strong> Chave: contato@pennwize.com.br (5% de desconto)</li>
+                    <li><strong>Transferência Bancária:</strong> Dados fornecidos após aprovação da proposta</li>
+                </ul>
+                
+                <div style="margin-top: 20px; padding: 15px; background-color: #e3f2fd; border-radius: 5px; border-left: 4px solid var(--primary-blue);">
+                    <p style="margin-bottom: 0;"><i class="fas fa-info-circle" style="color: var(--primary-blue);"></i> <strong>Nota:</strong> O projeto será iniciado após o pagamento da primeira parcela e a entrega completa será realizada após a quitação total.</p>
                 </div>
+            </div>
+            
+            <!-- Prazo de Entrega -->
+            <div class="project-details">
+                <h3><i class="fas fa-calendar-alt"></i> PRAZO DE ENTREGA</h3>
+                <p><strong>Prazo total para entrega do projeto completo:</strong> 45 dias úteis a partir da assinatura do contrato e pagamento da primeira parcela.</p>
+                <p><strong>Entregas parciais:</strong> Serão fornecidos avanços parciais do projeto a cada 15 dias para acompanhamento e validação.</p>
             </div>
             
             <!-- Observações -->
             <div class="observations">
                 <h3><i class="fas fa-exclamation-circle"></i> OBSERVAÇÕES IMPORTANTES</h3>
                 <ul>
-                    <li>Os valores apresentados incluem mão de obra especializada, materiais de primeira linha com certificação INMETRO e projeto executivo detalhado;</li>
-                    <li>Esta proposta não inclui taxas de aprovação junto aos órgãos competentes (como corpo de bombeiros), que são de responsabilidade do cliente;</li>
-                    <li>O prazo de execução está condicionado à liberação do canteiro de obras sem intercorrências e às condições climáticas favoráveis;</li>
-                    <li>Será fornecido relatório fotográfico semanal do andamento dos serviços;</li>
-                    <li>Garantia de 12 meses para todos os serviços executados, contados a partir da entrega final;</li>
-                    <li>Esta proposta pode sofrer reajustes caso haja alterações no projeto arquitetônico ou nas especificações técnicas.</li>
+                    <li>Esta proposta inclui até 3 reuniões de alinhamento durante a elaboração do projeto;</li>
+                    <li>O projeto será elaborado conforme as normas ABNT/NBR vigentes e regulamentos do Corpo de Bombeiros;</li>
+                    <li>Não estão incluídas taxas de aprovação junto aos órgãos competentes;</li>
+                    <li>Alterações significativas no escopo após o início do projeto poderão gerar custos adicionais;</li>
+                    <li>Será fornecida uma cópia digital completa do projeto em PDF e DWG;</li>
+                    <li>A Penn & Wize mantém a propriedade intelectual do projeto até a quitação total.</li>
                 </ul>
             </div>
             
             <!-- Considerações Finais -->
-            <h2 class="section-title">3. CONSIDERAÇÕES FINAIS</h2>
+            <h2 class="section-title">4. CONSIDERAÇÕES FINAIS</h2>
             <div class="section-content">
-                <p>A <strong>Penn & Wize Instalações Prediais</strong> compromete-se com a excelência na execução dos serviços, utilizando as melhores práticas do mercado e as normas técnicas aplicáveis (ABNT, NBR, e regulamentos do Corpo de Bombeiros).</p>
+                <p>A <strong>Penn & Wize Instalações Prediais</strong> compromete-se com a excelência na elaboração do projeto executivo, garantindo soluções técnicas otimizadas, conformidade normativa e clareza na documentação para facilitar a execução.</p>
                 
-                <p>Nossa equipe estará à disposição para eventuais esclarecimentos e para acompanhar todas as etapas do projeto, garantindo total satisfação e conformidade com as expectativas do cliente.</p>
+                <p>Nossa equipe técnica especializada estará à disposição para esclarecimentos e para garantir que o projeto atenda plenamente às necessidades do empreendimento.</p>
                 
                 <p>Agradecemos pela oportunidade e colocamo-nos à disposição para discutirmos os detalhes desta proposta.</p>
             </div>
@@ -659,14 +839,14 @@
                     <h4>INFORMAÇÕES EMPRESARIAIS</h4>
                     <p><i class="fas fa-id-card"></i> CNPJ: 26.844.777/0001-26</p>
                     <p><i class="fas fa-calendar-alt"></i> Data da proposta: 04/02/2025</p>
-                    <p><i class="fas fa-file-alt"></i> Proposta nº: PW-2025-017-MF</p>
+                    <p><i class="fas fa-file-alt"></i> Proposta nº: PW-PROJ-2025-017</p>
                 </div>
             </div>
             
             <div class="signature">
                 <div class="signature-line"></div>
                 <div class="signature-name">PENN & WIZE INSTALAÇÕES PREDIAIS</div>
-                <div class="signature-role">Engenharia e Instalações Prediais</div>
+                <div class="signature-role">Engenharia e Projetos Prediais</div>
                 
                 <div style="margin-top: 50px;">
                     <div class="signature-name">João da Silva</div>
