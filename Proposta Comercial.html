@@ -1680,7 +1680,6 @@ function downloadPDF() {
     const projectName = "Projeto_Executivo_Instalacoes_Prediais_Revit";
     const userName = localStorage.getItem('pennwize_username') || 'Cliente';
     const greeting = getGreeting();
-    
     // Cria um link temporário para download
     const link = document.createElement('a');
     link.href = 'img/prancha/Projeto.pdf';
@@ -1692,7 +1691,7 @@ function downloadPDF() {
     link.click();
     document.body.removeChild(link);
     
-
+}
     </script>
 </body>
     </html>
