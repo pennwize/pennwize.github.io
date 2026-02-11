@@ -1422,13 +1422,13 @@
                 
                 <div style="margin-top: 50px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
                     <div>
-                        <div class="signature-name">Letícia Tôrres</div>
+                        <div class="signature-name">Letícia Tôrres - CREA-RN: 184.926.350-9</div>
                     </div>
                     <div>
-                        <div class="signature-name">João Pedro</div>
+                        <div class="signature-name">João Pedro - CREA-RN: 592.104.738-4</div>
                     </div>
                     <div>
-                        <div class="signature-name">Amanda Campos</div>
+                        <div class="signature-name">Amanda Campos - CREA-RN: 271839405-2</div>
                     </div>
                 </div>
             </div>
@@ -1691,19 +1691,7 @@ function downloadPDF() {
     link.click();
     document.body.removeChild(link);
     
-    // Mensagem de confirmação
-    alert(`${greeting}, ${userName}!\n\nDownload iniciado!\n\nArquivo: ${projectName}.pdf\n\nVerifique sua pasta de downloads.\n\nEste é o projeto executivo completo desenvolvido em Revit.`);
-            }
-        // Função para preencher valores na impressão
-        window.onbeforeprint = function() {
-            document.querySelector('.action-buttons').style.display = 'none';
-            document.querySelector('.welcome-banner').style.display = 'none';
-        };
-        
-        window.onafterprint = function() {
-            document.querySelector('.action-buttons').style.display = 'flex';
-            document.querySelector('.welcome-banner').style.display = 'flex';
-        };
+
     </script>
 </body>
     </html>
